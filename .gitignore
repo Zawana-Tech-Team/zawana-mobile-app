@@ -144,3 +144,8 @@ expo-env.d.ts
 # Local Expo preview artifacts
 .expo/cache/
 .expo/dev/
+
+# Native Firebase app configs are supplied locally or through EAS file variables.
+google-services.json
+GoogleService-Info.plist
+firebase-config/

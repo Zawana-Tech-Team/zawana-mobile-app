@@ -8,9 +8,14 @@
     "scheme": "zawanamobileapp",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/expo.icon"
+      "icon": "./assets/expo.icon",
+      "bundleIdentifier": "com.zawana.mobile",
+      "googleServicesFile": "./firebase-config/GoogleService-Info.plist",
+      "usesAppleSignIn": true
     },
     "android": {
+      "package": "com.zawana.mobile",
+      "googleServicesFile": "./firebase-config/google-services.json",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
@@ -32,11 +37,23 @@
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 76
         }
-      ]
+      ],
+      "expo-secure-store",
+      "@react-native-firebase/app",
+      "@react-native-firebase/auth",
+      "react-native-nitro-google-signin",
+      "expo-build-properties"
     ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "104df23b-6450-4217-be6c-7d1ecf98689f"
+      }
+    },
+    "owner": "zawana"
   }
 }

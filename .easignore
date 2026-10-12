@@ -1,0 +1,25 @@
+node_modules/
+.git/
+.expo/
+android/
+ios/
+artifacts/
+development/
+tests/
+scripts/
+assets/ref/
+assets/*.pdf
+.env
+.env.*
+!.env.example
+*.log
+**/*firebase-adminsdk*.json
+**/*service-account*.json
+credentials.json
+*.p8
+*.p12
+*.jks
+*.keystore
+
+# Public native Firebase SDK config files in firebase-config/ are needed by EAS.
+# They remain excluded from Git by .gitignore; no Admin service account is included.

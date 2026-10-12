@@ -1,0 +1,54 @@
+{
+  "route": "get-started",
+  "generatedAtUtc": "2026-10-10T15:33:30.113820+00:00",
+  "reference": "C:\\Users\\HP\\Documents\\zawana-mobile-app\\assets\\ref\\Auth 1.png",
+  "actual": "C:\\Users\\HP\\Documents\\zawana-mobile-app\\development\\qa\\auth\\tool-smoke-test\\input-derived-from-reference-not-native.png",
+  "captureProvenance": "Confirm the companion native capture metadata; this script does not attest image origin.",
+  "referenceSourceDimensions": [
+    1122,
+    1402
+  ],
+  "actualSourceDimensions": [
+    390,
+    802
+  ],
+  "referenceCrop": [
+    237,
+    28,
+    883,
+    1357
+  ],
+  "referenceCropApproximate": true,
+  "actualCrop": null,
+  "referenceNormalizedDimensions": [
+    390,
+    802
+  ],
+  "actualNormalizedDimensions": [
+    390,
+    802
+  ],
+  "alignment": "top",
+  "normalizedHeightDifferencePixels": 0,
+  "comparedDimensions": [
+    390,
+    802
+  ],
+  "ignoredTopPixels": 0,
+  "meanAbsoluteError0to255": 0.0,
+  "meanAbsoluteErrorFraction": 0.0,
+  "perChannelMeanAbsoluteError": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "ssim": null,
+  "status": "diagnostic-only; visual review required",
+  "limitations": [
+    "Reference crop bounds are approximate unless explicitly overridden.",
+    "Both images are scaled proportionally to the same width; neither is stretched to hide aspect mismatch.",
+    "Metrics cover the aligned overlapping height only; extra height remains visible in side-by-side and reported separately.",
+    "Font rasterization, native status bars, cutouts, keyboard, artwork and reference sample data affect differences.",
+    "No SSIM library is required or claimed, and no automatic pass threshold is used."
+  ]
+}

@@ -1,0 +1,173 @@
+[
+  {
+    "route": "get-started",
+    "reference": "assets/ref/Auth 1.png",
+    "sourceDimensions": [
+      1122,
+      1402
+    ],
+    "viewportBoundsApproximate": [
+      237,
+      28,
+      883,
+      1357
+    ],
+    "normalizedDimensions": [
+      390,
+      802
+    ],
+    "output": "development/qa/auth/discovery/get-started-reference-390.png"
+  },
+  {
+    "route": "sign-in",
+    "reference": "assets/ref/Sign in.png",
+    "sourceDimensions": [
+      1122,
+      1402
+    ],
+    "viewportBoundsApproximate": [
+      238,
+      29,
+      884,
+      1375
+    ],
+    "normalizedDimensions": [
+      390,
+      813
+    ],
+    "output": "development/qa/auth/discovery/sign-in-reference-390.png"
+  },
+  {
+    "route": "sign-up",
+    "reference": "assets/ref/Sign-up-ref.png",
+    "sourceDimensions": [
+      1122,
+      1402
+    ],
+    "viewportBoundsApproximate": [
+      237,
+      29,
+      885,
+      1375
+    ],
+    "normalizedDimensions": [
+      390,
+      810
+    ],
+    "output": "development/qa/auth/discovery/sign-up-reference-390.png"
+  },
+  {
+    "route": "verify",
+    "reference": "assets/ref/verify.png",
+    "sourceDimensions": [
+      1122,
+      1402
+    ],
+    "viewportBoundsApproximate": [
+      249,
+      33,
+      873,
+      1358
+    ],
+    "normalizedDimensions": [
+      390,
+      828
+    ],
+    "output": "development/qa/auth/discovery/verify-reference-390.png"
+  },
+  {
+    "route": "password",
+    "reference": "assets/ref/pwd.png",
+    "sourceDimensions": [
+      1122,
+      1402
+    ],
+    "viewportBoundsApproximate": [
+      242,
+      27,
+      881,
+      1376
+    ],
+    "normalizedDimensions": [
+      390,
+      823
+    ],
+    "output": "development/qa/auth/discovery/password-reference-390.png"
+  },
+  {
+    "route": "profile-setup",
+    "reference": "assets/ref/profile set up.png",
+    "sourceDimensions": [
+      1122,
+      1402
+    ],
+    "viewportBoundsApproximate": [
+      266,
+      41,
+      857,
+      1359
+    ],
+    "normalizedDimensions": [
+      390,
+      870
+    ],
+    "output": "development/qa/auth/discovery/profile-setup-reference-390.png"
+  },
+  {
+    "route": "create-account",
+    "reference": "assets/ref/create-account.png",
+    "sourceDimensions": [
+      1122,
+      1402
+    ],
+    "viewportBoundsApproximate": [
+      237,
+      33,
+      886,
+      1368
+    ],
+    "normalizedDimensions": [
+      390,
+      802
+    ],
+    "output": "development/qa/auth/discovery/create-account-reference-390.png"
+  },
+  {
+    "route": "set-password",
+    "reference": "assets/ref/set password.png",
+    "sourceDimensions": [
+      1122,
+      1402
+    ],
+    "viewportBoundsApproximate": [
+      237,
+      30,
+      881,
+      1371
+    ],
+    "normalizedDimensions": [
+      390,
+      812
+    ],
+    "output": "development/qa/auth/discovery/set-password-reference-390.png"
+  },
+  {
+    "route": "complete",
+    "reference": "assets/ref/account created.png",
+    "sourceDimensions": [
+      1122,
+      1402
+    ],
+    "viewportBoundsApproximate": [
+      247,
+      24,
+      875,
+      1371
+    ],
+    "normalizedDimensions": [
+      390,
+      837
+    ],
+    "output": "development/qa/auth/discovery/complete-reference-390.png"
+  }
+]
