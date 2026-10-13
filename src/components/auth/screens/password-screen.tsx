@@ -25,7 +25,7 @@ export function PasswordScreen() {
       else if (status !== 'authenticated') throw new Error('Your session could not be validated. Please try again.');
     } finally { setPassword(''); }
   });
-  return <AuthLayout title="Enter Your Password" description="Enter your password to sign in.\nYour email must be verified to continue." onBack={() => { setPassword(''); router.back(); }} variant="photo" testID="password-screen">
+  return <AuthLayout title="Enter Your Password" description={'Enter your password to sign in.\nYour email must be verified to continue.'} onBack={() => { setPassword(''); router.back(); }} variant="photo" testID="password-screen">
     <PasswordInput value={password} onChangeText={setPassword} editable={!task.loading} onSubmitEditing={submit} testID="sign-in-password" />
     <Pressable accessibilityRole="button" onPress={() => router.push('/recover')} style={styles.forgot}><Text style={styles.link}>Forgot password?</Text></Pressable>
     <Pressable accessibilityRole="checkbox" accessibilityState={{ checked: remember }} accessibilityLabel="Remember this device" onPress={() => setRemember(!remember)} style={styles.remember}>
