@@ -19,7 +19,10 @@ function firebaseConfig() {
     messagingSenderId: process.env.EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
   };
   if (!config.apiKey || !config.authDomain || !config.projectId || !config.appId) {
-    throw new AuthError('configuration', 'Firebase sign-in is not configured. Add the public Firebase configuration for the existing ZAWANA project.');
+    throw new AuthError(
+      'configuration',
+      'Firebase sign-in is not configured. Add the public Firebase configuration for the existing ZAWANA project.'
+    );
   }
   return config;
 }
@@ -43,7 +46,10 @@ export function getFirebaseAuth(): FirebaseAuth.Auth {
 
 export async function setRememberDevice(remember: boolean): Promise<void> {
   const auth = getFirebaseAuth();
-  await FirebaseAuth.setPersistence(auth, remember && persistentPersistence ? persistentPersistence : FirebaseAuth.inMemoryPersistence);
+  await FirebaseAuth.setPersistence(
+    auth,
+    remember && persistentPersistence ? persistentPersistence : FirebaseAuth.inMemoryPersistence
+  );
 }
 
 export async function signInIdentity(email: string, password: string, remember = true): Promise<FirebaseAuth.User> {
@@ -98,7 +104,10 @@ export async function isAppleAvailable() { return false; }
 export async function prepareIdentitySession() { /* Web persistence is already initialized by Firebase. */ }
 
 export async function sendPhoneVerification(_phone: string): Promise<PhoneConfirmation> {
-  throw new AuthError('configuration', 'SMS verification requires the ZAWANA native development build with Firebase app verification.');
+  throw new AuthError(
+    'configuration',
+    'SMS verification requires the ZAWANA native development build with Firebase app verification.'
+  );
 }
 
 export { onIdTokenChanged } from 'firebase/auth';

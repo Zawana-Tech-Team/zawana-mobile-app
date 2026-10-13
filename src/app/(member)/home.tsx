@@ -9,7 +9,10 @@ import { useFormTask } from '@/hooks/use-form-task';
 export default function Home() {
   const { user, api, signOut } = useAuth();
   const [result, setResult] = useState<{
-    userId: string; attempt: number; dashboard: MemberDashboard | null; error: string | null;
+    userId: string;
+    attempt: number;
+    dashboard: MemberDashboard | null;
+    error: string | null;
   } | null>(null);
   const [attempt, setAttempt] = useState(0);
   const task = useFormTask();
@@ -25,11 +28,19 @@ export default function Home() {
     }).catch(failure => {
       if (active) setResult({ userId, attempt, dashboard: null, error: sanitizeAuthError(failure).message });
     });
-    return () => { active = false; request.abort(); };
+    return () => {
+      active = false;
+      request.abort();
+    };
   }, [api, userId, attempt]);
 
   if (!user) return null;
-  return <MemberHomeScreen user={user} dashboard={loading ? null : result?.dashboard ?? null} loading={loading}
-    error={task.error ?? (loading ? null : result?.error)} onRetry={() => setAttempt(value => value + 1)}
-    onSignOut={() => task.run(signOut)} />;
+  return <MemberHomeScreen
+    user={user}
+    dashboard={loading ? null : result?.dashboard ?? null}
+    loading={loading}
+    error={task.error ?? (loading ? null : result?.error)}
+    onRetry={() => setAttempt(value => value + 1)}
+    onSignOut={() => task.run(signOut)}
+  />;
 }

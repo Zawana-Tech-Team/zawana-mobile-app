@@ -20,7 +20,10 @@ export function createPhoneChallenge(options: {
   let confirmation: PhoneConfirmation | null = null;
   let pending = false;
   let generation = 0;
-  const publish = (next: PhoneChallenge | null) => { current = next; options.onChange(next); };
+  const publish = (next: PhoneChallenge | null) => {
+    current = next;
+    options.onChange(next);
+  };
   return {
     getState: () => current,
     async restore() {
@@ -34,12 +37,21 @@ export function createPhoneChallenge(options: {
           || !Number.isFinite(data.sentAt) || data.sentAt > now() || now() - data.sentAt > MAX_AGE) {
           await options.storage.removeItem(KEY); return;
         }
-        publish({ phone: data.phone, sentAt: data.sentAt, resendAt: data.sentAt + COOLDOWN, resumable: false });
+        publish({
+          phone: data.phone,
+          sentAt: data.sentAt,
+          resendAt: data.sentAt + COOLDOWN,
+          resumable: false
+        });
       } catch { await options.storage.removeItem(KEY); }
     },
     async send(phone: string) {
       if (pending) throw new AuthError('cancelled', 'Wait for the current verification request.');
-      if (current && current.resendAt > now()) throw new AuthError('rateLimited', 'Wait before requesting another SMS.', { retryAfterSeconds: Math.ceil((current.resendAt - now()) / 1_000) });
+      if (current && current.resendAt > now()) throw new AuthError(
+        'rateLimited',
+        'Wait before requesting another SMS.',
+        { retryAfterSeconds: Math.ceil((current.resendAt - now()) / 1_000) }
+      );
       if (!/^\+[1-9]\d{6,14}$/.test(phone)) throw new AuthError('invalidInput', 'Enter a valid mobile number.');
       pending = true;
       const attempt = ++generation;

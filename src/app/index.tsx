@@ -19,25 +19,35 @@ export default function Index() {
   if (auth.status === 'error' && auth.identity) return (
     <AuthLayout title="Unable to restore your session" testID="session-error">
       <AuthErrorMessage message={task.error ?? auth.error} />
-      <PrimaryButton label="Try again" loading={task.loading} onPress={() => task.run(async () => { await auth.retryRestore(); })} />
+      <PrimaryButton
+        label="Try again"
+        loading={task.loading}
+        onPress={() => task.run(async () => { await auth.retryRestore(); })}
+      />
       <SecondaryButton label="Sign out" onPress={() => task.run(auth.signOut)} />
     </AuthLayout>
   );
-  return <GetStartedScreen busy={auth.busy || task.loading} appleAvailable={auth.appleAvailable}
-    error={auth.errorCode === 'cancelled' ? null : task.error ?? (auth.status === 'error' ? auth.error : null)} onAction={action => {
-    if (action === 'phone') router.push('/sign-in');
-    if (action === 'signup') router.push('/sign-up');
-    if (action === 'google' || action === 'apple') void task.run(async () => {
-      const status = await (action === 'google' ? auth.signInGoogle() : auth.signInApple());
-      const identity = getFirebaseAuth().currentUser;
-      if (identity && status === 'profile-required') {
-        registration.update({ ...(identity.email ? { email: identity.email } : {}),
-          ...(identity.displayName ? { name: identity.displayName } : {}),
-          ...(identity.phoneNumber ? { phone: identity.phoneNumber } : {}) });
-        router.replace('/create-account');
-      }
-      if (status === 'verification-required') router.replace('/verify');
-      if (status === 'error') throw new Error('Firebase signed you in, but ZAWANA could not validate the member session. Please retry.');
-    });
-  }} />;
+  return <GetStartedScreen
+    busy={auth.busy || task.loading}
+    appleAvailable={auth.appleAvailable}
+    error={auth.errorCode === 'cancelled' ? null : task.error ?? (auth.status === 'error' ? auth.error : null)}
+    onAction={action => {
+      if (action === 'phone') router.push('/sign-in');
+      if (action === 'signup') router.push('/sign-up');
+      if (action === 'google' || action === 'apple') void task.run(async () => {
+        const status = await (action === 'google' ? auth.signInGoogle() : auth.signInApple());
+        const identity = getFirebaseAuth().currentUser;
+        if (identity && status === 'profile-required') {
+          registration.update({
+            ...(identity.email ? { email: identity.email } : {}),
+            ...(identity.displayName ? { name: identity.displayName } : {}),
+            ...(identity.phoneNumber ? { phone: identity.phoneNumber } : {})
+          });
+          router.replace('/create-account');
+        }
+        if (status === 'verification-required') router.replace('/verify');
+        if (status === 'error') throw new Error('Firebase signed you in, but ZAWANA could not validate the member session. Please retry.');
+      });
+    }}
+  />;
 }

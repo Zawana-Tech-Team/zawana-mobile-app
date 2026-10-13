@@ -21,10 +21,28 @@ export function VerificationCodeInput({ value, onChange, disabled = false, error
 
   return (
     <View>
-      <Pressable accessible={false} disabled={disabled} onPress={() => inputRef.current?.focus()} style={[styles.codeRow, { opacity: disabled ? 0.55 : 1 }]}>
-        <View pointerEvents="none" accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={styles.boxRow}>
+      <Pressable
+        accessible={false}
+        disabled={disabled}
+        onPress={() => inputRef.current?.focus()}
+        style={[styles.codeRow, { opacity: disabled ? 0.55 : 1 }]}
+      >
+        <View
+          pointerEvents="none"
+          accessibilityElementsHidden
+          importantForAccessibility="no-hide-descendants"
+          style={styles.boxRow}
+        >
           {Array.from({ length: 6 }, (_, index) => (
-            <View key={index} style={[styles.box, { borderColor: error ? authColors.error : focused && activeIndex === index ? authColors.goldDark : authColors.outline }]}>
+            <View
+              key={index}
+              style={[
+                styles.box,
+                {
+                  borderColor: error ? authColors.error : focused && activeIndex === index ? authColors.goldDark : authColors.outline
+                }
+              ]}
+            >
               <Text style={styles.digit}>{digits[index] ?? ''}</Text>
               {focused && activeIndex === index && !digits[index] ? <View style={styles.cursor} /> : null}
             </View>
@@ -61,11 +79,26 @@ export function VerificationCodeInput({ value, onChange, disabled = false, error
 const styles = StyleSheet.create({
   codeRow: { minHeight: 56, position: 'relative' },
   boxRow: { flexDirection: 'row', gap: 8 },
-  box: { flex: 1, minWidth: 0, minHeight: 56, borderWidth: 1, borderRadius: 9, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(255,255,255,0.85)' },
+  box: {
+    flex: 1,
+    minWidth: 0,
+    minHeight: 56,
+    borderWidth: 1,
+    borderRadius: 9,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(255,255,255,0.85)'
+  },
   digit: { fontSize: 24, lineHeight: 34, color: authColors.navy, textAlign: 'center' },
   cursor: { position: 'absolute', width: 2, height: 23, backgroundColor: authColors.navy },
   // One native input provides autofill, paste, deletion and accessibility. The
   // six boxes are its presentation; code contents never enter persistent state.
-  nativeInput: { ...StyleSheet.absoluteFill, color: 'transparent', opacity: 0.02, fontSize: 24, padding: 0 },
+  nativeInput: {
+    ...StyleSheet.absoluteFill,
+    color: 'transparent',
+    opacity: 0.02,
+    fontSize: 24,
+    padding: 0
+  },
   error: { color: authColors.error, fontSize: 13, lineHeight: 19, marginTop: 7 },
 });

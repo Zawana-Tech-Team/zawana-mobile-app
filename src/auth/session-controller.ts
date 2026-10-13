@@ -3,7 +3,12 @@ import type { AppUser, AuthSession } from './types.ts';
 import { hasVerifiedIdentity } from './identity.ts';
 
 export type SessionStatus = 'loading' | 'anonymous' | 'verification-required' | 'profile-required' | 'authenticated' | 'error';
-export type IdentitySummary = { uid: string; email: string | null; emailVerified: boolean; phoneNumber?: string | null };
+export type IdentitySummary = {
+  uid: string;
+  email: string | null;
+  emailVerified: boolean;
+  phoneNumber?: string | null
+};
 export type SessionState = {
   status: SessionStatus;
   identity: IdentitySummary | null;
@@ -22,8 +27,15 @@ export function createSessionController(options: SessionControllerOptions) {
   let generation = 0;
   let request: AbortController | null = null;
   let state = initialSessionState;
-  const emit = (next: SessionState) => { state = next; options.onChange(next); };
-  const invalidate = () => { generation++; request?.abort(); request = null; };
+  const emit = (next: SessionState) => {
+    state = next;
+    options.onChange(next);
+  };
+  const invalidate = () => {
+    generation++;
+    request?.abort();
+    request = null;
+  };
 
   return {
     getState: () => state,
@@ -34,7 +46,12 @@ export function createSessionController(options: SessionControllerOptions) {
     },
     fail(error: unknown) {
       invalidate();
-      emit({ status: 'error', identity: state.identity, user: null, error: sanitizeAuthError(error) });
+      emit({
+        status: 'error',
+        identity: state.identity,
+        user: null,
+        error: sanitizeAuthError(error)
+      });
     },
     async restore(identity: IdentitySummary | null): Promise<SessionStatus> {
       invalidate();
@@ -53,13 +70,21 @@ export function createSessionController(options: SessionControllerOptions) {
         const session = await options.validateSession(identity, request.signal);
         if (attempt !== generation) return state.status;
         if (session.security.mfaRequired) {
-          throw new AuthError('forbidden', 'This account requires additional verification. Sign in through the ZAWANA website or contact support.');
+          throw new AuthError(
+            'forbidden',
+            'This account requires additional verification. Sign in through the ZAWANA website or contact support.'
+          );
         }
         emit({ status: 'authenticated', identity, user: session.user, error: null });
       } catch (error) {
         if (attempt !== generation) return state.status;
         const safeError = sanitizeAuthError(error);
-        emit({ status: safeError.code === 'profileRequired' ? 'profile-required' : 'error', identity, user: null, error: safeError });
+        emit({
+          status: safeError.code === 'profileRequired' ? 'profile-required' : 'error',
+          identity,
+          user: null,
+          error: safeError
+        });
       }
       return state.status;
     },

@@ -8,7 +8,11 @@ import { isEmail, isPhone, passwordRules } from '@/auth/validation';
 import { useFormTask } from '@/hooks/use-form-task';
 import { AuthErrorMessage, AuthIcon, AuthLayout, PasswordInput, PrimaryButton, authColors } from '../ui';
 
-const labels = ['At least 8 characters', 'Include letters and numbers', 'Include a special character (e.g. @ # $)'];
+const labels = [
+  'At least 8 characters',
+  'Include letters and numbers',
+  'Include a special character (e.g. @ # $)'
+];
 export function SetPasswordScreen() {
   const auth = useAuth();
   const { draft } = useRegistrationDraft();
@@ -26,19 +30,77 @@ export function SetPasswordScreen() {
       if (status === 'verification-required') router.replace('/verify');
       else if (status === 'profile-required') router.replace('/create-account');
       else if (status !== 'authenticated') throw new Error('Account verification could not be started. Please try again.');
-    } finally { setPassword(''); setConfirm(''); }
+    } finally {
+      setPassword('');
+      setConfirm('');
+    }
   });
-  return <AuthLayout title="Set a Password" description={'Create a secure password\nfor your account.'} onBack={() => { setPassword(''); setConfirm(''); router.back(); }} testID="set-password-screen">
-    <PasswordInput label="Password" value={password} onChangeText={setPassword} autoComplete="new-password" textContentType="newPassword" editable={!task.loading} testID="new-password" />
-    <View style={styles.rules}>{labels.map((label, index) => <View key={label} style={styles.rule}><View style={[styles.circle, { backgroundColor: rules[index] ? authColors.success : '#E4E7EE' }]}><AuthIcon name="check" size={15} color={rules[index] ? 'white' : authColors.muted} /></View><Text style={styles.ruleText}>{label}</Text></View>)}</View>
-    <PasswordInput label="Confirm Password" value={confirm} onChangeText={setConfirm} autoComplete="new-password" textContentType="newPassword" editable={!task.loading} onSubmitEditing={submit} testID="confirm-password" />
+  return <AuthLayout
+    title="Set a Password"
+    description={'Create a secure password\nfor your account.'}
+    onBack={() => {
+      setPassword('');
+      setConfirm('');
+      router.back();
+    }}
+    testID="set-password-screen"
+  >
+    <PasswordInput
+      label="Password"
+      value={password}
+      onChangeText={setPassword}
+      autoComplete="new-password"
+      textContentType="newPassword"
+      editable={!task.loading}
+      testID="new-password"
+    />
+    <View style={styles.rules}>
+      {labels.map((label, index) => <View key={label} style={styles.rule}>
+        <View style={[styles.circle, { backgroundColor: rules[index] ? authColors.success : '#E4E7EE' }]}>
+          <AuthIcon name="check" size={15} color={rules[index] ? 'white' : authColors.muted} />
+        </View>
+        <Text style={styles.ruleText}>{label}</Text>
+      </View>)}
+    </View>
+    <PasswordInput
+      label="Confirm Password"
+      value={confirm}
+      onChangeText={setConfirm}
+      autoComplete="new-password"
+      textContentType="newPassword"
+      editable={!task.loading}
+      onSubmitEditing={submit}
+      testID="confirm-password"
+    />
     <AuthErrorMessage message={task.error} />
-    <View style={{ marginTop: 23 }}><PrimaryButton label="Create Account" onPress={submit} loading={task.loading} testID="create-account-submit" /></View>
-    {task.error ? <Pressable accessibilityRole="button" onPress={() => router.replace('/sign-in')} style={styles.recovery}><Text style={styles.recoveryText}>Already have an account? Sign In</Text></Pressable> : null}
+    <View style={{ marginTop: 23 }}>
+      <PrimaryButton
+        label="Create Account"
+        onPress={submit}
+        loading={task.loading}
+        testID="create-account-submit"
+      />
+    </View>
+    {task.error ? <Pressable
+      accessibilityRole="button"
+      onPress={() => router.replace('/sign-in')}
+      style={styles.recovery}
+    >
+      <Text style={styles.recoveryText}>Already have an account? Sign In</Text>
+    </Pressable> : null}
   </AuthLayout>;
 }
 const styles = StyleSheet.create({
-  rules: { gap: 8, marginTop: 16, marginBottom: 30 }, rule: { flexDirection: 'row', alignItems: 'center', gap: 10 },
-  circle: { width: 19, height: 19, borderRadius: 10, alignItems: 'center', justifyContent: 'center' }, ruleText: { fontSize: 13, lineHeight: 19, color: authColors.muted, flex: 1 },
-  recovery: { minHeight: 48, alignItems: 'center', justifyContent: 'center' }, recoveryText: { color: authColors.goldDark, fontSize: 14, textDecorationLine: 'underline' },
+  rules: { gap: 8, marginTop: 16, marginBottom: 30 },
+  rule: { flexDirection: 'row', alignItems: 'center', gap: 10 },
+  circle: {
+    width: 19,
+    height: 19,
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  ruleText: { fontSize: 13, lineHeight: 19, color: authColors.muted, flex: 1 },
+  recovery: { minHeight: 48, alignItems: 'center', justifyContent: 'center' },
+  recoveryText: { color: authColors.goldDark, fontSize: 14, textDecorationLine: 'underline' },
 });

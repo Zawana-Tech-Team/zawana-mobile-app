@@ -37,6 +37,17 @@ function SessionNavigator() {
 
 const styles = StyleSheet.create({
   root: { flex: 1 },
-  restoring: { position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, zIndex: 100, alignItems: 'center', justifyContent: 'center', gap: 16, backgroundColor: '#FFFEFC' },
+  restoring: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    zIndex: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 16,
+    backgroundColor: '#FFFEFC'
+  },
   message: { color: '#101747', fontSize: 16 },
 });

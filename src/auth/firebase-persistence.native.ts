@@ -9,7 +9,10 @@ export function getIdentityPersistence() {
     getReactNativePersistence: (storage: StorageDriver) => FirebaseAuth.Persistence;
   };
   if (!nativeAuth.getReactNativePersistence) {
-    throw new AuthError('configuration', 'The Firebase native persistence module is unavailable. Rebuild the app with the installed dependencies.');
+    throw new AuthError(
+      'configuration',
+      'The Firebase native persistence module is unavailable. Rebuild the app with the installed dependencies.'
+    );
   }
   return {
     persistent: nativeAuth.getReactNativePersistence(secureDeviceStorage),

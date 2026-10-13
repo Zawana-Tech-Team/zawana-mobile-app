@@ -6,10 +6,18 @@ import { AuthError } from '../src/auth/errors.ts';
 
 const identity = { uid: 'firebase-member', email: 'member@example.test', emailVerified: true };
 const session = {
-  user: { id: 'backend-member', name: 'Member', email: identity.email, role: 'member', phone: null, membership: null, avatar: null },
+  user: {
+    id: 'backend-member',
+    name: 'Member',
+    email: identity.email,
+    role: 'member',
+    phone: null,
+    membership: null,
+    avatar: null
+  },
   security: { mfaEnrolled: false, mfaRequired: false },
 };
-const controller = validateSession => createSessionController({ validateSession, onChange() {} });
+const controller = validateSession => createSessionController({ validateSession, onChange() { } });
 const policy = instance => sessionNavigation(instance.getState());
 
 test('startup blocks Home until both Firebase restoration and backend validation finish', async () => {
@@ -71,7 +79,14 @@ test('sign out immediately removes member access and late restoration cannot reo
 
 test('authenticated status alone cannot bypass missing user or email verification', () => {
   assert.equal(sessionNavigation({ status: 'authenticated', identity, user: null }).member, false);
-  assert.equal(sessionNavigation({ status: 'authenticated', identity: { ...identity, emailVerified: false }, user: session.user }).member, false);
+  assert.equal(
+    sessionNavigation({
+      status: 'authenticated',
+      identity: { ...identity, emailVerified: false },
+      user: session.user
+    }).member,
+    false
+  );
 });
 
 test('MFA-required backend sessions cannot reach member Home', async () => {

@@ -15,7 +15,9 @@ export function sanitizeRegistrationDraft(value: unknown): RegistrationDraft {
   const record = value as Record<string, unknown>;
   const text = (key: string, max: number) => typeof record[key] === 'string' ? record[key].slice(0, max) : '';
   return {
-    email: text('email', 254), name: text('name', 120), phone: text('phone', 32),
+    email: text('email', 254),
+    name: text('name', 120),
+    phone: text('phone', 32),
     ...(typeof record.dateOfBirth === 'string' ? { dateOfBirth: text('dateOfBirth', 10) } : {}),
     ...(typeof record.gender === 'string' ? { gender: text('gender', 32) } : {}),
     ...(Array.isArray(record.interests) ? {

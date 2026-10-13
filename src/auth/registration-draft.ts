@@ -15,8 +15,14 @@ let snapshot = initialSnapshot;
 let generation = 0;
 let initialization: Promise<void> | null = null;
 const subscribers = new Set<() => void>();
-const publish = (next: DraftSnapshot) => { snapshot = next; subscribers.forEach(subscriber => subscriber()); };
-const subscribe = (subscriber: () => void) => { subscribers.add(subscriber); return () => { subscribers.delete(subscriber); }; };
+const publish = (next: DraftSnapshot) => {
+  snapshot = next;
+  subscribers.forEach(subscriber => subscriber());
+};
+const subscribe = (subscriber: () => void) => {
+  subscribers.add(subscriber);
+  return () => { subscribers.delete(subscriber); };
+};
 
 function initializeDraft() {
   if (initialization) return initialization;
@@ -46,7 +52,10 @@ export async function readRegistrationDraft(): Promise<RegistrationDraft> {
 }
 
 export async function saveRegistrationDraft(draft: RegistrationDraft): Promise<void> {
-  await storage().setItem(DRAFT_KEY, JSON.stringify({ updatedAt: Date.now(), draft: sanitizeRegistrationDraft(draft) }));
+  await storage().setItem(
+    DRAFT_KEY,
+    JSON.stringify({ updatedAt: Date.now(), draft: sanitizeRegistrationDraft(draft) })
+  );
 }
 
 export async function clearRegistrationDraft(): Promise<void> {

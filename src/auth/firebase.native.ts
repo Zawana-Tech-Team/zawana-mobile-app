@@ -11,19 +11,29 @@ import { secureDeviceStorage } from './storage';
 function nativeAuth(): typeof import('@react-native-firebase/auth') {
   // eslint-disable-next-line @typescript-eslint/no-require-imports -- Load only when used; Expo Go must render an actionable configuration error.
   try { return require('@react-native-firebase/auth'); }
-  catch { throw new AuthError('configuration', 'Install a ZAWANA development build containing native Firebase Auth. Expo Go is not supported.'); }
+  catch {
+    throw new AuthError(
+      'configuration',
+      'Install a ZAWANA development build containing native Firebase Auth. Expo Go is not supported.'
+    );
+  }
 }
 function googleModule(): typeof import('react-native-nitro-google-signin') {
   // eslint-disable-next-line @typescript-eslint/no-require-imports -- Optional native module cannot be eagerly evaluated in Expo Go.
   try { return require('react-native-nitro-google-signin'); }
-  catch { throw new AuthError('configuration', 'Rebuild ZAWANA with its native Google Sign-In module.'); }
+  catch {
+    throw new AuthError('configuration', 'Rebuild ZAWANA with its native Google Sign-In module.');
+  }
 }
 
 export function getFirebaseAuth() {
   try { return nativeAuth().getAuth(); }
   catch (error) {
     if (error instanceof AuthError) throw error;
-    throw new AuthError('configuration', 'The Firebase native app configuration is missing. Supply the existing project configuration and rebuild.');
+    throw new AuthError(
+      'configuration',
+      'The Firebase native app configuration is missing. Supply the existing project configuration and rebuild.'
+    );
   }
 }
 let rememberDevice = true;
@@ -33,7 +43,10 @@ export async function setRememberDevice(remember: boolean) {
   if (remember) await secureDeviceStorage.removeItem(EPHEMERAL_KEY);
 }
 
-export function onIdTokenChanged(auth: ReturnType<typeof getFirebaseAuth>, listener: (user: FirebaseIdentity | null) => void) {
+export function onIdTokenChanged(
+  auth: ReturnType<typeof getFirebaseAuth>,
+  listener: (user: FirebaseIdentity | null) => void
+) {
   return nativeAuth().onIdTokenChanged(auth, listener);
 }
 export async function signInIdentity(email: string, password: string, remember = true) {
@@ -112,12 +125,24 @@ export async function signInAppleIdentity() {
   const state = Crypto.randomUUID();
   const nonce = await Crypto.digestStringAsync(Crypto.CryptoDigestAlgorithm.SHA256, rawNonce);
   const response = await AppleAuthentication.signInAsync({
-    requestedScopes: [AppleAuthentication.AppleAuthenticationScope.FULL_NAME, AppleAuthentication.AppleAuthenticationScope.EMAIL], nonce, state,
+    requestedScopes: [
+      AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
+      AppleAuthentication.AppleAuthenticationScope.EMAIL
+    ],
+    nonce,
+    state,
   });
   if (!response.identityToken || response.state !== state) throw new AuthError('invalidCredentials', 'Apple returned an invalid authentication response.');
   const provider = new (nativeAuth().OAuthProvider)('apple.com');
-  const credential = provider.credential({ idToken: response.identityToken, rawNonce,
-    ...(response.fullName ? { fullName: { givenName: response.fullName.givenName ?? undefined, familyName: response.fullName.familyName ?? undefined } } : {}),
+  const credential = provider.credential({
+    idToken: response.identityToken,
+    rawNonce,
+    ...(response.fullName ? {
+      fullName: {
+        givenName: response.fullName.givenName ?? undefined,
+        familyName: response.fullName.familyName ?? undefined
+      }
+    } : {}),
   });
   // Firebase persists the first authorization's name and relay email; null later responses never overwrite them.
   return (await nativeAuth().signInWithCredential(auth, credential)).user;

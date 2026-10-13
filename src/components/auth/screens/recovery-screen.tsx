@@ -18,10 +18,29 @@ export function RecoveryScreen() {
     await auth.requestPasswordReset(draft.email);
     setSent(true);
   });
-  return <AuthLayout title="Reset Your Password" description="Enter your account email to request a password reset link." onBack={() => router.back()}>
-    <AuthTextInput label="Email address" value={draft.email} onChangeText={email => update({ email })} keyboardType="email-address" autoCapitalize="none" autoCorrect={false} editable={!task.loading} />
+  return <AuthLayout
+    title="Reset Your Password"
+    description="Enter your account email to request a password reset link."
+    onBack={() => router.back()}
+  >
+    <AuthTextInput
+      label="Email address"
+      value={draft.email}
+      onChangeText={email => update({ email })}
+      keyboardType="email-address"
+      autoCapitalize="none"
+      autoCorrect={false}
+      editable={!task.loading}
+    />
     <AuthErrorMessage message={task.error} />
-    {sent ? <Text accessibilityLiveRegion="polite" style={{ color: authColors.muted, fontSize: 15, lineHeight: 23, marginVertical: 15 }}>If this email can receive a reset message, check your inbox and follow the link. Then return to Sign In.</Text> : null}
-    <PrimaryButton label={sent ? 'Back to Sign In' : 'Send Reset Link'} loading={task.loading} onPress={sent ? () => router.replace('/sign-in') : submit} />
+    {sent ? <Text
+      accessibilityLiveRegion="polite"
+      style={{ color: authColors.muted, fontSize: 15, lineHeight: 23, marginVertical: 15 }}
+    >If this email can receive a reset message, check your inbox and follow the link. Then return to Sign In.</Text> : null}
+    <PrimaryButton
+      label={sent ? 'Back to Sign In' : 'Send Reset Link'}
+      loading={task.loading}
+      onPress={sent ? () => router.replace('/sign-in') : submit}
+    />
   </AuthLayout>;
 }

@@ -3,14 +3,28 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState, t
 import { createAuthApi, type AuthApi } from './api';
 import { AuthError, sanitizeAuthError, type AuthErrorCode } from './errors';
 import {
-  createIdentity, getFirebaseAuth, onIdTokenChanged, reloadVerifiedIdentity,
-  requestPasswordResetEmail, sendVerificationEmail, setRememberDevice, signInIdentity,
+  createIdentity,
+  getFirebaseAuth,
+  onIdTokenChanged,
+  reloadVerifiedIdentity,
+  requestPasswordResetEmail,
+  sendVerificationEmail,
+  setRememberDevice,
+  signInIdentity,
   signOutIdentity,
-  isAppleAvailable, prepareIdentitySession, sendPhoneVerification, signInAppleIdentity, signInGoogleIdentity,
+  isAppleAvailable,
+  prepareIdentitySession,
+  sendPhoneVerification,
+  signInAppleIdentity,
+  signInGoogleIdentity,
 } from './firebase';
 import { clearRegistrationDraft } from './registration-draft';
 import {
-  createSessionController, initialSessionState, type IdentitySummary, type SessionState, type SessionStatus,
+  createSessionController,
+  initialSessionState,
+  type IdentitySummary,
+  type SessionState,
+  type SessionStatus,
 } from './session-controller';
 import type { AppUser, ProfileInput } from './types';
 import { Platform } from 'react-native';
@@ -48,7 +62,10 @@ type AuthContextValue = {
 
 const AuthContext = createContext<AuthContextValue | null>(null);
 const summary = (user: FirebaseIdentity | null): IdentitySummary | null => user ? {
-  uid: user.uid, email: user.email, emailVerified: user.emailVerified, phoneNumber: user.phoneNumber,
+  uid: user.uid,
+  email: user.email,
+  emailVerified: user.emailVerified,
+  phoneNumber: user.phoneNumber,
 } : null;
 
 function createAuthRuntime(onChange: (next: SessionState) => void) {
@@ -70,7 +87,8 @@ function createAuthRuntime(onChange: (next: SessionState) => void) {
     onChange: next => { if (mounted) onChange(next); },
   });
   return {
-    api, controller,
+    api,
+    controller,
     isMounted: () => mounted,
     setMounted: (value: boolean) => { mounted = value; },
     isPending: () => operationPending,
@@ -114,7 +132,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         if (!runtime.isSigningOut() && !runtime.isPending()) void controller.restore(summary(user));
       });
     })().catch(error => { if (runtime.isMounted()) controller.fail(error); });
-    return () => { runtime.setMounted(false); unsubscribe?.(); controller.dispose(); };
+    return () => {
+      runtime.setMounted(false);
+      unsubscribe?.();
+      controller.dispose();
+    };
   }, [controller, runtime, phone]);
 
   const run = useCallback(async <T,>(action: () => Promise<T>): Promise<T> => {
@@ -171,7 +193,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     verifyPhoneOtp: code => run(async () => {
       try { return await controller.restore(summary(await phone.verify(code))); }
       catch (error) {
-        if (error instanceof AuthError && error.code === 'cancelled') { controller.clear(); await signOutIdentity(); }
+        if (error instanceof AuthError && error.code === 'cancelled') {
+          controller.clear();
+          await signOutIdentity();
+        }
         throw error;
       }
     }),
@@ -186,7 +211,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       controller.clear();
       return controller.restore(summary(await signInIdentity(email, password, remember)));
     }),
-    signUp: (email, password) => run(async () => { runtime.setPhoneCancelled(false); return controller.restore(summary(await createIdentity(email, password))); }),
+    signUp: (email, password) => run(async () => {
+      runtime.setPhoneCancelled(false);
+      return controller.restore(summary(await createIdentity(email, password)));
+    }),
     sendVerification: () => run(sendVerificationEmail),
     checkVerification: () => run(async () => {
       const identity = await reloadVerifiedIdentity();

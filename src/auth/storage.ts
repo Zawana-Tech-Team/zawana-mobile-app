@@ -60,10 +60,17 @@ export function createChunkedStorage(driver: StorageDriver): StorageDriver {
       const characters = Array.from(value);
       const count = Math.max(1, Math.ceil(characters.length / PART_CHARACTERS));
       if (count > MAX_PARTS) throw new Error('The secure storage value is too large.');
-      const next: Manifest = { version: 1, generation: `${Date.now().toString(36)}${(counter++).toString(36)}`, count };
+      const next: Manifest = {
+        version: 1,
+        generation: `${Date.now().toString(36)}${(counter++).toString(36)}`,
+        count
+      };
       try {
         for (let index = 0; index < count; index++) {
-          await driver.setItem(partFor(storageKey, next, index), characters.slice(index * PART_CHARACTERS, (index + 1) * PART_CHARACTERS).join(''));
+          await driver.setItem(
+            partFor(storageKey, next, index),
+            characters.slice(index * PART_CHARACTERS, (index + 1) * PART_CHARACTERS).join('')
+          );
         }
         await driver.setItem(storageKey, JSON.stringify(next));
       } catch (error) {
@@ -99,7 +106,8 @@ const deviceDriver: StorageDriver = {
   async setItem(key, value) {
     const secureStore = await import('expo-secure-store');
     await secureStore.setItemAsync(key, value, {
-      keychainService: 'zawana.auth', keychainAccessible: secureStore.WHEN_UNLOCKED_THIS_DEVICE_ONLY,
+      keychainService: 'zawana.auth',
+      keychainAccessible: secureStore.WHEN_UNLOCKED_THIS_DEVICE_ONLY,
     });
   },
   async removeItem(key) {

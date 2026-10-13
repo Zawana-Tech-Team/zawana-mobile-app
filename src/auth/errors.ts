@@ -46,7 +46,10 @@ export function sanitizeAuthError(error: unknown): AuthError {
     case 'auth/missing-app-credential':
     case 'auth/app-not-authorized':
     case 'auth/missing-client-identifier':
-      return new AuthError('configuration', 'Native sign-in app verification is not configured. Check the Firebase app credentials and signing fingerprints.');
+      return new AuthError(
+        'configuration',
+        'Native sign-in app verification is not configured. Check the Firebase app credentials and signing fingerprints.'
+      );
     case 'PLAY_SERVICES_NOT_AVAILABLE':
       return new AuthError('unavailable', 'Google Play Services is unavailable. Update it or use another sign-in method.');
     case 'auth/invalid-phone-number':
@@ -54,14 +57,20 @@ export function sanitizeAuthError(error: unknown): AuthError {
     case 'auth/billing-not-enabled':
       return new AuthError('configuration', 'SMS verification requires Firebase billing setup. Contact ZAWANA support.');
     case 'auth/multi-factor-auth-required':
-      return new AuthError('forbidden', 'This account requires additional verification. Sign in through the ZAWANA website or contact support.');
+      return new AuthError(
+        'forbidden',
+        'This account requires additional verification. Sign in through the ZAWANA website or contact support.'
+      );
     case 'auth/invalid-credential':
     case 'auth/wrong-password':
     case 'auth/user-not-found':
       return new AuthError('invalidCredentials', 'The sign-in details are incorrect. Try again or reset your password.');
     case 'auth/invalid-verification-code':
     case 'auth/invalid-action-code':
-      return new AuthError('invalidVerification', 'This verification could not be accepted. Request a new one and try again.');
+      return new AuthError(
+        'invalidVerification',
+        'This verification could not be accepted. Request a new one and try again.'
+      );
     case 'auth/code-expired':
     case 'auth/expired-action-code':
     case 'auth/session-expired':
@@ -98,7 +107,11 @@ export function authHttpError(status: number, retryAfterSeconds?: number): AuthE
   const options = { status, retryAfterSeconds };
   if (status === 400 || status === 422) return new AuthError('invalidInput', 'Check your details and try again.', options);
   if (status === 401) return new AuthError('sessionExpired', 'Your session has expired. Please sign in again.', options);
-  if (status === 403) return new AuthError('forbidden', 'This verified identity cannot access the account. Contact ZAWANA support.', options);
+  if (status === 403) return new AuthError(
+    'forbidden',
+    'This verified identity cannot access the account. Contact ZAWANA support.',
+    options
+  );
   if (status === 409) return new AuthError('accountExists', 'The account could not be updated. Try signing in again.', options);
   if (status === 428) return new AuthError('profileRequired', 'Complete your member profile to continue.', options);
   if (status === 429) return new AuthError('rateLimited', 'Too many attempts. Please wait before trying again.', options);

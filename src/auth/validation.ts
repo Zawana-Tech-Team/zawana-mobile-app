@@ -22,7 +22,11 @@ export function isEmail(value: string) {
 }
 
 export function passwordRules(value: string) {
-  return [value.length >= 8, /[A-Za-z]/.test(value) && /\d/.test(value), /[^A-Za-z0-9\s]/.test(value)] as const;
+  return [
+    value.length >= 8,
+    /[A-Za-z]/.test(value) && /\d/.test(value),
+    /[^A-Za-z0-9\s]/.test(value)
+  ] as const;
 }
 
 export function isDateOfBirth(value: string) {
