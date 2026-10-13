@@ -10,9 +10,11 @@ test('phone formatting retains Myanmar international identity and removes local 
   assert.equal(normalizePhone(''), '');
   assert.equal(normalizePhone('+999123456789'), '');
   assert.equal(normalizePhone('09421234567', '+999'), '');
-  assert.equal(normalizePhone('8123 4567', '+65'), '+6581234567');
-  assert.equal(normalizePhone('+6581234567', '+95'), '+6581234567');
+  assert.equal(normalizePhone('8123 4567', '+65'), '');
+  assert.equal(normalizePhone('+6581234567', '+95'), '');
   assert.equal(isPhone('+959123456789'), false); // This placeholder prefix is not a valid mobile range.
+  assert.equal(isPhone('+66812345678'), false);
+  assert.equal(isPhone('+6581234567'), false);
   assert.equal(isPhone('+950'), false);
   assert.equal(isPhone('+95badnumber'), false);
 });

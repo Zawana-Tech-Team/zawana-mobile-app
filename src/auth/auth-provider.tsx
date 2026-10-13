@@ -1,56 +1,69 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
-
-import { createAuthApi, type AuthApi } from './api';
-import { AuthError, sanitizeAuthError, type AuthErrorCode } from './errors';
 import {
-  createIdentity,
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+  type ReactNode,
+} from "react";
+import { Platform } from "react-native";
+import { createAuthApi, type AuthApi } from "./api";
+import { AuthError, sanitizeAuthError, type AuthErrorCode } from "./errors";
+import {
   getFirebaseAuth,
   onIdTokenChanged,
-  reloadVerifiedIdentity,
-  requestPasswordResetEmail,
-  sendVerificationEmail,
-  setRememberDevice,
-  signInIdentity,
   signOutIdentity,
   isAppleAvailable,
   prepareIdentitySession,
   sendPhoneVerification,
   signInAppleIdentity,
   signInGoogleIdentity,
-} from './firebase';
-import { clearRegistrationDraft } from './registration-draft';
+} from "./firebase";
+import { ApplicationRuntime } from "./application-runtime";
+import { normalizePhone } from "./validation";
 import {
-  createSessionController,
+  clearRegistrationDraft,
+  useRegistrationDraft,
+} from "./registration-draft";
+import {
   initialSessionState,
-  type IdentitySummary,
   type SessionState,
   type SessionStatus,
-} from './session-controller';
-import type { AppUser, ProfileInput } from './types';
-import { Platform } from 'react-native';
-import { hasVerifiedIdentity, type FirebaseIdentity } from './identity';
-import { createPhoneChallenge, type PhoneChallenge } from './phone-challenge';
-import { secureDeviceStorage, ephemeralStorage } from './storage';
+} from "./session-controller";
+import type { AppUser, AuthSession, LoginResult, ProfileInput } from "./types";
+import { createPhoneChallenge, type PhoneChallenge } from "./phone-challenge";
+import { secureDeviceStorage, ephemeralStorage } from "./storage";
 
+const SESSION_KEY = "zawana-application-refresh-v1";
 type AuthContextValue = {
   status: SessionStatus;
   user: AppUser | null;
-  identity: IdentitySummary | null;
+  identity: SessionState["identity"];
   error: string | null;
   errorCode: AuthErrorCode | null;
   busy: boolean;
   phoneChallenge: PhoneChallenge | null;
   appleAvailable: boolean;
+  beginLink(): void;
+  hasPhoneProof: boolean;
+  registrationReady: boolean;
+  linking: boolean;
+  api: AuthApi;
   signInGoogle(): Promise<SessionStatus>;
   signInApple(): Promise<SessionStatus>;
-  sendPhoneOtp(phone: string): Promise<SessionStatus | null>;
+  sendPhoneOtp(
+    phone: string,
+    intent?: "signin" | "signup" | "link",
+  ): Promise<SessionStatus | null>;
   verifyPhoneOtp(code: string): Promise<SessionStatus>;
   cancelPhoneOtp(): Promise<void>;
-  api: AuthApi;
-  signIn(email: string, password: string, remember?: boolean): Promise<SessionStatus>;
+  signIn(
+    email: string,
+    password: string,
+    remember?: boolean,
+  ): Promise<SessionStatus>;
   signUp(email: string, password: string): Promise<SessionStatus>;
-  sendVerification(): Promise<void>;
-  checkVerification(): Promise<SessionStatus>;
   completeProfile(profile: ProfileInput): Promise<SessionStatus>;
   uploadAvatar(dataUrl: string): Promise<void>;
   signOut(): Promise<void>;
@@ -59,205 +72,516 @@ type AuthContextValue = {
   setRemember(remember: boolean): Promise<void>;
   clearError(): void;
 };
-
 const AuthContext = createContext<AuthContextValue | null>(null);
-const summary = (user: FirebaseIdentity | null): IdentitySummary | null => user ? {
-  uid: user.uid,
-  email: user.email,
-  emailVerified: user.emailVerified,
-  phoneNumber: user.phoneNumber,
-} : null;
-
-function createAuthRuntime(onChange: (next: SessionState) => void) {
-  let mounted = false;
-  let operationPending = false;
-  let signingOut = false;
-  let phoneCancelled = false;
-  const api = createAuthApi({
-    getIdToken: async forceRefresh => {
-      const user = getFirebaseAuth().currentUser;
-      if (!user || !hasVerifiedIdentity(user) || signingOut) {
-        throw new AuthError('sessionExpired', 'Verify your account and sign in to continue.');
-      }
-      return user.getIdToken(forceRefresh);
-    },
-  });
-  const controller = createSessionController({
-    validateSession: (_identity, signal) => api.session({ signal }),
-    onChange: next => { if (mounted) onChange(next); },
-  });
-  return {
-    api,
-    controller,
-    isMounted: () => mounted,
-    setMounted: (value: boolean) => { mounted = value; },
-    isPending: () => operationPending,
-    setPending: (value: boolean) => { operationPending = value; },
-    isSigningOut: () => signingOut,
-    setSigningOut: (value: boolean) => { signingOut = value; },
-    isPhoneCancelled: () => phoneCancelled,
-    setPhoneCancelled: (value: boolean) => { phoneCancelled = value; },
-  };
-}
-
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [session, setSession] = useState<SessionState>(initialSessionState);
+  const [state, setState] = useState<SessionState>(initialSessionState);
   const [operationError, setOperationError] = useState<AuthError | null>(null);
   const [busy, setBusy] = useState(false);
-  const [phoneChallenge, setPhoneChallenge] = useState<PhoneChallenge | null>(null);
+  const [phoneChallenge, setPhoneChallenge] = useState<PhoneChallenge | null>(
+    null,
+  );
   const [appleAvailable, setAppleAvailable] = useState(false);
-  const runtime = useMemo(() => createAuthRuntime(setSession), []);
-  const { api, controller } = runtime;
-  const phone = useMemo(() => createPhoneChallenge({
-    storage: Platform.OS === 'web' ? ephemeralStorage : secureDeviceStorage,
-    send: sendPhoneVerification,
-    onChange: challenge => { if (runtime.isMounted()) setPhoneChallenge(challenge); },
-  }), [runtime]);
-
+  const [now, setNow] = useState(() => Date.now());
   useEffect(() => {
-    runtime.setMounted(true);
-    let unsubscribe: (() => void) | undefined;
+    if (
+      ![
+        "profile-required",
+        "password-required",
+        "registration-password-required",
+        "link-required",
+      ].includes(state.status)
+    )
+      return;
+    const timer = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(timer);
+  }, [state.status]);
+  const draft = useRegistrationDraft();
+  const runtime = useMemo(() => new ApplicationRuntime(), []);
+  const storage =
+    Platform.OS === "web" ? ephemeralStorage : secureDeviceStorage;
+  const emit = useCallback(
+    (status: SessionStatus, user: AppUser | null = null) => {
+      if (!runtime.state.mounted) return;
+      setState({
+        status,
+        user,
+        error: null,
+        identity: user
+          ? {
+              uid: user.id,
+              email: user.email,
+              emailVerified: true,
+              phoneNumber: user.phone,
+            }
+          : null,
+      });
+    },
+    [runtime],
+  );
+  const acceptSession = useCallback(
+    async (result: AuthSession, generation: number) => {
+      if (generation !== runtime.state.generation)
+        throw new AuthError("cancelled", "Sign-in was cancelled.");
+      if (
+        result.user.role !== "member" ||
+        result.security.mfaRequired ||
+        !/^[A-Za-z0-9_-]{43}$/.test(result.accessToken) ||
+        !/^[A-Za-z0-9_-]{43}$/.test(result.refreshToken)
+      )
+        throw new AuthError(
+          "forbidden",
+          "Use the ZAWANA website for this account.",
+        );
+      if (runtime.state.remember)
+        await storage.setItem(
+          SESSION_KEY,
+          JSON.stringify({
+            refreshToken: result.refreshToken,
+            expiresAt: result.sessionExpiresAt,
+          }),
+        );
+      else await storage.removeItem(SESSION_KEY);
+      if (generation !== runtime.state.generation) {
+        await storage.removeItem(SESSION_KEY);
+        throw new AuthError("cancelled", "Sign-in was cancelled.");
+      }
+      runtime.set("accessToken", result.accessToken);
+      runtime.set("refreshToken", result.refreshToken);
+      runtime.set("registration", null);
+      runtime.set("challenge", null);
+      runtime.set("linkingToken", "");
+      runtime.set("registrationReady", false);
+      emit("authenticated", result.user);
+      return "authenticated" as const;
+    },
+    [emit, storage, runtime],
+  );
+  const api = useMemo(() => {
+    const transport = createAuthApi({
+      getIdToken: async () => runtime.state.accessToken,
+      onSessionInvalid: async (token) => {
+        if (token !== runtime.state.accessToken) return;
+        runtime.invalidate();
+        runtime.set("accessToken", "");
+        runtime.set("refreshToken", "");
+        await storage.removeItem(SESSION_KEY);
+        emit("anonymous");
+      },
+      refreshSession: async () => {
+        if (runtime.state.refreshFlight) return runtime.state.refreshFlight;
+        const generation = runtime.state.generation;
+        const token = runtime.state.refreshToken;
+        if (!token) throw new AuthError("sessionExpired", "Sign in again.");
+        const current = (async () => {
+          try {
+            await acceptSession(await transport.refresh(token), generation);
+          } catch (error) {
+            const safe = sanitizeAuthError(error);
+            if (
+              generation === runtime.state.generation &&
+              ["sessionExpired", "forbidden"].includes(safe.code)
+            ) {
+              runtime.set("accessToken", "");
+              runtime.set("refreshToken", "");
+              await storage.removeItem(SESSION_KEY);
+              emit("anonymous");
+            }
+            throw error;
+          }
+        })();
+        runtime.set("refreshFlight", current);
+        try {
+          await current;
+        } finally {
+          if (runtime.state.refreshFlight === current)
+            runtime.set("refreshFlight", null);
+        }
+      },
+    });
+    return transport;
+  }, [runtime, acceptSession, storage, emit]);
+  const phone = useMemo(
+    () =>
+      createPhoneChallenge({
+        storage,
+        send: sendPhoneVerification,
+        onChange: (next) => {
+          if (runtime.state.mounted) setPhoneChallenge(next);
+        },
+      }),
+    [storage, runtime],
+  );
+  const acceptLogin = useCallback(
+    async (result: LoginResult, generation: number) => {
+      if ("accessToken" in result) return acceptSession(result, generation);
+      if (generation !== runtime.state.generation)
+        throw new AuthError("cancelled", "Sign-in was cancelled.");
+      runtime.set("registration", result);
+      draft.update(result.profile);
+      emit("profile-required");
+      return "profile-required" as const;
+    },
+    [acceptSession, draft, emit, runtime],
+  );
+  const restore = useCallback(async (): Promise<SessionStatus> => {
+    const generation = runtime.state.generation;
+    const raw = await storage.getItem(SESSION_KEY);
+    if (!raw) {
+      emit("anonymous");
+      return "anonymous";
+    }
+    try {
+      const saved = JSON.parse(raw) as {
+        refreshToken?: string;
+        expiresAt?: string;
+      };
+      if (
+        !saved.refreshToken ||
+        !/^[A-Za-z0-9_-]{43}$/.test(saved.refreshToken) ||
+        !saved.expiresAt ||
+        !Number.isFinite(Date.parse(saved.expiresAt)) ||
+        Date.parse(saved.expiresAt) <= Date.now()
+      )
+        throw new AuthError("sessionExpired", "Sign in again.");
+      runtime.set("refreshToken", saved.refreshToken);
+      return await acceptSession(
+        await api.refresh(saved.refreshToken),
+        generation,
+      );
+    } catch (error) {
+      if (generation !== runtime.state.generation) return "anonymous";
+      const safe = sanitizeAuthError(error);
+      runtime.set("accessToken", "");
+      runtime.set("refreshToken", "");
+      if (safe.code === "sessionExpired" || safe.code === "forbidden") {
+        await storage.removeItem(SESSION_KEY);
+        emit("anonymous");
+        return "anonymous";
+      }
+      if (runtime.state.mounted)
+        setState({ ...initialSessionState, status: "error", error: safe });
+      return "error";
+    }
+  }, [storage, emit, acceptSession, api, runtime]);
+  useEffect(() => {
+    runtime.set("mounted", true);
     void (async () => {
       await prepareIdentitySession();
       await phone.restore();
-      const available = await isAppleAvailable();
-      if (!runtime.isMounted()) return;
-      setAppleAvailable(available);
-      unsubscribe = onIdTokenChanged(getFirebaseAuth(), user => {
-        if (runtime.isPhoneCancelled() && user?.phoneNumber) {
-          controller.clear();
-          void signOutIdentity().catch(error => controller.fail(error));
-          return;
-        }
-        if (!runtime.isSigningOut() && !runtime.isPending()) void controller.restore(summary(user));
-      });
-    })().catch(error => { if (runtime.isMounted()) controller.fail(error); });
+      setAppleAvailable(await isAppleAvailable());
+      await restore();
+    })().catch((error) => {
+      if (runtime.state.mounted) {
+        emit("anonymous");
+        setOperationError(sanitizeAuthError(error));
+      }
+    });
     return () => {
-      runtime.setMounted(false);
-      unsubscribe?.();
-      controller.dispose();
+      runtime.set("mounted", false);
+      runtime.invalidate();
     };
-  }, [controller, runtime, phone]);
-
-  const run = useCallback(async <T,>(action: () => Promise<T>): Promise<T> => {
-    if (runtime.isPending()) throw new AuthError('cancelled', 'Wait for the current request to finish.');
-    runtime.setPending(true);
-    setBusy(true);
-    setOperationError(null);
-    try { return await action(); }
-    catch (error) {
-      const safeError = sanitizeAuthError(error);
-      if (runtime.isMounted()) setOperationError(safeError);
-      throw safeError;
-    } finally {
-      runtime.setPending(false);
-      if (runtime.isMounted()) setBusy(false);
+  }, [phone, restore, emit, runtime]);
+  const run = useCallback(
+    async <T,>(action: (generation: number) => Promise<T>): Promise<T> => {
+      if (runtime.state.pending)
+        throw new AuthError("cancelled", "Wait for the current request.");
+      const generation = runtime.state.generation;
+      runtime.set("pending", true);
+      setBusy(true);
+      setOperationError(null);
+      try {
+        return await action(generation);
+      } catch (error) {
+        const safe = sanitizeAuthError(error);
+        if (runtime.state.mounted && generation === runtime.state.generation)
+          setOperationError(safe);
+        throw safe;
+      } finally {
+        if (generation === runtime.state.generation) {
+          runtime.set("pending", false);
+          if (runtime.state.mounted) setBusy(false);
+        }
+      }
+    },
+    [runtime],
+  );
+  const finishPhone = useCallback(
+    async (
+      identity: { getIdToken(force?: boolean): Promise<string> },
+      generation: number,
+    ) => {
+      const proof = await api.phoneChallenge(
+        await identity.getIdToken(true),
+        runtime.state.intent,
+      );
+      if (generation !== runtime.state.generation)
+        throw new AuthError("cancelled", "Verification was cancelled.");
+      runtime.set("challenge", proof);
+      const status: SessionStatus = runtime.state.registrationReady
+        ? "registration-password-required"
+        : proof.next === "password" && !runtime.state.registration
+          ? "password-required"
+          : runtime.state.intent === "link" || proof.next === "link-account"
+            ? "link-required"
+            : "profile-required";
+      emit(status);
+      return status;
+    },
+    [api, emit, runtime],
+  );
+  useEffect(() => {
+    try {
+      return onIdTokenChanged(getFirebaseAuth(), (identity) => {
+        const pendingPhone = phone.getState();
+        if (
+          !identity?.metadata?.lastSignInTime ||
+          runtime.state.pending ||
+          !pendingPhone?.resumable ||
+          identity.phoneNumber !== pendingPhone.phone ||
+          identity.metadata?.lastSignInTime ===
+            runtime.state.previousPhoneSignIn
+        )
+          return;
+        void run(async (generation) => {
+          await phone.clear();
+          return finishPhone(identity, generation);
+        }).catch(() => {
+          /* The operation reports its sanitized error. */
+        });
+      });
+    } catch {
+      return undefined;
     }
-  }, [runtime]);
-
+  }, [phone, runtime, run, finishPhone]);
   const value: AuthContextValue = {
-    status: session.status,
-    user: session.user,
-    identity: session.identity,
-    error: (operationError ?? session.error)?.message ?? null,
-    errorCode: (operationError ?? session.error)?.code ?? null,
+    ...state,
+    error: (operationError || state.error)?.message || null,
+    errorCode: (operationError || state.error)?.code || null,
     busy,
     phoneChallenge,
     appleAvailable,
-    signInGoogle: () => run(async () => {
-      runtime.setPhoneCancelled(false);
-      controller.clear(); await phone.clear();
-      return controller.restore(summary(await signInGoogleIdentity()));
-    }),
-    signInApple: () => run(async () => {
-      runtime.setPhoneCancelled(false);
-      controller.clear(); await phone.clear();
-      return controller.restore(summary(await signInAppleIdentity()));
-    }),
-    sendPhoneOtp: number => run(async () => {
-      runtime.setPhoneCancelled(false);
-      controller.clear();
-      try { await phone.send(number); }
-      catch (error) {
-        if (error instanceof AuthError && error.code === 'cancelled') await signOutIdentity();
-        throw error;
-      }
-      // Android Firebase can verify automatically. It still needs backend authorization.
-      const identity = getFirebaseAuth().currentUser;
-      if (identity?.phoneNumber === number) {
-        await phone.clear();
-        return controller.restore(summary(identity));
-      }
-      return null;
-    }),
-    verifyPhoneOtp: code => run(async () => {
-      try { return await controller.restore(summary(await phone.verify(code))); }
-      catch (error) {
-        if (error instanceof AuthError && error.code === 'cancelled') {
-          controller.clear();
-          await signOutIdentity();
-        }
-        throw error;
-      }
-    }),
-    cancelPhoneOtp: () => {
-      runtime.setPhoneCancelled(true);
-      controller.clear();
-      return phone.clear();
-    },
     api,
-    signIn: (email, password, remember = true) => run(async () => {
-      runtime.setPhoneCancelled(false);
-      controller.clear();
-      return controller.restore(summary(await signInIdentity(email, password, remember)));
-    }),
-    signUp: (email, password) => run(async () => {
-      runtime.setPhoneCancelled(false);
-      return controller.restore(summary(await createIdentity(email, password)));
-    }),
-    sendVerification: () => run(sendVerificationEmail),
-    checkVerification: () => run(async () => {
-      const identity = await reloadVerifiedIdentity();
-      return controller.restore(summary(identity));
-    }),
-    completeProfile: profile => run(async () => {
-      const identity = getFirebaseAuth().currentUser;
-      if (!identity?.emailVerified) throw new AuthError('invalidVerification', 'Verify your email before creating your member profile.');
-      await api.completeProfile(profile);
-      if (getFirebaseAuth().currentUser?.uid !== identity.uid || runtime.isSigningOut()) {
-        throw new AuthError('cancelled', 'The session changed. Please sign in again.');
-      }
-      return controller.restore(summary(identity));
-    }),
-    uploadAvatar: dataUrl => run(async () => {
-      if (controller.getState().status !== 'authenticated') throw new AuthError('sessionExpired', 'Sign in before updating your picture.');
-      await api.uploadAvatar(dataUrl);
-      await controller.restore(summary(getFirebaseAuth().currentUser));
-    }),
-    signOut: () => run(async () => {
-      runtime.setSigningOut(true);
-      controller.clear(); // Revoke local route access before asynchronous cleanup.
-      try {
-        await signOutIdentity();
-      } finally {
-        try { await phone.clear(); }
-        finally {
-          try { await clearRegistrationDraft(); }
-          finally { runtime.setSigningOut(false); }
+    beginLink: () => {
+      runtime.set("intent", "link");
+      runtime.set("registration", null);
+      emit("link-required");
+    },
+    hasPhoneProof: Boolean(
+      runtime.state.challenge &&
+      Date.parse(runtime.state.challenge.expiresAt) > now,
+    ),
+    registrationReady: runtime.state.registrationReady,
+    linking: Boolean(
+      runtime.state.linkingToken || runtime.state.intent === "link",
+    ),
+    signInGoogle: () =>
+      run(async (generation) => {
+        await phone.clear();
+        runtime.set("challenge", null);
+        const identity = await signInGoogleIdentity();
+        const token = await identity.getIdToken(true);
+        runtime.set("linkingToken", token);
+        try {
+          return await acceptLogin(
+            await api.providerLogin("google.com", token),
+            generation,
+          );
+        } catch (error) {
+          if (error instanceof AuthError && error.code === "accountExists") {
+            runtime.set("linkingToken", token);
+            emit("link-required");
+            return "link-required";
+          }
+          throw error;
         }
+      }),
+    signInApple: () =>
+      run(async (generation) => {
+        await phone.clear();
+        runtime.set("challenge", null);
+        const identity = await signInAppleIdentity();
+        const token = await identity.getIdToken(true);
+        runtime.set("linkingToken", token);
+        try {
+          return await acceptLogin(
+            await api.providerLogin("apple.com", token),
+            generation,
+          );
+        } catch (error) {
+          if (error instanceof AuthError && error.code === "accountExists") {
+            runtime.set("linkingToken", token);
+            emit("link-required");
+            return "link-required";
+          }
+          throw error;
+        }
+      }),
+    sendPhoneOtp: (number, intent) =>
+      run(async (generation) => {
+        const normalized = normalizePhone(number);
+        if (!normalized) throw new AuthError("invalidInput", "Enter a valid Myanmar mobile phone number.");
+        const selectedIntent = intent || runtime.state.intent;
+        if (selectedIntent !== "link") {
+          const existing = await api.accountCheck({ phone: normalized });
+          if (selectedIntent === "signup" && existing.phoneExists)
+            throw new AuthError("accountExists", "This phone number already has a ZAWANA account. Sign in instead.");
+          if (selectedIntent === "signin" && !existing.phoneExists)
+            throw new AuthError("accountNotFound", "No ZAWANA account uses this phone number. Create an account first.");
+        }
+        if (generation !== runtime.state.generation)
+          throw new AuthError("cancelled", "Verification was cancelled.");
+        runtime.set("intent", selectedIntent);
+        runtime.set("challenge", null);
+        const previousSignIn =
+          getFirebaseAuth().currentUser?.metadata.lastSignInTime;
+        runtime.set("previousPhoneSignIn", previousSignIn || null);
+        await phone.send(normalized);
+        const identity = getFirebaseAuth().currentUser;
+        if (
+          identity?.phoneNumber === normalized &&
+          identity.metadata.lastSignInTime !== previousSignIn
+        ) {
+          await phone.clear();
+          return finishPhone(identity, generation);
+        }
+        return null;
+      }),
+    verifyPhoneOtp: (code) =>
+      run(async (generation) =>
+        finishPhone(await phone.verify(code), generation),
+      ),
+    cancelPhoneOtp: async () => {
+      runtime.invalidate();
+      runtime.set("pending", false);
+      runtime.set("challenge", null);
+      setBusy(false);
+      await phone.clear();
+      emit("anonymous");
+    },
+    signIn: (email, password, remember = true) =>
+      run(async (generation) => {
+        runtime.set("remember", remember);
+        if (state.status === "link-required") {
+          await api.link({
+            email,
+            password,
+            ...(runtime.state.linkingToken
+              ? { identityToken: runtime.state.linkingToken }
+              : { challengeToken: runtime.state.challenge?.challengeToken }),
+          });
+          runtime.set("linkingToken", "");
+          runtime.set("challenge", null);
+          runtime.set("registration", null);
+          runtime.set("intent", "signin");
+          return await acceptLogin(
+            await api.emailLogin(email, password, remember),
+            generation,
+          );
+        }
+        if (runtime.state.challenge?.next === "password")
+          return await acceptSession(
+            await api.phonePassword(
+              runtime.state.challenge.challengeToken,
+              password,
+              remember,
+            ),
+            generation,
+          );
+        await phone.clear();
+        return await acceptLogin(
+          await api.emailLogin(email, password, remember),
+          generation,
+        );
+      }),
+    signUp: (email, password) =>
+      run(async (generation) => {
+        const challenge = runtime.state.challenge;
+        if (!challenge || Date.parse(challenge.expiresAt) <= Date.now())
+          throw new AuthError(
+            "expiredVerification",
+            "Verify your phone again before finishing registration.",
+          );
+        if (runtime.state.registrationReady && runtime.state.registration)
+          return acceptSession(
+            await api.finishRegistration({
+              registrationToken: runtime.state.registration.registrationToken,
+              challengeToken: challenge.challengeToken,
+              password,
+              remember: true,
+            }),
+            generation,
+          );
+        const result = await api.registerMobile({
+          challengeToken: challenge.challengeToken,
+          registrationToken: runtime.state.registration?.registrationToken,
+          name: draft.draft.name,
+          email,
+          password,
+        });
+        runtime.set("registration", result);
+        runtime.set("registrationReady", true);
+        draft.update(result.profile);
+        if (result.next === "complete")
+          return acceptSession(
+            await api.finishRegistration({
+              registrationToken: result.registrationToken,
+              challengeToken: challenge.challengeToken,
+              password,
+              remember: true,
+            }),
+            generation,
+          );
+        throw new AuthError("configuration", "Update the ZAWANA backend to finish registration without email verification.");
+      }),
+    completeProfile: (profile) =>
+      run(async () => {
+        draft.update(profile);
+        emit("profile-required");
+        return "profile-required" as const;
+      }),
+    uploadAvatar: (data) =>
+      run(async () => {
+        if (state.status !== "authenticated")
+          throw new AuthError("sessionExpired", "Sign in first.");
+        await api.uploadAvatar(data);
+      }),
+    signOut: async () => {
+      const token = runtime.state.refreshToken;
+      runtime.invalidate();
+      runtime.set("pending", false);
+      runtime.set("accessToken", "");
+      runtime.set("refreshToken", "");
+      runtime.set("challenge", null);
+      runtime.set("registration", null);
+      runtime.set("registrationReady", false);
+      runtime.set("linkingToken", "");
+      setBusy(false);
+      emit("anonymous");
+      await storage.removeItem(SESSION_KEY);
+      try {
+        if (token) await api.logout(token);
+      } finally {
+        await phone.clear();
+        await clearRegistrationDraft();
+        await signOutIdentity();
       }
-    }),
-    retryRestore: () => run(async () => controller.restore(summary(getFirebaseAuth().currentUser))),
-    requestPasswordReset: email => run(() => requestPasswordResetEmail(email)),
-    setRemember: remember => run(() => setRememberDevice(remember)),
+    },
+    retryRestore: () => run(async () => restore()),
+    requestPasswordReset: (email) =>
+      run(async () => {
+        await api.recover(email);
+      }),
+    setRemember: (remember) =>
+      run(async () => {
+        runtime.set("remember", remember);
+        if (!remember) await storage.removeItem(SESSION_KEY);
+      }),
     clearError: () => setOperationError(null),
   };
-
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
-
-export function useAuth(): AuthContextValue {
+export function useAuth() {
   const value = useContext(AuthContext);
-  if (!value) throw new Error('useAuth must be used inside AuthProvider.');
+  if (!value) throw new Error("useAuth must be used inside AuthProvider.");
   return value;
 }

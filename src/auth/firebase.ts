@@ -68,20 +68,6 @@ export async function createIdentity(email: string, password: string): Promise<F
   return (await FirebaseAuth.createUserWithEmailAndPassword(auth, normalized, password)).user;
 }
 
-export async function sendVerificationEmail(): Promise<void> {
-  const user = getFirebaseAuth().currentUser;
-  if (!user) throw new AuthError('sessionExpired', 'Sign in before requesting verification.');
-  if (!user.emailVerified) await FirebaseAuth.sendEmailVerification(user);
-}
-
-export async function reloadVerifiedIdentity(): Promise<FirebaseAuth.User> {
-  const user = getFirebaseAuth().currentUser;
-  if (!user) throw new AuthError('sessionExpired', 'Sign in to continue verification.');
-  await FirebaseAuth.reload(user);
-  await user.getIdToken(true); // Backend must see the refreshed email_verified claim.
-  return user;
-}
-
 export async function requestPasswordResetEmail(email: string): Promise<void> {
   await FirebaseAuth.sendPasswordResetEmail(getFirebaseAuth(), email.trim());
 }

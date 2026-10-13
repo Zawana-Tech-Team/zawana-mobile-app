@@ -2,6 +2,7 @@ export type AuthErrorCode =
   | 'configuration'
   | 'invalidInput'
   | 'invalidCredentials'
+  | 'accountNotFound'
   | 'invalidVerification'
   | 'expiredVerification'
   | 'profileRequired'
@@ -35,6 +36,15 @@ export function sanitizeAuthError(error: unknown): AuthError {
   const code = typeof error === 'object' && error !== null && 'code' in error && typeof error.code === 'string'
     ? error.code
     : '';
+  // Android can wrap a billing rejection in auth/unknown or auth/internal-error.
+  // Inspect only the known marker; provider messages never reach the UI.
+  if (['auth/unknown', 'auth/internal-error'].includes(code) && typeof error === 'object' && error !== null) {
+    const messages = ['message', 'nativeErrorMessage'].map(key =>
+      key in error ? (error as Record<string, unknown>)[key] : undefined
+    );
+    if (messages.some(value => typeof value === 'string' && /\[\s*BILLING_NOT_ENABLED\s*\]/.test(value)))
+      return new AuthError('configuration', 'SMS verification requires Firebase billing setup. Contact ZAWANA support.');
+  }
   switch (code) {
     case 'SIGN_IN_CANCELLED':
     case 'ERR_REQUEST_CANCELED':

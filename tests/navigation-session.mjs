@@ -35,11 +35,11 @@ test('startup blocks Home until both Firebase restoration and backend validation
   assert.equal(policy(auth).landing, '/home');
 });
 
-test('unverified restoration resumes Verify without backend access', async () => {
-  const auth = controller(() => { throw new Error('Must not contact the backend'); });
+test('unverified email restoration uses backend validation without an email verification screen', async () => {
+  const auth = controller(async () => session);
   await auth.restore({ ...identity, emailVerified: false });
-  assert.equal(policy(auth).landing, '/verify');
-  assert.equal(policy(auth).member, false);
+  assert.equal(policy(auth).landing, '/home');
+  assert.equal(policy(auth).member, true);
 });
 
 test('backend profile requirement resumes account creation without granting Home access', async () => {
@@ -77,15 +77,16 @@ test('sign out immediately removes member access and late restoration cannot reo
   assert.equal(auth.getState().user, null);
 });
 
-test('authenticated status alone cannot bypass missing user or email verification', () => {
+test('member routes require canonical user and identity, regardless of email verification', () => {
   assert.equal(sessionNavigation({ status: 'authenticated', identity, user: null }).member, false);
+  assert.equal(sessionNavigation({ status: 'authenticated', identity: null, user: session.user }).member, false);
   assert.equal(
     sessionNavigation({
       status: 'authenticated',
       identity: { ...identity, emailVerified: false },
       user: session.user
     }).member,
-    false
+    true
   );
 });
 

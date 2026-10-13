@@ -1,14 +1,12 @@
-import { parsePhoneNumberFromString, getCountryCallingCode, type CountryCode } from 'libphonenumber-js/max';
+import { parsePhoneNumberFromString } from 'libphonenumber-js/max';
 
 export function normalizePhone(value: string, countryCode = '+95') {
   if (!value.trim() || !/^[+\d\s().-]+$/.test(value) || !/^\+[1-9]\d{0,2}$/.test(countryCode)) return '';
-  const country: CountryCode | undefined = countryCode === '+95' ? 'MM' : countryCode === '+66' ? 'TH' : countryCode === '+65' ? 'SG' : undefined;
+  if (countryCode !== '+95') return '';
   try {
-    const input = value.trim().startsWith('+') ? value.trim()
-      : country ? value.trim() : countryCode + value.replace(/[\s().-]/g, '').replace(/^0+/, '');
-    const phone = parsePhoneNumberFromString(input, country ? { defaultCountry: country, extract: false } : { extract: false });
-    if (!phone || !phone.isValid() || (phone.getType() !== 'MOBILE' && phone.getType() !== 'FIXED_LINE_OR_MOBILE')) return '';
-    if (country && !value.trim().startsWith('+') && phone.countryCallingCode !== getCountryCallingCode(country)) return '';
+    const phone = parsePhoneNumberFromString(value.trim(), { defaultCountry: 'MM', extract: false });
+    if (!phone || phone.country !== 'MM' || !/^\+959\d{6,10}$/.test(phone.number)
+      || !phone.isValid() || (phone.getType() !== 'MOBILE' && phone.getType() !== 'FIXED_LINE_OR_MOBILE')) return '';
     return phone.number;
   } catch { return ''; }
 }

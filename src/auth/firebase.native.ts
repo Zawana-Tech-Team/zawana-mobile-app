@@ -67,18 +67,6 @@ export async function createIdentity(email: string, password: string) {
   rememberDevice = true;
   return (await nativeAuth().createUserWithEmailAndPassword(auth, email.trim(), password)).user;
 }
-export async function sendVerificationEmail() {
-  const user = getFirebaseAuth().currentUser;
-  if (!user) throw new AuthError('sessionExpired', 'Sign in before requesting verification.');
-  if (!user.emailVerified) await nativeAuth().sendEmailVerification(user);
-}
-export async function reloadVerifiedIdentity() {
-  const user = getFirebaseAuth().currentUser;
-  if (!user) throw new AuthError('sessionExpired', 'Sign in to continue verification.');
-  await nativeAuth().reload(user);
-  await nativeAuth().getIdToken(user, true);
-  return getFirebaseAuth().currentUser ?? user;
-}
 export async function requestPasswordResetEmail(email: string) { await nativeAuth().sendPasswordResetEmail(getFirebaseAuth(), email.trim()); }
 export async function signOutIdentity() {
   await nativeAuth().signOut(getFirebaseAuth());

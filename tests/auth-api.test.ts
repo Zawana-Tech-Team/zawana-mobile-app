@@ -342,3 +342,17 @@ test(
     assert.equal(sanitizeAuthError({ message: 'internal secret' }).code, 'unavailable');
   }
 );
+
+
+test('Android wrapped billing failures show a safe configuration message', () => {
+  for (const code of ['auth/unknown', 'auth/internal-error']) {
+    for (const field of ['message', 'nativeErrorMessage']) {
+      const error = sanitizeAuthError({ code, [field]: 'private details [ BILLING_NOT_ENABLED ]' });
+      assert.equal(error.code, 'configuration');
+      assert.equal(error.message, 'SMS verification requires Firebase billing setup. Contact ZAWANA support.');
+    }
+    const other = sanitizeAuthError({ code, message: 'other internal private details' });
+    assert.equal(other.code, 'unavailable');
+    assert.equal(other.message.includes('private'), false);
+  }
+});

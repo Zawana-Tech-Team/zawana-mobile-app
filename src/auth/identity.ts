@@ -1,5 +1,6 @@
 export type FirebaseIdentity = {
   uid: string;
+  metadata?: { lastSignInTime?: string | null };
   email: string | null;
   emailVerified: boolean;
   phoneNumber: string | null;
@@ -7,6 +8,14 @@ export type FirebaseIdentity = {
   getIdToken(forceRefresh?: boolean): Promise<string>;
 };
 
-export function hasVerifiedIdentity(identity: { emailVerified: boolean; phoneNumber?: string | null }) {
-  return identity.emailVerified || Boolean(identity.phoneNumber && /^\+[1-9]\d{6,14}$/.test(identity.phoneNumber));
+export function hasVerifiedIdentity(identity: {
+  emailVerified: boolean;
+  phoneNumber?: string | null;
+}) {
+  return (
+    identity.emailVerified ||
+    Boolean(
+      identity.phoneNumber && /^\+[1-9]\d{6,14}$/.test(identity.phoneNumber),
+    )
+  );
 }

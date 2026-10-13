@@ -1,15 +1,15 @@
 /** The canonical application user returned by the existing ZAWANA API. */
 export type UserRole =
-  | 'member'
-  | 'coach'
-  | 'admin'
-  | 'gym_fo'
-  | 'clinic_fo'
-  | 'badminton_fo'
-  | 'store_fo'
-  | 'cafe_fo'
-  | 'doctor'
-  | 'owner';
+  | "member"
+  | "coach"
+  | "admin"
+  | "gym_fo"
+  | "clinic_fo"
+  | "badminton_fo"
+  | "store_fo"
+  | "cafe_fo"
+  | "doctor"
+  | "owner";
 
 export type AppUser = {
   id: string;
@@ -23,25 +23,30 @@ export type AppUser = {
 
 export type AuthSession = {
   user: AppUser;
+  accessToken: string;
+  refreshToken: string;
+  accessExpiresAt: string;
+  sessionExpiresAt: string;
   security: { mfaEnrolled: boolean; mfaRequired: boolean };
 };
 
 export type ProfileInput = { name: string; phone: string };
 export type ProfileUpdate = { name?: string; phone?: string | null };
-export type JsonValue = null | boolean | number | string | JsonValue[] | { [key: string]: JsonValue };
+export type JsonValue =
+  null | boolean | number | string | JsonValue[] | { [key: string]: JsonValue };
 
 export type BookingStatus =
-  | 'pending'
-  | 'confirmed'
-  | 'completed'
-  | 'cancelled'
-  | 'CONFIRMED'
-  | 'COMPLETED'
-  | 'CANCELLED'
-  | 'PENDING_COACH_CONFIRMATION'
-  | 'AWAITING_PAYMENT'
-  | 'COACH_DECLINED'
-  | 'EXPIRED';
+  | "pending"
+  | "confirmed"
+  | "completed"
+  | "cancelled"
+  | "CONFIRMED"
+  | "COMPLETED"
+  | "CANCELLED"
+  | "PENDING_COACH_CONFIRMATION"
+  | "AWAITING_PAYMENT"
+  | "COACH_DECLINED"
+  | "EXPIRED";
 
 export type DashboardCourt = {
   id: string;
@@ -49,7 +54,7 @@ export type DashboardCourt = {
   type: string;
   surface: string;
   price: number;
-  status: 'available' | 'maintenance' | 'inactive';
+  status: "available" | "maintenance" | "inactive";
   features: JsonValue;
   createdAt: string;
 };
@@ -61,7 +66,7 @@ export type DashboardCoach = {
   department: string;
   phone: string;
   email: string;
-  status: 'active' | 'inactive';
+  status: "active" | "inactive";
   color: string;
   imageUrl: string | null;
   userId: string | null;
@@ -71,7 +76,7 @@ export type DashboardBooking = {
   id: string;
   code: string;
   userId: string;
-  kind: 'court' | 'class' | 'pt' | 'recovery' | 'private_course';
+  kind: "court" | "class" | "pt" | "recovery" | "private_course";
   title: string;
   date: string;
   time: string;
@@ -83,7 +88,7 @@ export type DashboardBooking = {
   coachId: string | null;
   coach: DashboardCoach | null;
   meta: string | null;
-  paymentStatus: 'pending' | 'paid' | 'refunded';
+  paymentStatus: "pending" | "paid" | "refunded";
   reservationExpiresAt: string | null;
   coachAcceptedAt: string | null;
   paymentExpiresAt: string | null;
@@ -191,3 +196,17 @@ export type MemberDashboard = {
   checkIns: DashboardCheckIn[];
   purchases: DashboardPurchase[];
 };
+
+export type Onboarding = {
+  status: "onboarding";
+  registrationToken: string;
+  next: string;
+  profile: { name: string; email: string; phone: string };
+};
+export type PhoneProofChallenge = {
+  challengeToken: string;
+  expiresAt: string;
+  next: string;
+  phone: string;
+};
+export type LoginResult = AuthSession | Onboarding;

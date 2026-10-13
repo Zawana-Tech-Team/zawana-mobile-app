@@ -1,13 +1,20 @@
-import { AuthError, sanitizeAuthError } from './errors.ts';
-import type { AppUser, AuthSession } from './types.ts';
-import { hasVerifiedIdentity } from './identity.ts';
+import { AuthError, sanitizeAuthError } from "./errors.ts";
+import type { AppUser, AuthSession } from "./types.ts";
 
-export type SessionStatus = 'loading' | 'anonymous' | 'verification-required' | 'profile-required' | 'authenticated' | 'error';
+export type SessionStatus =
+  | "loading"
+  | "anonymous"
+  | "profile-required"
+  | "authenticated"
+  | "password-required"
+  | "link-required"
+  | "registration-password-required"
+  | "error";
 export type IdentitySummary = {
   uid: string;
   email: string | null;
   emailVerified: boolean;
-  phoneNumber?: string | null
+  phoneNumber?: string | null;
 };
 export type SessionState = {
   status: SessionStatus;
@@ -15,10 +22,18 @@ export type SessionState = {
   user: AppUser | null;
   error: AuthError | null;
 };
-export const initialSessionState: SessionState = { status: 'loading', identity: null, user: null, error: null };
+export const initialSessionState: SessionState = {
+  status: "loading",
+  identity: null,
+  user: null,
+  error: null,
+};
 
 type SessionControllerOptions = {
-  validateSession(identity: IdentitySummary, signal: AbortSignal): Promise<AuthSession>;
+  validateSession(
+    identity: IdentitySummary,
+    signal: AbortSignal,
+  ): Promise<AuthSession>;
   onChange(state: SessionState): void;
 };
 
@@ -42,48 +57,50 @@ export function createSessionController(options: SessionControllerOptions) {
     dispose: invalidate,
     clear() {
       invalidate();
-      emit({ status: 'anonymous', identity: null, user: null, error: null });
+      emit({ status: "anonymous", identity: null, user: null, error: null });
     },
     fail(error: unknown) {
       invalidate();
       emit({
-        status: 'error',
+        status: "error",
         identity: state.identity,
         user: null,
-        error: sanitizeAuthError(error)
+        error: sanitizeAuthError(error),
       });
     },
     async restore(identity: IdentitySummary | null): Promise<SessionStatus> {
       invalidate();
       const attempt = generation;
       if (!identity) {
-        emit({ status: 'anonymous', identity: null, user: null, error: null });
-        return 'anonymous';
-      }
-      if (!hasVerifiedIdentity(identity)) {
-        emit({ status: 'verification-required', identity, user: null, error: null });
-        return 'verification-required';
+        emit({ status: "anonymous", identity: null, user: null, error: null });
+        return "anonymous";
       }
       request = new AbortController();
-      emit({ status: 'loading', identity, user: null, error: null });
+      emit({ status: "loading", identity, user: null, error: null });
       try {
         const session = await options.validateSession(identity, request.signal);
         if (attempt !== generation) return state.status;
         if (session.security.mfaRequired) {
           throw new AuthError(
-            'forbidden',
-            'This account requires additional verification. Sign in through the ZAWANA website or contact support.'
+            "forbidden",
+            "This account requires additional verification. Sign in through the ZAWANA website or contact support.",
           );
         }
-        emit({ status: 'authenticated', identity, user: session.user, error: null });
+        emit({
+          status: "authenticated",
+          identity,
+          user: session.user,
+          error: null,
+        });
       } catch (error) {
         if (attempt !== generation) return state.status;
         const safeError = sanitizeAuthError(error);
         emit({
-          status: safeError.code === 'profileRequired' ? 'profile-required' : 'error',
+          status:
+            safeError.code === "profileRequired" ? "profile-required" : "error",
           identity,
           user: null,
-          error: safeError
+          error: safeError,
         });
       }
       return state.status;

@@ -1,3 +1,4 @@
+import { Buffer } from 'node:buffer';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { createSessionController } from '../src/auth/session-controller.ts';
@@ -27,7 +28,7 @@ const deferred = () => {
   return { promise, resolve, reject };
 };
 
-test('anonymous and unverified identities cannot request an application session', async () => {
+test('anonymous identities are blocked; email verification does not replace backend session validation', async () => {
   let calls = 0;
   const controller = createSessionController({
     validateSession: async () => {
@@ -36,9 +37,10 @@ test('anonymous and unverified identities cannot request an application session'
     }, onChange() { }
   });
   assert.equal(await controller.restore(null), 'anonymous');
-  assert.equal(await controller.restore(identity('a', false)), 'verification-required');
   assert.equal(calls, 0);
-  assert.equal(controller.getState().user, null);
+  assert.equal(await controller.restore(identity('a', false)), 'authenticated');
+  assert.equal(calls, 1);
+  assert.equal(controller.getState().user.id, 'a');
 });
 
 test('a verified identity receives route access only after backend session validation', async () => {
