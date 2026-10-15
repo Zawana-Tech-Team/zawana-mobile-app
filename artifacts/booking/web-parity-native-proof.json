@@ -1,0 +1,9 @@
+{
+  "date": "2026-10-20",
+  "court": "Court 1",
+  "blockedSlot": "6:00 AM \u2014 7:00 AM, Blocked, 25,000 MMK",
+  "bookedSlot": "10:00 AM \u2014 11:00 AM, Booked, 25,000 MMK",
+  "physicalTapOnBlockedSlotSelected": false,
+  "checkoutEnabledAfterTap": false,
+  "newReservationsSubmitted": 0
+}

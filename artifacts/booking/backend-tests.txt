@@ -1,0 +1,66 @@
+
+> zawana-api@1.0.0 test
+> tsx --test tests/*.test.ts
+
+┌─────────────────────────────────────────────────────────┐
+│  Update available 6.19.3 -> 8.0.0-rc.22                 │
+│                                                         │
+│  This is a major update - please follow the guide at    │
+│  https://pris.ly/d/major-version-upgrade                │
+│                                                         │
+│  Run the following to update                            │
+│    npm i --save-dev prisma@latest                       │
+│    npm i @prisma/client@latest                          │
+└─────────────────────────────────────────────────────────┘
+▶ real HTTP court journey, integrity, ownership and retry recovery
+  ✔ authenticated server-generated availability and date validation (88.824366ms)
+  ✔ availability distinguishes booked, reserved and released backend statuses (247.250368ms)
+  ✔ maintenance and elapsed slots cannot be booked (44.089536ms)
+  ✔ atomic persisted unpaid reservation and safe replay (72.369458ms)
+  ✔ calendar, ownership and authorisation (58.72975ms)
+  ✔ 24-hour weekly blocks match web availability and reject every court payload shape (59.099178ms)
+  ✔ invalid slots, facility blocks, closure and holiday pricing (118.212713ms)
+  ✔ multi-selection conflicts roll back every row and receipt (40.740103ms)
+  ✔ two concurrent HTTP clients cannot take the same slot (56.184968ms)
+  ✔ concurrent duplicate requests reuse one committed receipt (45.551975ms)
+  ✔ database protects alternate writers, aliases and status reactivation (53.421032ms)
+  ✔ cancellation releases availability and is repeatable (51.639503ms)
+  ✔ service supports legacy single/slots inputs without a retry header (23.703066ms)
+✔ real HTTP court journey, integrity, ownership and retry recovery (2588.107552ms)
+✔ court policy reads both stored 24-hour block times and display AM/PM times (7.160065ms)
+✔ mixed-format court blocks overlap correctly without blocking adjacent sessions (0.581948ms)
+✔ clock parsing still rejects malformed and ambiguous ranges (0.467862ms)
+✔ verified Firebase email and phone claims permit UID lookup (1.426721ms)
+✔ unverified contact details, malformed phone and missing UID do not authorize a session (0.242454ms)
+✔ explicitly linked Firebase phone identity is accepted; unrelated phone claims are rejected (0.179653ms)
+✔ application account lookup uses only Firebase UID, never matching contact information (1.245916ms)
+✔ phone proof requires fresh primary phone authentication and Myanmar E.164 (3.409239ms)
+✔ email, Google, Apple, and explicitly linked phone resolve one preserved User ID (332.299782ms)
+✔ phone token, password alone, and challenge capability cannot access a business API (136.284359ms)
+✔ wrong password cannot consume a challenge or issue a session; attempts are bounded (175.608935ms)
+✔ successful phone authentication consumes proof and prevents replay (148.669477ms)
+✔ provider spoofing, inactive users, and staff mobile access are denied (202.192017ms)
+✔ matching email does not merge Google or Apple into an existing account (186.271404ms)
+✔ an identity already linked to another User cannot be merged (180.658336ms)
+✔ social onboarding requires profile, phone and password, without an email verification step (227.679548ms)
+✔ refresh rotation revokes replayed families and keeps credentials hashed (188.956956ms)
+✔ Firebase revocation, expiry, and account disablement invalidate existing sessions (157.664832ms)
+✔ HTTP session exchange, protected API, origin checks, and logout enforce the complete boundary (265.313984ms)
+✔ new phone registration keeps OTP and password in separate Firebase identities for one User (245.431159ms)
+✔ concurrent registration completion creates one User and one authorized session (258.485339ms)
+✔ a legacy Firebase identity combining phone and password cannot bypass factor separation (139.287443ms)
+✔ adding a password or social provider to a phone alias cannot bypass the canonical password (175.764097ms)
+✔ password reset revokes sessions established through a separately linked Google identity (175.466459ms)
+✔ canonical MFA cannot be bypassed using a separately linked social identity (182.603895ms)
+✔ a member mobile session cannot inherit staff API privileges after a role change (180.067605ms)
+✔ new MFA enrollment invalidates sessions missing a second-factor proof (164.025208ms)
+✔ account checks detect registered emails, linked phones and legacy formatted phones without authorizing them (132.329424ms)
+✔ phone plus password sign-in works without a verified email and still requires both proofs (150.079634ms)
+ℹ tests 43
+ℹ suites 0
+ℹ pass 43
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7549.453073

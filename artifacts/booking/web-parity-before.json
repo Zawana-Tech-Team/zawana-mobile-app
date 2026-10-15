@@ -1,0 +1,5454 @@
+{
+  "source": "Read-only comparison using overlap parser extracted from web CourtBooking.tsx.",
+  "count": 681,
+  "samples": [
+    {
+      "date": "2026-10-15",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-15",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-15",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-15",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-15",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-15",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-15",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-15",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-15",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-15",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-15",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-15",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-15",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-15",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-15",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-15",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-15",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-15",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-15",
+      "courtId": "cmunl7qwy001gw43lc0oz8lqo",
+      "courtName": "Court 8",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-15",
+      "courtId": "cmunl7qwy001gw43lc0oz8lqo",
+      "courtName": "Court 8",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-16",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "10:00 AM — 11:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "11:00 AM — 12:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "10:00 AM — 11:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "11:00 AM — 12:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl7qwy001gw43lc0oz8lqo",
+      "courtName": "Court 8",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl7qwy001gw43lc0oz8lqo",
+      "courtName": "Court 8",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-17",
+      "courtId": "cmunl7qwy001gw43lc0oz8lqo",
+      "courtName": "Court 8",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "2:00 PM — 3:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "2:00 PM — 3:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "2:00 PM — 3:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "2:00 PM — 3:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl7qwy001gw43lc0oz8lqo",
+      "courtName": "Court 8",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl7qwy001gw43lc0oz8lqo",
+      "courtName": "Court 8",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-18",
+      "courtId": "cmunl7qwy001gw43lc0oz8lqo",
+      "courtName": "Court 8",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl7qwy001gw43lc0oz8lqo",
+      "courtName": "Court 8",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-19",
+      "courtId": "cmunl7qwy001gw43lc0oz8lqo",
+      "courtName": "Court 8",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-20",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl7qwy001gw43lc0oz8lqo",
+      "courtName": "Court 8",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-21",
+      "courtId": "cmunl7qwy001gw43lc0oz8lqo",
+      "courtName": "Court 8",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl7qwy001gw43lc0oz8lqo",
+      "courtName": "Court 8",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-22",
+      "courtId": "cmunl7qwy001gw43lc0oz8lqo",
+      "courtName": "Court 8",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-23",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "10:00 AM — 11:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "11:00 AM — 12:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "10:00 AM — 11:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "11:00 AM — 12:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl7qwy001gw43lc0oz8lqo",
+      "courtName": "Court 8",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl7qwy001gw43lc0oz8lqo",
+      "courtName": "Court 8",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-24",
+      "courtId": "cmunl7qwy001gw43lc0oz8lqo",
+      "courtName": "Court 8",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-27",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl7qwy001gw43lc0oz8lqo",
+      "courtName": "Court 8",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-28",
+      "courtId": "cmunl7qwy001gw43lc0oz8lqo",
+      "courtName": "Court 8",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl7qwy001gw43lc0oz8lqo",
+      "courtName": "Court 8",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-29",
+      "courtId": "cmunl7qwy001gw43lc0oz8lqo",
+      "courtName": "Court 8",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-30",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl53jd001bw43lwjaccgp7",
+      "courtName": "Court 3",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "3:00 PM — 4:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "4:00 PM — 5:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl5gla001cw43llpu9pnad",
+      "courtName": "Court 4",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "10:00 AM — 11:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "11:00 AM — 12:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "5:00 PM — 6:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl5sua001dw43l83s2k59m",
+      "courtName": "Court 5",
+      "time": "8:00 PM — 9:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "10:00 AM — 11:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "11:00 AM — 12:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "6:00 PM — 7:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl6rfy001ew43leu13zkdu",
+      "courtName": "Court 6",
+      "time": "7:00 PM — 8:00 PM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl70it001fw43lo46c7ddv",
+      "courtName": "Court 7",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl7qwy001gw43lc0oz8lqo",
+      "courtName": "Court 8",
+      "time": "6:00 AM — 7:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl7qwy001gw43lc0oz8lqo",
+      "courtName": "Court 8",
+      "time": "7:00 AM — 8:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    },
+    {
+      "date": "2026-10-31",
+      "courtId": "cmunl7qwy001gw43lc0oz8lqo",
+      "courtName": "Court 8",
+      "time": "8:00 AM — 9:00 AM",
+      "mobile": "available",
+      "web": "Reserved"
+    }
+  ]
+}

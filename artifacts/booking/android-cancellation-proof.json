@@ -1,0 +1,86 @@
+{
+  "checkedAt": "2026-10-15T03:30:09.649Z",
+  "method": "Existing authenticated native cancellation UI, including confirmation dialog. Read-only database and availability assertions after cancellation.",
+  "rows": [
+    {
+      "id": "cmv832qmj00013qd11dmyceo9",
+      "code": "ZW-MV832QMI-28F37B",
+      "status": "cancelled",
+      "paymentStatus": "pending",
+      "meta": "QA court booking verification 14-Oct-2026",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "date": "2026-10-16",
+      "time": "8:00 AM — 9:00 AM",
+      "userId": "cmuv4en1p0000w4nzn5bx1bzb",
+      "price": 25000
+    },
+    {
+      "id": "cmv832qml00033qd1dipbwr2f",
+      "code": "ZW-MV832QML-1C8995",
+      "status": "cancelled",
+      "paymentStatus": "pending",
+      "meta": "QA court booking verification 14-Oct-2026",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "date": "2026-10-17",
+      "time": "9:00 AM — 10:00 AM",
+      "userId": "cmuv4en1p0000w4nzn5bx1bzb",
+      "price": 25000
+    },
+    {
+      "id": "cmv893rgu000t3qd1l2uq8tkx",
+      "code": "ZW-MV893RGS-C7521D",
+      "status": "cancelled",
+      "paymentStatus": "pending",
+      "meta": "QA small viewport 14-Oct-2026",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "date": "2026-10-16",
+      "time": "9:00 AM — 10:00 AM",
+      "userId": "cmuv4en1p0000w4nzn5bx1bzb",
+      "price": 25000
+    }
+  ],
+  "releasedSlots": [
+    {
+      "id": "2026-10-16|cmunl4dw60019w43lzk6qprzy|480",
+      "date": "2026-10-16",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "8:00 AM — 9:00 AM",
+      "startMinute": 480,
+      "endMinute": 540,
+      "label": "8:00 AM",
+      "price": 25000,
+      "available": true,
+      "status": "available",
+      "reason": null
+    },
+    {
+      "id": "2026-10-17|cmunl4t3c001aw43l6iiw8g55|540",
+      "date": "2026-10-17",
+      "courtId": "cmunl4t3c001aw43l6iiw8g55",
+      "courtName": "Court 2",
+      "time": "9:00 AM — 10:00 AM",
+      "startMinute": 540,
+      "endMinute": 600,
+      "label": "9:00 AM",
+      "price": 25000,
+      "available": true,
+      "status": "available",
+      "reason": null
+    },
+    {
+      "id": "2026-10-16|cmunl4dw60019w43lzk6qprzy|540",
+      "date": "2026-10-16",
+      "courtId": "cmunl4dw60019w43lzk6qprzy",
+      "courtName": "Court 1",
+      "time": "9:00 AM — 10:00 AM",
+      "startMinute": 540,
+      "endMinute": 600,
+      "label": "9:00 AM",
+      "price": 25000,
+      "available": true,
+      "status": "available",
+      "reason": null
+    }
+  ]
+}

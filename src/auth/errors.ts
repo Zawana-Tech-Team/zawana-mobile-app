@@ -1,4 +1,6 @@
 export type AuthErrorCode =
+  | 'bookingConflict'
+  | 'notFound'
   | 'configuration'
   | 'invalidInput'
   | 'invalidCredentials'

@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { router, useFocusEffect } from 'expo-router';
+import { useCallback, useEffect, useState } from 'react';
 
 import { useAuth } from '@/auth/auth-provider';
 import { sanitizeAuthError } from '@/auth/errors';
@@ -34,12 +35,15 @@ export default function Home() {
     };
   }, [api, userId, attempt]);
 
+  useFocusEffect(useCallback(() => { setAttempt(value => value + 1); }, []));
+
   if (!user) return null;
   return <MemberHomeScreen
     user={user}
     dashboard={loading ? null : result?.dashboard ?? null}
     loading={loading}
     error={task.error ?? (loading ? null : result?.error)}
+    onBook={() => router.push("/(member)/book")}
     onRetry={() => setAttempt(value => value + 1)}
     onSignOut={() => task.run(signOut)}
   />;

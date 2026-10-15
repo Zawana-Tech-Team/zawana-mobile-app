@@ -1,0 +1,50 @@
+{
+  "checkedAt": "2026-10-15T04:52:55.186Z",
+  "rows": [
+    {
+      "id": "cmv832qmj00013qd11dmyceo9",
+      "code": "ZW-MV832QMI-28F37B",
+      "status": "cancelled",
+      "paymentStatus": "pending"
+    },
+    {
+      "id": "cmv832qml00033qd1dipbwr2f",
+      "code": "ZW-MV832QML-1C8995",
+      "status": "cancelled",
+      "paymentStatus": "pending"
+    },
+    {
+      "id": "cmv893rgu000t3qd1l2uq8tkx",
+      "code": "ZW-MV893RGS-C7521D",
+      "status": "cancelled",
+      "paymentStatus": "pending"
+    }
+  ],
+  "slots": [
+    {
+      "code": "ZW-MV832QMI-28F37B",
+      "date": "2026-10-16",
+      "courtName": "Court 1",
+      "time": "8:00 AM — 9:00 AM",
+      "status": "blocked",
+      "available": false
+    },
+    {
+      "code": "ZW-MV832QML-1C8995",
+      "date": "2026-10-17",
+      "courtName": "Court 2",
+      "time": "9:00 AM — 10:00 AM",
+      "status": "available",
+      "available": true
+    },
+    {
+      "code": "ZW-MV893RGS-C7521D",
+      "date": "2026-10-16",
+      "courtName": "Court 1",
+      "time": "9:00 AM — 10:00 AM",
+      "status": "available",
+      "available": true
+    }
+  ],
+  "note": "Cancellation releases booking occupancy. Independently configured facility blocks remain in force; older availability-release artifacts predate the parser correction."
+}

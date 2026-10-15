@@ -1,3 +1,5 @@
+import { availability, monthAvailability, bookingResult, reservation, reservations } from "../booking/validation.ts";
+import type { BookingInput } from "../booking/types.ts";
 import { AuthError, authHttpError, sanitizeAuthError } from "./errors.ts";
 import type {
   AppUser,
@@ -11,7 +13,7 @@ import type {
   PhoneProofChallenge,
 } from "./types.ts";
 
-type RequestOptions = { signal?: AbortSignal };
+type RequestOptions = { signal?: AbortSignal; idempotencyKey?: string };
 type ApiOptions = {
   /** Origin or API base including /api; EXPO_PUBLIC_API_URL is used when omitted. */
   baseUrl?: string;
@@ -230,6 +232,7 @@ export function createAuthApi(options: ApiOptions) {
           method,
           headers: {
             Accept: "application/json",
+            ...(requestOptions.idempotencyKey ? {"Idempotency-Key": requestOptions.idempotencyKey} : {}),
             ...(token ? { Authorization: `Bearer ${token}` } : {}),
             ...(body === undefined
               ? {}
@@ -292,6 +295,8 @@ export function createAuthApi(options: ApiOptions) {
               "Request a new phone code.",
               { status: response.status },
             );
+          if (path.startsWith("/court-booking/") || path.startsWith("/bookings"))
+            throw new AuthError(response.status === 409 && failure?.code === "BOOKING_BUSY" ? "unavailable" : response.status === 409 ? "bookingConflict" : response.status === 404 ? "notFound" : response.status === 400 ? "invalidInput" : response.status === 401 ? "sessionExpired" : "unavailable", response.status < 500 && typeof failure?.message === "string" ? failure.message : "Reservations are unavailable right now. Please try again.", {status:response.status});
           throw authHttpError(response.status, retryAfter(response));
         }
         let value: unknown;
@@ -329,6 +334,13 @@ export function createAuthApi(options: ApiOptions) {
   const session = (requestOptions?: RequestOptions) =>
     request("/auth/session", "POST", {}, authSession, requestOptions);
   return {
+    getCourtMonth: (month:string, options?:RequestOptions) => request(`/court-booking/month?month=${encodeURIComponent(month)}`, "GET", undefined, monthAvailability, options),
+    getCourtAvailability: (date: string, options?: RequestOptions) => request(`/court-booking/availability?date=${encodeURIComponent(date)}`, "GET", undefined, availability, options),
+    createCourtBooking: (input: BookingInput, key: string) => request("/bookings", "POST", input, bookingResult, {idempotencyKey:key}),
+    getBookingSubmission: (key: string) => request(`/court-booking/submissions/${encodeURIComponent(key)}`, "GET", undefined, bookingResult),
+    getCourtBooking: (id: string, options?:RequestOptions) => request(`/court-booking/bookings/${encodeURIComponent(id)}`, "GET", undefined, reservation, options),
+    getCourtBookings: (options?:RequestOptions) => request("/bookings?kind=court", "GET", undefined, reservations, options),
+    cancelCourtBooking: (id:string) => request(`/bookings/${encodeURIComponent(id)}/status`, "PATCH", {status:"cancelled"}, reservation),
     session,
     accountCheck: (input: { email?: string; phone?: string }) =>
       request("/auth/mobile/account-check", "POST", input, (value) => {

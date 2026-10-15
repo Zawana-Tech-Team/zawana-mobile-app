@@ -1,0 +1,48 @@
+Android ANR investigation — 15 October 2026
+Read-only source: adb shell dumpsys dropbox --print data_app_anr
+No app, session, native configuration or emulator setting was changed.
+
+2026-10-13 19:25:46 data_app_anr (compressed text, 9111 bytes)
+Process: com.zawana.mobile
+Timestamp: 2026-10-13 19:25:20.628+0630
+Process-Runtime: 53128
+Subject: Process ProcessRecord{a7a16a7 1627:com.zawana.mobile/u0a235} failed to complete startup
+  at java.util.zip.ZipFile$Source.zipCoderForPos(ZipFile.java:2061)
+  at java.util.zip.ZipFile$Source.initCEN(ZipFile.java:1913)
+  at java.util.zip.ZipFile$Source.<init>(ZipFile.java:1646)
+  at java.util.zip.ZipFile$Source.get(ZipFile.java:1599)
+  at java.util.zip.ZipFile$CleanableResource.<init>(ZipFile.java:797)
+  at java.util.zip.ZipFile.<init>(ZipFile.java:299)
+  at java.util.zip.ZipFile.<init>(ZipFile.java:255)
+  at java.util.zip.ZipFile.<init>(ZipFile.java:203)
+  at java.util.zip.ZipFile.<init>(ZipFile.java:172)
+  at com.facebook.soloader.DirectApkSoSource.buildLibDepsCache(DirectApkSoSource.java:208)
+  at com.facebook.soloader.DirectApkSoSource.loadDependencies(DirectApkSoSource.java:160)
+  at com.facebook.soloader.DirectApkSoSource.loadLibrary(DirectApkSoSource.java:76)
+
+2026-10-14 22:09:37 data_app_anr (text, 2450 bytes)
+Process: com.zawana.mobile
+Timestamp: 2026-10-14 21:48:24.543+0630
+Process-Runtime: 4572121
+Subject: Input dispatching timed out (237c5df com.zawana.mobile/com.zawana.mobile.MainActivity is not responding. Waited 5046ms for MotionEvent).
+
+2026-10-14 22:30:49 data_app_anr (compressed text, 10149 bytes)
+Process: com.zawana.mobile
+Timestamp: 2026-10-14 22:30:21.429+0630
+Process-Runtime: 59201
+Subject: Process ProcessRecord{bbdd0fe 8769:com.zawana.mobile/u0a235} failed to complete startup
+  native: #00 pc 0002f39f  /apex/com.android.art/lib64/libdexfile.so (art::dex::DexFileVerifier::CheckInterAnnotationSetItem+223) (BuildId: edaee8723973cbd942aab2ec45a0fd86)
+  native: #01 pc 000306bf  /apex/com.android.art/lib64/libdexfile.so (art::dex::DexFileVerifier::CheckInterSectionIterate+591) (BuildId: edaee8723973cbd942aab2ec45a0fd86)
+  native: #02 pc 000308b3  /apex/com.android.art/lib64/libdexfile.so (art::dex::DexFileVerifier::CheckInterSection+243) (BuildId: edaee8723973cbd942aab2ec45a0fd86)
+  native: #03 pc 00030ee3  /apex/com.android.art/lib64/libdexfile.so (art::dex::DexFileVerifier::Verify+595) (BuildId: edaee8723973cbd942aab2ec45a0fd86)
+  native: #04 pc 00031813  /apex/com.android.art/lib64/libdexfile.so (art::dex::Verify+195) (BuildId: edaee8723973cbd942aab2ec45a0fd86)
+  native: #05 pc 0001fca3  /apex/com.android.art/lib64/libdexfile.so (art::DexFileLoader::OpenCommon+851) (BuildId: edaee8723973cbd942aab2ec45a0fd86)
+  native: #06 pc 00020f58  /apex/com.android.art/lib64/libdexfile.so (art::DexFileLoader::OpenFromZipEntry const+1656) (BuildId: edaee8723973cbd942aab2ec45a0fd86)
+  native: #07 pc 00020636  /apex/com.android.art/lib64/libdexfile.so (art::DexFileLoader::Open+1814) (BuildId: edaee8723973cbd942aab2ec45a0fd86)
+  native: #08 pc 0085d6da  /apex/com.android.art/lib64/libart.so (art::OatFileManager::OpenDexFilesFromOat+12010) (BuildId: ee39087e94b33f52a6702ae4ffb86dc0)
+  native: #09 pc 007e7866  /apex/com.android.art/lib64/libart.so (art::DexFile_openDexFileNative +422) (BuildId: ee39087e94b33f52a6702ae4ffb86dc0)
+  native: #10 pc 0022ccab  /apex/com.android.art/lib64/libart.so (art_quick_generic_jni_trampoline+219) (BuildId: ee39087e94b33f52a6702ae4ffb86dc0)
+  native: #11 pc 002125d6  /apex/com.android.art/lib64/libart.so (art_quick_invoke_static_stub+806) (BuildId: ee39087e94b33f52a6702ae4ffb86dc0)
+
+Interpretation: startup traces include native library/dex loading before React Native application startup. The input timeout trace is incomplete. Earlier startup ANRs also predate the booking verification run. These facts do not establish a single cause or rule out application defects.
+Release native cold-start stability and input responsiveness remain Not Verified.

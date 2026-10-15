@@ -1,0 +1,14 @@
+{
+  "source": "http://localhost:5173/src/pages/CourtBooking.tsx",
+  "sourceSha256": "de5d961f030949e6aade82f3ede2a1cef081a817fc2481e1ad8633d9ffecd2bd",
+  "checkedAt": "2026-10-15T04:50:43.594Z",
+  "comparedSlots": 1992,
+  "mismatchCount": 0,
+  "mismatches": [],
+  "oct20Counts": {
+    "blocked": 43,
+    "available": 76,
+    "booked": 1
+  },
+  "skipped": "Elapsed sessions: mobile/backend prohibit them even though the web view does not fade same-day elapsed slots."
+}
