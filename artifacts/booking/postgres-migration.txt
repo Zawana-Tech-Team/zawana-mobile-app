@@ -1,0 +1,2 @@
+PASS: actual PostgreSQL schema and complete migration executed in PGlite; aliases, overlaps, adjacent slots, cancellation, reactivation and receipt uniqueness verified.
+NOT VERIFIED: multi-connection PostgreSQL concurrency and production migration permissions/data.

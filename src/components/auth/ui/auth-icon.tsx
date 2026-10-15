@@ -3,7 +3,7 @@ import Svg, { Circle, Path, Rect } from 'react-native-svg';
 
 import { authColors } from './tokens';
 
-export type AuthIconName = 'arrow' | 'back' | 'help' | 'lock' | 'eye' | 'eye-off' | 'person' | 'phone' | 'calendar' | 'check' | 'camera' | 'heart' | 'retail' | 'cafe' | 'dumbbell' | 'badminton' | 'chevron-down';
+export type AuthIconName = 'arrow' | 'back' | 'help' | 'lock' | 'eye' | 'eye-off' | 'person' | 'phone' | 'calendar' | 'check' | 'camera' | 'heart' | 'retail' | 'cafe' | 'dumbbell' | 'badminton' | 'chevron-down' | 'home' | 'trash';
 
 type AuthIconProps = { name: AuthIconName; size?: number; color?: string };
 
@@ -27,6 +27,8 @@ export function AuthIcon({ name, size = 22, color = authColors.navy }: AuthIconP
       strokeLinejoin="round"
       {...decoration}
     >
+      {name === 'home' ? <Path d="m3 11 9-8 9 8v10h-6v-7H9v7H3V11Z" /> : null}
+      {name === 'trash' ? <Path d="M3 6h18M9 6V3h6v3M6 6l1 15h10l1-15M10 10v7m4-7v7" /> : null}
       {name === 'arrow' ? <Path d="M4 12h16m-7-7 7 7-7 7" /> : null}
       {name === 'back' ? <Path d="M20 12H4m7-7-7 7 7 7" /> : null}
       {name === 'chevron-down' ? <Path d="m6 9 6 6 6-6" /> : null}
