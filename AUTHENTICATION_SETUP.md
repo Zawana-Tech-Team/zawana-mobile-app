@@ -1,12 +1,14 @@
 # ZAWANA hybrid authentication setup
 
-The mobile implementation now supports email/password, phone/Firebase SMS OTP plus password, Google, and native Apple on supported iOS devices. It uses Expo SDK 57 and React Native Firebase 26.4 with the existing native adapters. Backend implementation and contracts are documented in the sibling web repository's `docs/HYBRID_AUTHENTICATION.md`.
+The mobile implementation supports email/password, phone/Firebase SMS OTP, Google, and native Apple on supported iOS devices. It uses Expo SDK 57 and React Native Firebase 26.4 with the existing native adapters. Backend implementation and contracts are documented in the sibling web repository's `docs/HYBRID_AUTHENTICATION.md`.
 
 ## Session and onboarding behavior
 
 Backend application sessions authorize navigation and API calls. Firebase SDK persistence alone does not. Access credentials remain in memory; rotating refresh credentials use SecureStore. Refresh is serialized, and canceled or superseded authentication cannot restore an abandoned session.
 
-Existing linked members can use any enrolled method independently. New mobile users, including social users, must complete profile, verified phone and password. Mobile email verification is not required. Email and phone account checks run before signup/sign-in; existing signup details direct users to sign in or explicitly link their account. Phone OTP routes to password; email routes directly to password; social credentials go to backend provider verification. Restricted challenges/onboarding cannot open Home. Explicit linking asks for the existing account's fresh password proof. Staff and unsupported MFA flows direct users to web authentication.
+Existing linked members can use any enrolled method independently. New mobile users, including social users, must complete profile, verified phone and password. Mobile email verification is not required. Email and phone account checks run before signup/sign-in; existing signup details direct users to sign in or explicitly link their account. Phone sign-in exchanges a verified OTP challenge through `POST /api/auth/mobile/phone-login` with `{ challengeToken, remember }` and opens Home after backend session validation, without an Enter Password step. Email sign-in still routes to password; social credentials go to backend provider verification. Restricted challenges/onboarding cannot open Home. Explicit linking asks for the existing account's fresh email/password proof. A legacy contact number must be linked before it can independently sign in. Staff and unsupported MFA flows direct users to web authentication.
+
+Deploy the matching sibling backend change before using this mobile update. The challenge endpoint retains its legacy `next: "password"` value for older clients; the updated app uses the new password-free exchange. The legacy `/mobile/password` endpoint remains available to older builds. Registration's Set Password step is unchanged.
 
 Use the separate canonical email/password identity and phone-only identity created by backend enrollment. Never add a password to the Firebase phone identity as a substitute. Apple relay addresses are supported; existing identity details survive omitted subsequent Apple fields.
 
@@ -60,6 +62,6 @@ npm run lint
 npm test
 ```
 
-68 mobile tests pass, including API/session boundaries, OTP state, navigation, cancellation policies, malformed responses, refresh serialization and secure-storage behavior. Typecheck and lint pass. Tests use provider fixtures; they do not establish successful live SMS/Google/Apple sign-in.
+104 mobile tests and all 77 sibling backend tests pass. Both projects pass TypeScript, and the mobile app passes Expo lint. Coverage includes the password-free OTP exchange, email/password enforcement, proof expiry/replay, canonical account revocation, MFA, refresh, and protected HTTP requests. Tests use provider fixtures; they do not establish successful live SMS/Google/Apple sign-in. No Android emulator was connected for this change's device verification.
 
 Before release, test successful linked-member login using all four methods, complete onboarding with fictional numbers, offline/restart/cancellation, method switching, provider consent denial, account recovery and revocation. Then separately test real Myanmar SMS, Google and Apple on supported physical devices, including APNs/reCAPTCHA fallback and Apple relay delivery. Production deployment, real-provider acceptance and EAS cloud builds remain pending.

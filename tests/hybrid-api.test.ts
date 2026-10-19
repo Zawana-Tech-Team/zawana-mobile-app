@@ -74,24 +74,26 @@ test("Google and Apple proofs are explicit and cannot replace the business acces
   access = "";
 });
 
-test("phone OTP returns only a challenge; password endpoint receives its capability", async () => {
+test("phone OTP exchanges its challenge for an application session without a password", async () => {
   const api = createAuthApi({
     baseUrl: "http://localhost:8000",
     getIdToken: async () => {
       throw Error("No application session");
     },
     fetchImpl: async (url, options) => {
-      if (String(url).endsWith("/mobile/challenge"))
+      if (String(url).endsWith("/mobile/challenge")) {
+        assert.equal(new Headers(options?.headers).get("Authorization"), "Bearer firebase-phone-token");
         return json({
           challengeToken: "c".repeat(43),
           expiresAt: new Date(Date.now() + 300_000).toISOString(),
           next: "password",
           phone: "+959421234567",
         });
+      }
+      assert.equal(url, "http://localhost:8000/api/auth/mobile/phone-login");
       assert.equal(new Headers(options?.headers).has("Authorization"), false);
       assert.deepEqual(JSON.parse(options?.body as string), {
         challengeToken: "c".repeat(43),
-        password: "Password1!",
         remember: true,
       });
       return json(session());
@@ -99,8 +101,28 @@ test("phone OTP returns only a challenge; password endpoint receives its capabil
   });
   const proof = await api.phoneChallenge("firebase-phone-token", "signin");
   assert.equal("accessToken" in proof, false);
-  const result = await api.phonePassword(proof.challengeToken, "Password1!");
+  const result = await api.phoneLogin(proof.challengeToken);
   assert.equal(result.user.id, "canonical-user");
+});
+
+test("phone session exchange rejects expired proofs and malformed sessions without falling back to a password", async () => {
+  for (const [body, status, code] of [
+    [{ code: "CHALLENGE_EXPIRED" }, 401, "expiredVerification"],
+    [{ ...session(), accessToken: "invalid" }, 200, "invalidResponse"],
+  ] as const) {
+    let calls = 0;
+    const api = createAuthApi({
+      baseUrl: "http://localhost:8000",
+      getIdToken: async () => { throw Error("No application session"); },
+      fetchImpl: async (url) => {
+        calls++;
+        assert.equal(url, "http://localhost:8000/api/auth/mobile/phone-login");
+        return json(body, status);
+      },
+    });
+    await assert.rejects(api.phoneLogin("c".repeat(43)), { code });
+    assert.equal(calls, 1);
+  }
 });
 
 test("invalid password is not retried or converted into session restoration", async () => {

@@ -1,340 +1,147 @@
-import { useCallback, useEffect, useState } from "react";
-import { router } from "expo-router";
-import { Image } from "expo-image";
-import {
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-  useWindowDimensions,
-} from "react-native";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { router, Stack, useFocusEffect } from "expo-router";
+import { BackHandler, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useAuth } from "@/auth/auth-provider";
 import { useBooking } from "@/booking/provider";
 import { useResource } from "@/booking/use-resource";
-import {
-  dateLabel,
-  isSlotAvailable,
-  money,
-  slotStatusLabel,
-  total,
-} from "@/booking/domain";
+import { isBookingDateAllowed } from "@/booking/date-policy";
+import { useBookingDateWindow } from "@/booking/use-booking-date-window";
+import { dateLabel, money, total } from "@/booking/domain";
+import type { Court } from "@/booking/types";
 import { SelectionPressable } from "./selection-pressable";
-import {
-  Body,
-  Feedback,
-  Frame,
-  Heading,
-  Legend,
-  LinkButton,
-  colors,
-  courtImage,
-  ui,
-} from "./ui";
+import { Feedback, LinkButton } from "./ui";
+import { FloorSelector } from "./floor-selector";
+import { CourtPlan } from "./court-plan";
+import { bookingFloors, courtFloor, courtsOnFloor, type BookingFloor } from "./court-presentation";
+import { DateRibbon, JourneyEntrance, JourneyFrame, journeyColors, journeyStyles } from "./journey-frame";
+import { TimeSlotSheet } from "./time-slot-sheet";
+
 export function TimeScreen() {
-  const { width } = useWindowDimensions();
-  const slotWidth = Math.floor((Math.min(width, 460) - 56) / 3);
-  const courtWidth = Math.max(80, (Math.min(width, 460) - 70) / 4);
-  const { api } = useAuth(),
-    booking = useBooking();
+  const { api } = useAuth();
+  const booking = useBooking();
   const { refresh } = booking;
-  const [active, setActive] = useState(""),
-    [courtId, setCourtId] = useState("");
-  const date = booking.dates.includes(active) ? active : booking.dates[0] || "";
-  const load = useCallback(
-    (signal: AbortSignal) =>
-      date
-        ? api.getCourtAvailability(date, { signal })
-        : Promise.reject(new Error("Select a date first.")),
-    [api, date],
-  );
-  const resource = useResource(load, `${date}:${booking.revision}`, !!date),
-    data = resource.data;
-  useEffect(() => {
-    if (data) refresh(data);
-  }, [data, refresh]);
-  const court =
-    data?.courts.find((c) => c.id === courtId) ||
-    data?.courts.find((c) => c.status === "available") ||
-    data?.courts[0];
-  const slots = data?.slots.filter((s) => s.courtId === court?.id) || [];
+  const { today, lastDate } = useBookingDateWindow();
+  const [activeDate, setActiveDate] = useState("");
+  const [floor, setFloor] = useState<BookingFloor | null>(null);
+  const [stage, setStage] = useState<"floors" | "courts">("floors");
+  const [zooming, setZooming] = useState(false);
+  const [selectedCourt, setSelectedCourt] = useState<Court | null>(null);
+  const [sheetOpen, setSheetOpen] = useState(false);
+  const transition = useRef(false);
+  const navigating = useRef(false);
+  const date = booking.dates.includes(activeDate) ? activeDate : booking.dates[0] || "";
+  const datesAllowed = !!date && booking.dates.every(d => d >= today && d <= lastDate);
+  const load = useCallback((signal: AbortSignal) => date && isBookingDateAllowed(date)
+    ? api.getCourtAvailability(date, { signal }) : Promise.reject(new Error("Select a date first.")), [api, date]);
+  const resource = useResource(load, `${date}:${today}:${booking.revision}`, datesAllowed);
+  const data = resource.data;
+  useEffect(() => { if (data) refresh(data); }, [data, refresh]);
+  const liveCourt = data?.courts.find(c => c.id === selectedCourt?.id) || selectedCourt;
+  const floorCourts = floor && data ? courtsOnFloor(data.courts, floor) : [];
+  const canEdit = datesAllowed && !booking.pending && !booking.restoring;
+  const onEntered = useCallback(() => {
+    transition.current = false;
+    setZooming(false);
+    setStage("courts");
+  }, []);
+  const back = useCallback(() => {
+    if (zooming) { transition.current = false; setZooming(false); }
+    else if (stage === "courts") setStage("floors");
+    else if (router.canGoBack()) router.back();
+    else router.replace("/(member)/book/dates");
+  }, [stage, zooming]);
+  useFocusEffect(useCallback(() => {
+    navigating.current = false;
+    const listener = BackHandler.addEventListener("hardwareBackPress", () => {
+      if (stage === "courts" || zooming) { back(); return true; }
+      return false;
+    });
+    return () => listener.remove();
+  }, [back, stage, zooming]));
+  const chooseFloor = (value: BookingFloor) => {
+    if (!canEdit || zooming || !data || !courtsOnFloor(data.courts, value).length) return;
+    if (value !== floor) setSelectedCourt(null);
+    setFloor(value);
+  };
+  const chooseCourt = useCallback((court: Court) => {
+    if (court.status !== "available") return;
+    setSelectedCourt(court);
+    setSheetOpen(true);
+  }, []);
+  const dismissSheet = useCallback(() => setSheetOpen(false), []);
+  const continueBooking = useCallback(() => {
+    setSheetOpen(false);
+    if (navigating.current || !booking.slots.length || booking.pending || booking.restoring || !booking.dates.every(d => isBookingDateAllowed(d))) return;
+    navigating.current = true;
+    router.push("/(member)/book/summary");
+  }, [booking.slots.length, booking.pending, booking.restoring, booking.dates]);
+  const enterFloor = () => {
+    if (transition.current || !canEdit || !data || !floor || !floorCourts.length) return;
+    transition.current = true;
+    setZooming(true);
+  };
+  const isCourts = stage === "courts";
+  const title = zooming ? "Enter the arena" : isCourts
+    ? selectedCourt ? `${selectedCourt.name} selected` : "Choose your court"
+    : floor ? `${floor} selected` : "Choose your floor";
+  const subtitle = zooming ? "From the building into your chosen floor"
+    : isCourts ? selectedCourt ? "Select times for your highlighted court." : `${floorCourts.length === 4 ? "All four courts together." : "Choose a court on this floor."} Tap a court to choose a time.`
+    : floor ? `${floor === "6th Floor" ? "Red" : "Green"} badminton courts${data ? ` · ${floorCourts.length} courts` : ""}`
+    : "See the whole arena. Tap a highlighted floor.";
   return (
-    <Frame
-      title="Select Court & Time"
-      testID="booking-times"
-      actionLabel={`Add to Booking${booking.slots.length ? ` (${booking.slots.length})` : ""}`}
-      action={() => router.push("/(member)/book/summary")}
-      disabled={!booking.slots.length || booking.pending || booking.restoring}
-    >
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.horizontal}
-      >
-        {booking.dates.map((d) => (
-          <SelectionPressable
-            selected={d === date}
-            restColor={colors.soft}
-            key={d}
-            accessibilityRole="button"
-            accessibilityState={{ selected: d === date }}
-            onPress={() => setActive(d)}
-            style={[styles.date, d === date && styles.selected]}
-          >
-            <Text style={[styles.dateText, d === date && styles.white]}>
-              {dateLabel(d, false)}
-            </Text>
-          </SelectionPressable>
-        ))}
-        <Pressable
-          accessibilityRole="button"
-          onPress={() => router.push("/(member)/book/dates")}
-          style={styles.date}
-        >
-          <Text style={styles.dateText}>＋ Add Date</Text>
-        </Pressable>
-      </ScrollView>
-      <Feedback
-        loading={resource.loading}
-        error={resource.error}
-        onRetry={resource.retry}
-      />
-      {data ? (
-        <>
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.horizontal}
-          >
-            {data.courts.map((c) => (
-              <SelectionPressable
-                selected={c.id === court?.id}
-                restColor={colors.soft}
-                key={c.id}
-                accessibilityRole="button"
-                accessibilityLabel={`${c.name}, ${c.status}`}
-                accessibilityState={{
-                  selected: c.id === court?.id,
-                  disabled: c.status !== "available",
-                }}
-                disabled={c.status !== "available"}
-                onPress={() => setCourtId(c.id)}
-                testID={`court-${c.id}`}
-                style={[
-                  styles.court,
-                  { width: courtWidth },
-                  c.id === court?.id && styles.selected,
-                  c.status !== "available" && { opacity: 0.45 },
-                ]}
-              >
-                <Image
-                  source={courtImage}
-                  contentFit="cover"
-                  style={[styles.image, { width: courtWidth - 10, height: 90 }]}
-                />
-                <Text
-                  style={[styles.courtName, c.id === court?.id && styles.white]}
-                >
-                  {c.name}
-                </Text>
-                {c.id === court?.id ? (
-                  <View style={styles.check}>
-                    <Text style={styles.dateText}>✓</Text>
-                  </View>
-                ) : null}
-              </SelectionPressable>
-            ))}
+    <>
+      <Stack.Screen options={{ gestureEnabled: false }} />
+      <JourneyFrame step={isCourts ? 3 : 2} title={title} subtitle={subtitle} testID="booking-times" onBack={back}
+        actionLabel={zooming ? "Entering floor…" : isCourts ? selectedCourt ? "View available times" : "Select a court" : floor ? `Enter ${floor}` : "Choose a floor"}
+        action={isCourts ? () => { if (liveCourt && canEdit) setSheetOpen(true); } : enterFloor}
+        disabled={!canEdit || resource.loading || !!resource.error || zooming || (isCourts ? !liveCourt || liveCourt.status !== "available" || !floorCourts.some(c => c.id === liveCourt.id) : !floor || !floorCourts.length)}
+        note={isCourts ? `${floor || ""}${selectedCourt ? ` · ${selectedCourt.name}` : ""}` : floor ? "Selected date is preserved" : "2nd and 6th floors · Badminton only"}>
+        {date ? <DateRibbon date={date} floor={isCourts || zooming ? floor || undefined : undefined} onChange={isCourts ? () => setStage("floors") : () => { if (!zooming) router.push("/(member)/book/dates"); }} /> : null}
+        {booking.dates.length > 1 ? (
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.dates}>
+            {booking.dates.map(d => <SelectionPressable key={d} selected={date === d} selectedColor={journeyColors.navy} restColor={journeyColors.soft}
+              style={styles.dateChip} onPress={() => { if (!zooming) { setActiveDate(d); setSheetOpen(false); } }}
+              disabled={zooming} accessibilityRole="button" accessibilityState={{ selected: date === d }}>
+              <Text style={[journeyStyles.caption, date === d && styles.white]}>{dateLabel(d, false)}</Text>
+            </SelectionPressable>)}
           </ScrollView>
-          <View style={{ gap: 4 }}>
-            <Heading>Time Slots</Heading>
-            <Body>
-              {court?.name} · {dateLabel(date)}
-            </Body>
-            <Text style={ui.small}>
-              Each session is one hour · Prices in MMK
-            </Text>
+        ) : null}
+        {!datesAllowed ? (
+          <View style={journeyStyles.notice}>
+            <Text style={journeyStyles.body}>Choose dates from today through the end of this month.</Text>
+            <LinkButton label="Update dates" onPress={() => router.replace("/(member)/book/dates")} />
           </View>
-          <View style={styles.grid}>
-            {slots.map((slot) => {
-              const available = isSlotAvailable(slot);
-              const status = slotStatusLabel(slot.status, slot.reason);
-              const classSession = status === "Class";
-              const reserved = status === "Reserved";
-              const selected =
-                available && booking.slots.some((s) => s.id === slot.id);
-              return (
-                <SelectionPressable
-                  selected={selected}
-                  restColor={available ? colors.paper : colors.soft}
-                  key={slot.id}
-                  accessibilityRole="button"
-                  accessibilityLabel={`${slot.time}, ${status}, ${money(slot.price)}`}
-                  accessibilityHint={
-                    slot.reason && slot.reason !== status
-                      ? slot.reason
-                      : undefined
-                  }
-                  accessibilityState={{
-                    selected,
-                    disabled: !available || booking.pending,
-                  }}
-                  disabled={!available || booking.pending}
-                  onPress={() => booking.toggle(slot, data.maxSelections)}
-                  testID={`slot-${slot.startMinute}`}
-                  style={[
-                    styles.slot,
-                    { width: slotWidth },
-                    selected && styles.selected,
-                    !available && styles.unavailable,
-                  ]}
-                >
-                  <Text
-                    style={[
-                      styles.slotTime,
-                      selected && styles.white,
-                      !available && styles.disabled,
-                    ]}
-                  >
-                    {slot.label}
-                  </Text>
-                  {available ? (
-                    <Text style={[styles.price, selected && styles.white]}>
-                      {money(slot.price)}
-                    </Text>
-                  ) : (
-                    <View
-                      style={[
-                        styles.statusBadge,
-                        classSession && styles.classBadge,
-                        reserved && styles.reservedBadge,
-                      ]}
-                    >
-                      <Text
-                        style={[
-                          styles.statusText,
-                          classSession && styles.classText,
-                          reserved && styles.reservedText,
-                        ]}
-                      >
-                        {status}
-                      </Text>
-                    </View>
-                  )}
-                </SelectionPressable>
-              );
-            })}
-          </View>
-          {!slots.some(isSlotAvailable) ? (
-            <Body>
-              No sessions are available for this court and date. Choose another
-              court or date.
-            </Body>
-          ) : null}
-          <Legend />
-          <Text style={ui.small}>
-            Class, booked and reserved sessions are unavailable for booking.
-          </Text>
-          <View style={ui.between}>
-            <Body>
-              {booking.slots.length} selected · {booking.slots.length} hours
-            </Body>
-            <Text style={styles.dateText}>{money(total(booking.slots))}</Text>
-          </View>
-          {booking.slots.length >= data.maxSelections ? (
-            <Body>
-              You have reached the {data.maxSelections}-session limit.
-            </Body>
-          ) : null}
-          <LinkButton label="Refresh availability" onPress={resource.retry} />
-        </>
-      ) : null}
-      {booking.notice ? <Body>{booking.notice}</Body> : null}
-      {!date ? (
-        <LinkButton
-          label="Choose dates"
-          onPress={() => router.replace("/(member)/book/dates")}
-        />
-      ) : null}
-    </Frame>
+        ) : null}
+        <Feedback loading={resource.loading} error={resource.error} onRetry={resource.retry} />
+        {!isCourts ? (
+          <JourneyEntrance>
+            <FloorSelector floor={floor} zooming={zooming} onSelect={chooseFloor} onEntered={onEntered}
+              disabled={!canEdit || resource.loading || !!resource.error}
+              availableFloors={data ? bookingFloors.filter(value => courtsOnFloor(data.courts, value).length > 0) : []} />
+          </JourneyEntrance>
+        ) : floor ? (
+          <>
+            {data ? <CourtPlan courts={floorCourts} floor={floor} selectedId={selectedCourt?.id} onSelect={chooseCourt} /> : null}
+            <Text style={journeyStyles.body}>Choose a court to see its times.{"\n"}Availability depends on date and time.</Text>
+            {!resource.loading && !resource.error && !floorCourts.length ? <Text style={journeyStyles.body}>No courts are listed on this floor for this date.</Text> : null}
+          </>
+        ) : null}
+        {data?.courts.some(c => !courtFloor(c)) ? <Text style={journeyStyles.caption}>Some courts do not have a supported floor assignment. Contact ZAWANA staff for those courts.</Text> : null}
+        {data && !data.courts.length ? <Text style={journeyStyles.body}>No courts are currently listed. Please contact ZAWANA staff.</Text> : null}
+        {booking.slots.length ? <Pressable onPress={continueBooking} accessibilityRole="button" disabled={!canEdit} style={styles.cart} testID="booking-review-selection">
+          <Text style={journeyStyles.strong}>Review selection ({booking.slots.length})</Text>
+          <Text style={journeyStyles.caption}>{money(total(booking.slots))} · Your other courts and dates are retained</Text>
+        </Pressable> : null}
+        {isCourts ? <LinkButton label="Add or change dates" onPress={() => router.push("/(member)/book/dates")} /> : null}
+        {booking.notice ? <Text accessibilityLiveRegion="polite" style={journeyStyles.body}>{booking.notice}</Text> : null}
+        {booking.pending ? <LinkButton label="Recover pending reservation" onPress={() => router.replace("/(member)/book/review")} /> : null}
+      </JourneyFrame>
+      {sheetOpen && liveCourt && date ? <TimeSlotSheet court={liveCourt} date={date} data={data} loading={resource.loading} error={resource.error}
+        onRetry={resource.retry} onDismiss={dismissSheet} onContinue={continueBooking} /> : null}
+    </>
   );
 }
 const styles = StyleSheet.create({
-  horizontal: { gap: 10 },
-  date: {
-    minHeight: 58,
-    minWidth: 110,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 14,
-    backgroundColor: colors.soft,
-  },
-  dateText: { fontSize: 14, color: colors.navy, fontWeight: "600" },
-  selected: { backgroundColor: colors.navy, borderColor: colors.navy },
-  white: { color: "#FFFFFF" },
-  court: {
-    width: 100,
-    borderRadius: 15,
-    backgroundColor: colors.soft,
-    padding: 5,
-    gap: 7,
-    paddingBottom: 11,
-  },
-  image: { width: 90, height: 100, borderRadius: 11 },
-  courtName: {
-    fontSize: 13,
-    textAlign: "center",
-    color: colors.muted,
-    fontWeight: "500",
-  },
-  check: {
-    position: "absolute",
-    top: 9,
-    right: 9,
-    width: 24,
-    height: 24,
-    borderRadius: 12,
-    backgroundColor: "#FFFFFF",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  grid: { flexDirection: "row", flexWrap: "wrap", gap: 8 },
-  slot: {
-    width: "31.7%",
-    minHeight: 58,
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: colors.outline,
-    justifyContent: "center",
-    alignItems: "center",
-    paddingVertical: 10,
-    paddingHorizontal: 3,
-    gap: 4,
-  },
-  slotTime: { fontSize: 14, color: colors.navy },
-  price: {
-    fontSize: 9,
-    lineHeight: 13,
-    color: colors.muted,
-    textAlign: "center",
-  },
-  unavailable: { backgroundColor: colors.soft, borderColor: colors.soft },
-  disabled: { color: "#7E879C" },
-  statusBadge: {
-    backgroundColor: "#E8EBF2",
-    borderRadius: 6,
-    paddingHorizontal: 8,
-    paddingVertical: 2,
-  },
-  statusText: {
-    color: "#58637C",
-    fontSize: 10,
-    lineHeight: 14,
-    fontWeight: "600",
-  },
-  classBadge: { backgroundColor: "#EEE7FA" },
-  classText: { color: "#70509D" },
-  reservedBadge: { backgroundColor: "#FFF0D2" },
-  reservedText: { color: "#94621A" },
+  dates: { gap: 8 }, dateChip: { minHeight: 44, paddingHorizontal: 12, justifyContent: "center", borderRadius: 10 }, white: { color: "#FFFFFF" },
+  cart: { padding: 14, borderRadius: 12, borderWidth: 1, borderColor: journeyColors.outline, minHeight: 48, gap: 4 },
 });

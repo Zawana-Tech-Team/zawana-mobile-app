@@ -316,18 +316,23 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       );
       if (generation !== runtime.state.generation)
         throw new AuthError("cancelled", "Verification was cancelled.");
+      if (runtime.state.intent === "signin" && proof.next === "password")
+        // The challenge's legacy next value also supports older app versions.
+        // Current phone sign-in exchanges the proof without a password screen.
+        return acceptSession(
+          await api.phoneLogin(proof.challengeToken, runtime.state.remember),
+          generation,
+        );
       runtime.set("challenge", proof);
       const status: SessionStatus = runtime.state.registrationReady
         ? "registration-password-required"
-        : proof.next === "password" && !runtime.state.registration
-          ? "password-required"
-          : runtime.state.intent === "link" || proof.next === "link-account"
-            ? "link-required"
-            : "profile-required";
+        : runtime.state.intent === "link" || proof.next === "link-account"
+          ? "link-required"
+          : "profile-required";
       emit(status);
       return status;
     },
-    [api, emit, runtime],
+    [api, acceptSession, emit, runtime],
   );
   useEffect(() => {
     try {
@@ -478,15 +483,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             generation,
           );
         }
-        if (runtime.state.challenge?.next === "password")
-          return await acceptSession(
-            await api.phonePassword(
-              runtime.state.challenge.challengeToken,
-              password,
-              remember,
-            ),
-            generation,
-          );
         await phone.clear();
         return await acceptLogin(
           await api.emailLogin(email, password, remember),

@@ -1,0 +1,81 @@
+{
+  "scope": "Isolated actual FloorSelector/BuildingIllustration components in Expo web; no authentication bypass or backend fixture changes",
+  "checks": [
+    "390x844 default, second and sixth floor selected",
+    "native button selection synchronizes both targets",
+    "minimum 44px floor hit targets",
+    "floor entry animation completion",
+    "320x640 no horizontal overflow",
+    "unsupported floor disabled",
+    "loading/error/global disabled controls ignore pointer input",
+    "reduced-motion entry completes",
+    "zero runtime exceptions"
+  ],
+  "geometry": [
+    {
+      "id": "building-floor-2",
+      "selected": "false",
+      "bounds": {
+        "x": 221.203125,
+        "y": 468.390625,
+        "width": 136.796875,
+        "height": 44,
+        "top": 468.390625,
+        "right": 358,
+        "bottom": 512.390625,
+        "left": 221.203125
+      },
+      "border": "rgb(221, 221, 227)",
+      "background": "rgb(255, 255, 255)"
+    },
+    {
+      "id": "building-floor-6",
+      "selected": "true",
+      "bounds": {
+        "x": 221.203125,
+        "y": 367.59375,
+        "width": 136.796875,
+        "height": 44,
+        "top": 367.59375,
+        "right": 358,
+        "bottom": 411.59375,
+        "left": 221.203125
+      },
+      "border": "rgb(196, 177, 66)",
+      "background": "rgb(247, 244, 229)"
+    },
+    {
+      "id": "floor-2",
+      "selected": "false",
+      "bounds": {
+        "x": 24,
+        "y": 628,
+        "width": 166,
+        "height": 48,
+        "top": 628,
+        "right": 190,
+        "bottom": 676,
+        "left": 24
+      },
+      "border": "rgb(221, 221, 227)",
+      "background": "rgb(255, 255, 255)"
+    },
+    {
+      "id": "floor-6",
+      "selected": "true",
+      "bounds": {
+        "x": 200,
+        "y": 628,
+        "width": 166,
+        "height": 48,
+        "top": 628,
+        "right": 366,
+        "bottom": 676,
+        "left": 200
+      },
+      "border": "rgb(196, 177, 66)",
+      "background": "rgb(247, 244, 229)"
+    }
+  ],
+  "errors": []
+}

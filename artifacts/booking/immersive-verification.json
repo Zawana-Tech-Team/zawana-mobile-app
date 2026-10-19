@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-16",
+  "reference": "assets/ref/booking_ui.png (explicitly authorized by user)",
+  "automated": {
+    "tests": 103,
+    "failed": 0,
+    "typecheck": "passed",
+    "lint": "passed",
+    "androidHermesExport": "passed"
+  },
+  "nativePassed": [
+    "date \u2192 building \u2192 floor \u2192 courts \u2192 time sheet",
+    "green Courts 1\u20134 / red Courts 5\u20138 from real API",
+    "two available sessions selected",
+    "disabled Class session ignored a physical tap",
+    "Android Back dismissed the sheet",
+    "selected sessions survived reopening",
+    "temporary selections removed in the first full pass",
+    "corrected two-column layout verified by actual slot bounds",
+    "camera zoom frame captured and inspected"
+  ],
+  "nativeSlotColumnBounds": {
+    "first": "[63,1292][528,1455]",
+    "second": "[549,1292][1013,1455]"
+  },
+  "nativePending": [
+    "360\u00d7640 viewport",
+    "final two-column selected-slot screenshot",
+    "settled 6th Floor selection screenshot",
+    "Continue into existing summary",
+    "TalkBack/VoiceOver",
+    "reduced-motion restart / preference change"
+  ],
+  "interruption": "The app returned to the signed-out welcome screen during the final pass. No authentication bypass was used.",
+  "reservationSubmissionsByQA": 0,
+  "notes": [
+    "First-pass multi-slot screenshots are retained under android/iterations because they predate the two-column layout fix.",
+    "The later interrupted pass only edited ephemeral client selection; it never reached reservation submission.",
+    "Animator scale was observed as 0, but a zoom was captured; reduced-motion startup behavior is not certified.",
+    "No 60 FPS, iOS or exact Figma pixel-parity claim."
+  ]
+}

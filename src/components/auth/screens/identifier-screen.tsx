@@ -47,7 +47,7 @@ export function IdentifierScreen({ signup = false }: { signup?: boolean }) {
         if (status === null) router.push("/verify");
         else if (status === "profile-required")
           router.replace("/create-account");
-        else if (status === "password-required" || status === "link-required")
+        else if (status === "link-required")
           router.replace("/password");
         else if (status === "registration-password-required")
           router.replace("/set-password");

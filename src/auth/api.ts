@@ -385,15 +385,14 @@ export function createAuthApi(options: ApiOptions) {
         {},
         token,
       ),
-    phonePassword: (
+    phoneLogin: (
       challengeToken: string,
-      password: string,
       remember = true,
     ) =>
       request(
-        "/auth/mobile/password",
+        "/auth/mobile/phone-login",
         "POST",
-        { challengeToken, password, remember },
+        { challengeToken, remember },
         applicationSession,
         {},
         null,

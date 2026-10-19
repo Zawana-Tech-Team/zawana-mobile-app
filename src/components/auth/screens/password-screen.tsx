@@ -25,7 +25,7 @@ export function PasswordScreen() {
   const submit = () =>
     task.run(async () => {
       Keyboard.dismiss();
-      if ((!auth.hasPhoneProof || auth.linking) && !isEmail(draft.email))
+      if (!isEmail(draft.email))
         throw new Error("Return to Sign In and enter your email address.");
       if (!password) throw new Error("Enter your password.");
       try {
@@ -48,9 +48,7 @@ export function PasswordScreen() {
       description={
         auth.linking
           ? "Enter your existing account email and password to explicitly link this verified identity."
-          : auth.hasPhoneProof
-            ? "Your phone is verified. Enter your account password to sign in."
-            : "Enter your account password to sign in."
+          : "Enter your account password to sign in."
       }
       onBack={() => {
         setPassword("");
