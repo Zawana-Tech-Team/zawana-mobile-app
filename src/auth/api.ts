@@ -1,3 +1,4 @@
+import { privateCourses, courseAvailability, courseBookings, courseBooking, bookingEnvelope, paymentEnvelope, type CourseInput, type CourseAvailabilityInput } from "../booking/private-course.ts";
 import { availability, monthAvailability, bookingResult, reservation, reservations } from "../booking/validation.ts";
 import type { BookingInput } from "../booking/types.ts";
 import { AuthError, authHttpError, sanitizeAuthError } from "./errors.ts";
@@ -275,6 +276,12 @@ export function createAuthApi(options: ApiOptions) {
               "The sign-in details are incorrect.",
               { status: response.status },
             );
+          if (code === "PHONE_ACCOUNT_CONFLICT")
+            throw new AuthError(
+              "accountExists",
+              "This phone number has conflicting account records. Contact ZAWANA support.",
+              { status: response.status },
+            );
           if (code === "ACCOUNT_LINK_REQUIRED" || code === "IDENTITY_CONFLICT")
             throw new AuthError(
               "accountExists",
@@ -295,7 +302,7 @@ export function createAuthApi(options: ApiOptions) {
               "Request a new phone code.",
               { status: response.status },
             );
-          if (path.startsWith("/court-booking/") || path.startsWith("/bookings"))
+          if (path.startsWith("/court-booking/") || path.startsWith("/bookings") || path.startsWith("/private-courses") || path.startsWith("/member/private-courses") || path.startsWith("/member/check-in") || path.startsWith("/member/badminton-packages"))
             throw new AuthError(response.status === 409 && failure?.code === "BOOKING_BUSY" ? "unavailable" : response.status === 409 ? "bookingConflict" : response.status === 404 ? "notFound" : response.status === 400 ? "invalidInput" : response.status === 401 ? "sessionExpired" : "unavailable", response.status < 500 && typeof failure?.message === "string" ? failure.message : "Reservations are unavailable right now. Please try again.", {status:response.status});
           throw authHttpError(response.status, retryAfter(response));
         }
@@ -334,6 +341,20 @@ export function createAuthApi(options: ApiOptions) {
   const session = (requestOptions?: RequestOptions) =>
     request("/auth/session", "POST", {}, authSession, requestOptions);
   return {
+    getPrivateCourses: (options?: RequestOptions) => request("/private-courses", "GET", undefined, privateCourses, options),
+    getPrivateCourseBookings: (options?: RequestOptions) => request("/member/private-courses", "GET", undefined, courseBookings, options),
+    getPrivateCourseAvailability: (input: CourseAvailabilityInput, options?: RequestOptions) => request(`/private-courses/availability?${new URLSearchParams(Object.entries(input).map(([key, value]) => [key, String(value)]))}`, "GET", undefined, courseAvailability, options),
+    requestPrivateCourse: (input: CourseInput) => request("/member/private-courses", "POST", input, bookingEnvelope),
+    cancelPrivateCourse: (id: string) => request(`/member/private-courses/${encodeURIComponent(id)}/cancel`, "POST", {}, courseBooking),
+    payPrivateCourse: (id: string) => request(`/member/private-courses/${encodeURIComponent(id)}/pay`, "POST", {}, paymentEnvelope),
+    checkInBadminton: (enrollmentId: string) => request("/member/check-in", "POST", {enrollmentId}, (value) => {
+      if (!isRecord(value) || !isRecord(value.enrollment) || !isRecord(value.checkIn) || value.enrollment.id !== enrollmentId || value.checkIn.enrollmentId !== enrollmentId || !Number.isInteger(value.enrollment.sessionsRemaining)) throw invalidResponse();
+      return value;
+    }),
+    purchaseBadmintonPackage: (id: string) => request(`/member/badminton-packages/${encodeURIComponent(id)}/purchase`, "POST", {}, (value) => {
+      if (!isRecord(value) || !isRecord(value.purchase) || !isRecord(value.enrollment) || value.purchase.packageId !== id || value.enrollment.packageId !== id) throw invalidResponse();
+      return value;
+    }),
     getCourtMonth: (month:string, options?:RequestOptions) => request(`/court-booking/month?month=${encodeURIComponent(month)}`, "GET", undefined, monthAvailability, options),
     getCourtAvailability: (date: string, options?: RequestOptions) => request(`/court-booking/availability?date=${encodeURIComponent(date)}`, "GET", undefined, availability, options),
     createCourtBooking: (input: BookingInput, key: string) => request("/bookings", "POST", input, bookingResult, {idempotencyKey:key}),
@@ -377,6 +398,8 @@ export function createAuthApi(options: ApiOptions) {
             typeof value.challengeToken !== "string" ||
             typeof value.phone !== "string" ||
             typeof value.next !== "string" ||
+            !["session", "registration", "link-account"].includes(value.next) ||
+            (intent === "signin" && value.next !== "session") ||
             typeof value.expiresAt !== "string"
           )
             throw invalidResponse();

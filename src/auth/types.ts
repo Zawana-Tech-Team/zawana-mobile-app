@@ -206,7 +206,7 @@ export type Onboarding = {
 export type PhoneProofChallenge = {
   challengeToken: string;
   expiresAt: string;
-  next: string;
+  next: "session" | "registration" | "link-account";
   phone: string;
 };
 export type LoginResult = AuthSession | Onboarding;

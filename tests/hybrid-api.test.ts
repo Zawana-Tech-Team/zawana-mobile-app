@@ -86,7 +86,7 @@ test("phone OTP exchanges its challenge for an application session without a pas
         return json({
           challengeToken: "c".repeat(43),
           expiresAt: new Date(Date.now() + 300_000).toISOString(),
-          next: "password",
+          next: "session",
           phone: "+959421234567",
         });
       }
@@ -125,6 +125,31 @@ test("phone session exchange rejects expired proofs and malformed sessions witho
   }
 });
 
+test("phone sign-in never accepts a backend instruction to request a password or link an account", async () => {
+  for (const next of ["password", "link-account", "registration"]) {
+    const api = createAuthApi({
+      baseUrl: "http://localhost:8000",
+      getIdToken: async () => { throw Error("No application session"); },
+      fetchImpl: async () => json({ challengeToken: "c".repeat(43), phone: "+959421234567", expiresAt: new Date(Date.now() + 300_000).toISOString(), next }),
+    });
+    await assert.rejects(api.phoneChallenge("phone-proof", "signin"), { code: "invalidResponse" });
+  }
+});
+
+test("phone account conflicts show support guidance instead of password or linking instructions", async () => {
+  const api = createAuthApi({
+    baseUrl: "http://localhost:8000",
+    getIdToken: async () => "",
+    fetchImpl: async () => json({ code: "PHONE_ACCOUNT_CONFLICT" }, 409),
+  });
+  await assert.rejects(api.phoneLogin("c".repeat(43)), (error: unknown) => {
+    assert(error instanceof Error);
+    assert.match(error.message, /support/);
+    assert.doesNotMatch(error.message, /password|link/i);
+    return true;
+  });
+});
+
 test("invalid password is not retried or converted into session restoration", async () => {
   let calls = 0,
     refresh = 0;
@@ -146,11 +171,10 @@ test("invalid password is not retried or converted into session restoration", as
   assert.equal(refresh, 0);
 });
 
-test("provider onboarding and phone/password states cannot enter Home", async () => {
+test("provider onboarding and account linking cannot enter Home", async () => {
   const user = session().user;
   for (const status of [
     "profile-required",
-    "password-required",
     "link-required",
     "registration-password-required",
   ] as const) {

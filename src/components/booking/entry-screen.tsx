@@ -6,6 +6,7 @@ import { useAuth } from "@/auth/auth-provider";
 import { useBooking } from "@/booking/provider";
 import { dateKey, isSlotAvailable } from "@/booking/domain";
 import { useResource } from "@/booking/use-resource";
+import { BookingTabs } from "./booking-tabs";
 import { PrimaryButton } from "@/components/auth/ui/auth-button";
 import {
   Body,
@@ -13,7 +14,6 @@ import {
   Feedback,
   Frame,
   Heading,
-  LinkButton,
   colors,
   courtImage,
   ui,
@@ -55,9 +55,7 @@ export function EntryScreen() {
   });
   return (
     <Frame title="Book a Court" testID="booking-entry" navigation>
-      <View style={styles.sport}>
-        <Text style={styles.sportText}>Badminton</Text>
-      </View>
+      <BookingTabs active="book" />
       <Entrance>
         <View style={[ui.card, { padding: 0, overflow: "hidden" }]}>
           <Image source={courtImage} contentFit="cover" style={styles.hero} />
@@ -130,21 +128,10 @@ export function EntryScreen() {
         </>
       ) : null}
       {booking.notice ? <Body>{booking.notice}</Body> : null}
-      <LinkButton
-        label="View My Bookings →"
-        onPress={() => router.push("/(member)/bookings")}
-      />
     </Frame>
   );
 }
 const styles = StyleSheet.create({
-  sport: {
-    backgroundColor: colors.navy,
-    padding: 15,
-    borderRadius: 13,
-    alignItems: "center",
-  },
-  sportText: { color: "white", fontSize: 16, fontWeight: "600" },
   hero: { width: "100%", height: 210 },
   details: { padding: 16, gap: 7 },
   rule: { height: 1, backgroundColor: "#EEEFF4", marginVertical: 8 },

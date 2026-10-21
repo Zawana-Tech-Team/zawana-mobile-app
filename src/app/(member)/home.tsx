@@ -44,6 +44,11 @@ export default function Home() {
     loading={loading}
     error={task.error ?? (loading ? null : result?.error)}
     onBook={() => router.push("/(member)/book")}
+    onProfile={() => router.push("/(member)/profile")}
+    onServices={() => router.push("/(member)/services")}
+    onMembership={() => router.push("/(member)/membership")}
+    onPrivateCourse={() => router.push("/(member)/private-course")}
+    onActivity={() => router.push("/(member)/courses")}
     onRetry={() => setAttempt(value => value + 1)}
     onSignOut={() => task.run(signOut)}
   />;

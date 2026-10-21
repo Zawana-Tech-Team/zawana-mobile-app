@@ -17,6 +17,7 @@ import { AuthIcon } from "@/components/auth/ui/auth-icon";
 import { authColors } from "@/components/auth/ui/tokens";
 import { PrimaryButton } from "@/components/auth/ui/auth-button";
 import { BrandLogo } from "@/components/auth/ui/brand-logo";
+import { MemberNavigation } from "@/components/member/ui";
 
 export const colors = {
   ...authColors,
@@ -105,42 +106,7 @@ export function Frame({
             </View>
           </View>
         ) : null}
-        {navigation ? (
-          <View
-            style={[
-              ui.navigation,
-              { paddingBottom: Math.max(insets.bottom, 10) },
-            ]}
-          >
-            {[
-              {
-                name: "Home",
-                route: "/(member)/home" as const,
-                icon: "home" as const,
-              },
-              {
-                name: "Book",
-                route: "/(member)/book" as const,
-                icon: "calendar" as const,
-              },
-              {
-                name: "My Bookings",
-                route: "/(member)/bookings" as const,
-                icon: "badminton" as const,
-              },
-            ].map((item) => (
-              <Pressable
-                key={item.name}
-                accessibilityRole="button"
-                onPress={() => router.replace(item.route)}
-                style={ui.navItem}
-              >
-                <AuthIcon name={item.icon} />
-                <Text style={ui.navText}>{item.name}</Text>
-              </Pressable>
-            ))}
-          </View>
-        ) : null}
+        {navigation ? <MemberNavigation activeTab="Book" /> : null}
       </View>
     </View>
   );
@@ -338,20 +304,6 @@ export const ui = StyleSheet.create({
   legendItem: { flexDirection: "row", gap: 6, alignItems: "center" },
   dot: { width: 14, height: 14, borderRadius: 7 },
   legendText: { fontSize: 12, color: colors.muted },
-  navigation: {
-    flexDirection: "row",
-    borderTopWidth: 1,
-    borderColor: "#ECEEF4",
-    paddingTop: 8,
-  },
-  navItem: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    minHeight: 48,
-    gap: 4,
-  },
-  navText: { fontSize: 11, color: colors.navy },
   badge: {
     backgroundColor: colors.amber,
     paddingHorizontal: 10,

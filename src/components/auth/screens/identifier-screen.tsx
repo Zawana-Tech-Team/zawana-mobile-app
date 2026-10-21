@@ -48,7 +48,7 @@ export function IdentifierScreen({ signup = false }: { signup?: boolean }) {
         else if (status === "profile-required")
           router.replace("/create-account");
         else if (status === "link-required")
-          router.replace("/password");
+          throw new Error("This phone number has conflicting account details. Contact ZAWANA support.");
         else if (status === "registration-password-required")
           router.replace("/set-password");
         else if (status !== "authenticated")

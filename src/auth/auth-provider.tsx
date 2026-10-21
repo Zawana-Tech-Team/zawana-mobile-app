@@ -86,7 +86,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (
       ![
         "profile-required",
-        "password-required",
         "registration-password-required",
         "link-required",
       ].includes(state.status)
@@ -310,15 +309,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       identity: { getIdToken(force?: boolean): Promise<string> },
       generation: number,
     ) => {
+      const intent = runtime.state.intent;
       const proof = await api.phoneChallenge(
         await identity.getIdToken(true),
-        runtime.state.intent,
+        intent,
       );
       if (generation !== runtime.state.generation)
         throw new AuthError("cancelled", "Verification was cancelled.");
-      if (runtime.state.intent === "signin" && proof.next === "password")
-        // The challenge's legacy next value also supports older app versions.
-        // Current phone sign-in exchanges the proof without a password screen.
+      if (intent === "signin")
         return acceptSession(
           await api.phoneLogin(proof.challengeToken, runtime.state.remember),
           generation,
@@ -326,7 +324,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       runtime.set("challenge", proof);
       const status: SessionStatus = runtime.state.registrationReady
         ? "registration-password-required"
-        : runtime.state.intent === "link" || proof.next === "link-account"
+        : intent === "link" || proof.next === "link-account"
           ? "link-required"
           : "profile-required";
       emit(status);

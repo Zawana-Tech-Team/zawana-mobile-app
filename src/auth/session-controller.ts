@@ -6,7 +6,6 @@ export type SessionStatus =
   | "anonymous"
   | "profile-required"
   | "authenticated"
-  | "password-required"
   | "link-required"
   | "registration-password-required"
   | "error";

@@ -2,6 +2,7 @@ import { useCallback, useState } from "react";
 import { router } from "expo-router";
 import { Image } from "expo-image";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import { BookingTabs } from "./booking-tabs";
 import { useAuth } from "@/auth/auth-provider";
 import { useBooking } from "@/booking/provider";
 import { bookingGroup, dateLabel, money, statusLabel } from "@/booking/domain";
@@ -31,7 +32,8 @@ export function BookingsScreen() {
     (b) => b.kind === "court" && bookingGroup(b) === filter,
   );
   return (
-    <Frame title="My Bookings" testID="my-bookings" navigation brandHeader>
+    <Frame title="Book a Court" testID="my-bookings" navigation>
+      <BookingTabs active="bookings" />
       <View style={{ gap: 4 }}>
         <Heading>My Bookings</Heading>
         <Body>View and manage all your court bookings.</Body>
@@ -126,10 +128,6 @@ export function BookingsScreen() {
       ))}
       <LinkButton label="Refresh bookings" onPress={resource.retry} />
       <Body>Reservations shown here are linked to your ZAWANA account.</Body>
-      <LinkButton
-        label="Book a Court"
-        onPress={() => router.push("/(member)/book")}
-      />
     </Frame>
   );
 }

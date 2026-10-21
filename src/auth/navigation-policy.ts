@@ -14,7 +14,7 @@ export function sessionNavigation(
     restoring: state.status === "loading",
     landing: member
       ? "/home"
-      : state.status === "password-required" || state.status === "link-required"
+      : state.status === "link-required"
         ? "/password"
         : state.status === "registration-password-required"
           ? "/set-password"

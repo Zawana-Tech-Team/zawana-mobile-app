@@ -4,6 +4,7 @@ import { useState } from 'react';
 import {
   ActivityIndicator,
   Modal,
+  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -31,6 +32,8 @@ export type MemberHomeScreenProps = {
   onProfile?: () => void;
   onBook?: () => void;
   onServices?: () => void;
+  onMembership?: () => void;
+  onPrivateCourse?: () => void;
   onActivity?: () => void;
   /** Disable when the containing Expo Router navigator supplies native tabs. */
   showNavigation?: boolean;
@@ -156,7 +159,7 @@ function HomeGlyph({ name, active = false }: { name: 'home' | 'book' | 'services
       strokeWidth={1.6}
       strokeLinecap="round"
       strokeLinejoin="round"
-      accessible={false}
+      {...(Platform.OS === "web" ? {"aria-hidden": true as const} : {accessible: false})}
     >
       {name === 'home' ? <Path d="m3 11 9-8 9 8v10h-6v-7H9v7H3V11Z" /> : null}
       {name === 'book' ? <><Rect x="4" y="5" width="16" height="16" rx="2" /><Path d="M8 3v4m8-4v4M4 10h16" /></> : null}
@@ -182,6 +185,8 @@ export function MemberHomeScreen({
   onProfile,
   onBook,
   onServices,
+  onMembership,
+  onPrivateCourse,
   onActivity,
   showNavigation = true
 }: MemberHomeScreenProps) {
@@ -292,7 +297,7 @@ export function MemberHomeScreen({
                 <Pressable
                   key={action.label}
                   accessibilityRole="button"
-                  onPress={() => action.label === 'Performance' ? openFeature(action.label) : openPanel(action.panel)}
+                  onPress={() => action.label === 'Membership' && onMembership ? onMembership() : action.label === 'Private Coaching' && onPrivateCourse ? onPrivateCourse() : action.label === 'Performance' ? openFeature(action.label) : openPanel(action.panel)}
                   style={[styles.action, fontScale > 1.4 ? styles.actionLarge : null]}
                 >
                   <View style={styles.actionIcon}><AuthIcon name={action.icon} size={21} /></View>
@@ -338,7 +343,7 @@ export function MemberHomeScreen({
             <Pressable
               accessibilityRole="button"
               accessibilityLabel="View your memberships and training packages"
-              onPress={() => openPanel('services')}
+              onPress={() => onMembership ? onMembership() : openPanel('services')}
               style={styles.membership}
             >
               <Image

@@ -40,7 +40,8 @@ const CourtCard = memo(function CourtCard({ court, floor, selected, dimmed, inde
   }));
   const disabled = court.status !== "available";
   return (
-    <Animated.View entering={reduced ? undefined : FadeInDown.duration(550).delay(index * 45)} style={[wide ? styles.wide : styles.flex, animated]}>
+    <Animated.View entering={reduced ? undefined : FadeInDown.duration(550).delay(index * 45)} style={wide ? styles.wide : styles.flex}>
+      <Animated.View style={[{flex: 1}, animated]}>
       <Pressable
         onPress={() => onSelect(court)} disabled={disabled}
         accessibilityRole="button" accessibilityLabel={`${court.name}, ${floor}, ${floor === "6th Floor" ? "red" : "green"} court, ${court.status}`}
@@ -52,6 +53,7 @@ const CourtCard = memo(function CourtCard({ court, floor, selected, dimmed, inde
         <Text style={styles.name}>{court.name}</Text>
         <Text style={[styles.caption, selected && styles.selectedCaption]}>{disabled ? court.status : selected ? "Selected ✓" : "View times"}</Text>
       </Pressable>
+      </Animated.View>
     </Animated.View>
   );
 });
