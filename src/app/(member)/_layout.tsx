@@ -1,3 +1,4 @@
+import { MemberNotificationProvider } from "@/notifications/provider";
 import { useAuth } from "@/auth/auth-provider";
 import { BookingProvider } from "@/booking/provider";
 import { useReducedMotion } from "react-native-reanimated";
@@ -6,7 +7,7 @@ export default function MemberLayout() {
   const { user } = useAuth();
   const reducedMotion = useReducedMotion();
   return (
-    <BookingProvider key={user?.id}>
+    <MemberNotificationProvider key={user?.id}><BookingProvider key={user?.id}>
       <Stack
         screenOptions={{
           headerShown: false,
@@ -14,6 +15,6 @@ export default function MemberLayout() {
           contentStyle: { backgroundColor: "#FFFEFC" },
         }}
       />
-    </BookingProvider>
+    </BookingProvider></MemberNotificationProvider>
   );
 }

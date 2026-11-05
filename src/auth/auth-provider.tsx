@@ -21,6 +21,7 @@ import {
   signInGoogleIdentity,
 } from "./firebase";
 import { ApplicationRuntime } from "./application-runtime";
+import { isMobileRole } from "./navigation-policy";
 import { normalizePhone } from "./validation";
 import {
   clearRegistrationDraft,
@@ -122,7 +123,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       if (generation !== runtime.state.generation)
         throw new AuthError("cancelled", "Sign-in was cancelled.");
       if (
-        result.user.role !== "member" ||
+        !isMobileRole(result.user.role) ||
         result.security.mfaRequired ||
         !/^[A-Za-z0-9_-]{43}$/.test(result.accessToken) ||
         !/^[A-Za-z0-9_-]{43}$/.test(result.refreshToken)

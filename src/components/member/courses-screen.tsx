@@ -1,4 +1,4 @@
-import { router } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import * as WebBrowser from "expo-web-browser";
 import { useCallback, useEffect, useState } from "react";
 import { Text, View } from "react-native";
@@ -21,6 +21,7 @@ import {
   s,
 } from "./ui";
 export function CoursesScreen() {
+  const { id } = useLocalSearchParams<{ id?: string }>();
   const { api, user } = useAuth(),
     task = useFormTask();
   const resource = useResource(
@@ -64,7 +65,7 @@ export function CoursesScreen() {
         error={resource.error ?? task.error}
         onRetry={resource.retry}
       />
-      {resource.data?.map((b, i) => {
+      {resource.data?.filter(b => !id || b.id === id).map((b, i) => {
         const deadline = b.paymentExpiresAt ?? b.reservationExpiresAt;
         const remaining = deadline ? Date.parse(deadline) - now : 0;
         const payable = b.status === "AWAITING_PAYMENT" && remaining > 0;

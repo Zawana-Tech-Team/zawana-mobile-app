@@ -1,0 +1,8 @@
+Screenshot member-bookings-390
+Screenshot member-bookings-320
+Screenshot member-attendance-320
+Screenshot member-attendance-calendar-320
+Screenshot member-attendance-390
+Screenshot coach-finance-filters
+Screenshot coach-available-cash
+{"passed":10,"pageErrors":0}

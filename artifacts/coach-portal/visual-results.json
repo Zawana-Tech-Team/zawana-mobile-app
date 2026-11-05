@@ -1,0 +1,37 @@
+{
+  "checks": [
+    {
+      "check": "UI password sign-in",
+      "role": "member"
+    },
+    {
+      "screenshot": "member-bookings-390.png"
+    },
+    {
+      "screenshot": "member-bookings-320.png"
+    },
+    {
+      "screenshot": "member-attendance-320.png"
+    },
+    {
+      "screenshot": "member-attendance-calendar-320.png"
+    },
+    {
+      "screenshot": "member-attendance-390.png"
+    },
+    {
+      "check": "UI password sign-in",
+      "role": "coach"
+    },
+    {
+      "screenshot": "coach-finance-filters.png"
+    },
+    {
+      "screenshot": "coach-available-cash.png"
+    },
+    {
+      "check": "Finance date/source/method/payment/booking filters work and handovers reload unfiltered available cash"
+    }
+  ],
+  "errors": []
+}

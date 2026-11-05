@@ -1,0 +1,70 @@
+{
+  "checks": [
+    {
+      "check": "UI password sign-in",
+      "role": "coach"
+    },
+    {
+      "screenshot": "coach-home.png"
+    },
+    {
+      "screenshot": "coach-month-calendar.png"
+    },
+    {
+      "check": "Coach month calendar contains assigned booking and selects day"
+    },
+    {
+      "screenshot": "coach-attendance-notes.png"
+    },
+    {
+      "check": "Coach attendance and notes persisted with preserved arrival timestamp"
+    },
+    {
+      "screenshot": "coach-session-notification.png"
+    },
+    {
+      "screenshot": "coach-notifications.png"
+    },
+    {
+      "screenshot": "coach-customers.png"
+    },
+    {
+      "screenshot": "coach-booking-review.png"
+    },
+    {
+      "check": "Coach-locked cash booking confirmed, receipt persisted and duplicate request replay safe"
+    },
+    {
+      "screenshot": "coach-handover-review.png"
+    },
+    {
+      "screenshot": "coach-handover-submitted.png"
+    },
+    {
+      "check": "Lost handover response survived page reload/re-login and recovered the same committed request without duplication"
+    },
+    {
+      "check": "UI password sign-in",
+      "role": "badminton_fo"
+    },
+    {
+      "screenshot": "fo-handover-received.png"
+    },
+    {
+      "check": "Partial coach handover, duplicate protection, over-allocation/FO-source/self-receipt denials, authorized FO receipt"
+    },
+    {
+      "check": "Eligible confirmed private session completed and a new owned request declined through server-confirmed UI"
+    },
+    {
+      "check": "Actual handover receipt and single allocation persisted"
+    },
+    {
+      "screenshot": "coach-profile-320.png"
+    },
+    {
+      "check": "Coach navigation, small screen profile and logout"
+    }
+  ],
+  "errors": []
+}

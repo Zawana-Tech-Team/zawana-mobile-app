@@ -142,6 +142,7 @@ expo-env.d.ts
 # @end expo-cli
 
 # Local Expo preview artifacts
+.expo/
 .expo/cache/
 .expo/dev/
 

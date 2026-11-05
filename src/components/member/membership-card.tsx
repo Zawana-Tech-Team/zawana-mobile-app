@@ -13,7 +13,7 @@ export function MembershipCard({
 }) {
   return (
     <LinearGradient
-      colors={["#202A51", "#11182F", "#29334F"]}
+      colors={["#20295F", "#101747", "#293369"]}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
       style={styles.card}

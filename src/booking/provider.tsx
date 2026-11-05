@@ -10,10 +10,11 @@ import {
 import * as Crypto from "expo-crypto";
 import { useAuth } from "@/auth/auth-provider";
 import { AuthError, sanitizeAuthError } from "@/auth/errors";
-import { secureDeviceStorage } from "@/auth/storage";
+import { bookingStorage } from "./storage";
 import { recoverSubmission, SingleSubmission } from "./submission";
 import { bookingResult } from "./validation";
 import { isSlotAvailable, reconcile, toggleSlot } from "./domain";
+import { mergeSelectedSlots } from "./selection";
 import type { Availability, BookingInput, BookingResult, Slot } from "./types";
 
 type Pending = { key: string; input: BookingInput };
@@ -29,6 +30,7 @@ type BookingState = {
   revision: number;
   setDates: (dates: string[]) => void;
   toggle: (slot: Slot, limit: number) => void;
+  addSlots: (slots: Slot[], limit: number, replaceIds?: string[]) => void;
   remove: (id: string) => void;
   setNotes: (notes: string) => void;
   refresh: (availability: Availability) => void;
@@ -69,7 +71,7 @@ export function BookingProvider({ children }: { children: ReactNode }) {
   const key = `booking.pending.v1.${user?.id || ""}`;
   useEffect(() => {
     let active = true;
-    void secureDeviceStorage
+    void bookingStorage
       .getItem(key)
       .then((raw) => {
         if (!active) return;
@@ -175,7 +177,7 @@ export function BookingProvider({ children }: { children: ReactNode }) {
               meta: notes,
             },
           };
-          await secureDeviceStorage.setItem(key, JSON.stringify(attempt));
+          await bookingStorage.setItem(key, JSON.stringify(attempt));
           pending.current = attempt;
           setPendingState(true);
         }
@@ -218,7 +220,7 @@ export function BookingProvider({ children }: { children: ReactNode }) {
         pending.current = null;
         setPendingState(false);
         invalidate();
-        await secureDeviceStorage.removeItem(key).catch(() => undefined);
+        await bookingStorage.removeItem(key).catch(() => undefined);
         return response;
       } catch (error) {
         const failure = sanitizeAuthError(error);
@@ -228,7 +230,7 @@ export function BookingProvider({ children }: { children: ReactNode }) {
         ) {
           pending.current = null;
           setPendingState(false);
-          await secureDeviceStorage.removeItem(key).catch(() => undefined);
+          await bookingStorage.removeItem(key).catch(() => undefined);
           invalidate();
         }
         throw failure;
@@ -268,6 +270,9 @@ export function BookingProvider({ children }: { children: ReactNode }) {
         },
         toggle: (slot, limit) => {
           if (canEdit()) setSlots((s) => toggleSlot(s, slot, limit));
+        },
+        addSlots: (next, limit, replaceIds) => {
+          if (canEdit()) setSlots(previous => mergeSelectedSlots(previous, next, limit, replaceIds));
         },
         remove: (id) => {
           if (canEdit()) setSlots((s) => s.filter((slot) => slot.id !== id));

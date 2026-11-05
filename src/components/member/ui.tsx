@@ -1,38 +1,43 @@
-import type { ReactNode } from "react";
+import { BrandLogo } from "../auth/ui/brand-logo";
+import { ContextSurface } from "../shared/context-surface";
+import { NotificationBell } from "./notification-bell";
+import { brand } from "@/design/tokens";
+import { useState, type ReactNode } from "react";
 import { router, type Href } from "expo-router";
 import {
   ActivityIndicator,
-  Modal,
   Pressable,
   ScrollView,
   StyleSheet,
   Text,
   View,
+  useWindowDimensions,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Animated, {
   FadeInDown,
+  ReduceMotion,
   useReducedMotion,
 } from "react-native-reanimated";
 import { AuthIcon, type AuthIconName } from "../auth/ui/auth-icon";
 import { SelectionPressable } from "../booking/selection-pressable";
 
 export const colors = {
-  navy: "#151B3D",
-  gold: "#C9A459",
-  paper: "#FAF9F6",
+  navy: brand.navy,
+  gold: brand.gold,
+  paper: brand.page,
   white: "#FFFFFF",
-  muted: "#7A7F90",
-  line: "#E9E7E2",
-  cream: "#F3EDDF",
+  muted: brand.muted,
+  line: brand.border,
+  cream: brand.goldSoft,
   green: "#24745D",
   red: "#B14750",
 };
 const tabs: { label: string; icon: AuthIconName; href: Href }[] = [
   { label: "Home", icon: "home", href: "/(member)/home" },
-  { label: "Book", icon: "calendar", href: "/(member)/book" },
   { label: "Services", icon: "badminton", href: "/(member)/services" },
-  { label: "Activity", icon: "heart", href: "/(member)/courses" },
+  { label: "My Bookings", icon: "calendar", href: "/(member)/bookings" },
+  { label: "Performance", icon: "heart", href: "/(member)/attendance" },
   { label: "Profile", icon: "person", href: "/(member)/profile" },
 ];
 export function MemberPage({
@@ -45,6 +50,8 @@ export function MemberPage({
   footer,
   scrollKey,
   onBack,
+  wide = false,
+  sectionLabel = "BADMINTON CLUB",
 }: {
   title: string;
   eyebrow?: string;
@@ -55,11 +62,13 @@ export function MemberPage({
   footer?: ReactNode;
   scrollKey?: string | number;
   onBack?: () => void;
+  wide?: boolean;
+  sectionLabel?: string;
 }) {
   const inset = useSafeAreaInsets();
   return (
     <View style={[s.root, { paddingTop: inset.top }]}>
-      <View style={s.container}>
+      <View style={[s.container, wide && { maxWidth: 960 }]}>
         <View style={s.top}>
           <Pressable
             accessibilityRole="button"
@@ -73,12 +82,10 @@ export function MemberPage({
             }
             style={s.icon}
           >
-            <AuthIcon name={back ? "back" : "badminton"} color={colors.navy} />
+            {back ? <AuthIcon name="back" color={colors.navy} /> : <BrandLogo size={44} />}
           </Pressable>
           <Text style={s.brand}>{eyebrow}</Text>
-          <View style={s.icon}>
-            <View style={s.brandDot} />
-          </View>
+          <NotificationBell />
         </View>
         <ScrollView
           key={scrollKey}
@@ -86,12 +93,12 @@ export function MemberPage({
           showsVerticalScrollIndicator={false}
           keyboardShouldPersistTaps="handled"
         >
-          <Text style={s.eyebrow}>BADMINTON CLUB</Text>
+          <Text style={s.eyebrow}>{sectionLabel}</Text>
           <Text accessibilityRole="header" style={s.title}>
             {title}
           </Text>
           {subtitle ? <Text style={s.body}>{subtitle}</Text> : null}
-          {children}
+          {scrollKey !== undefined ? <Animated.View key={scrollKey} entering={FadeInDown.duration(280).reduceMotion(ReduceMotion.System)} style={{ gap: 18 }}>{children}</Animated.View> : children}
         </ScrollView>
         {footer ? <View style={s.footer}>{footer}</View> : null}
         <MemberNavigation activeTab={tab} />
@@ -102,27 +109,31 @@ export function MemberPage({
 /** The same five destinations stay available across member and booking pages. */
 export function MemberNavigation({ activeTab }: { activeTab: string }) {
   const insets = useSafeAreaInsets();
+  const { width } = useWindowDimensions();
+  const selectedTab = activeTab === "Activity" ? "My Bookings" : ["Book", "Badminton", "Services"].includes(activeTab) ? "Services" : activeTab;
   return (
     <View style={[s.tabs, { paddingBottom: Math.max(insets.bottom, 10) }]}>
       {tabs.map((t) => (
         <Pressable
           key={t.label}
           accessibilityRole="tab"
-          accessibilityState={{ selected: activeTab === t.label }}
+          accessibilityState={{ selected: selectedTab === t.label }}
+          aria-selected={selectedTab === t.label}
           accessibilityLabel={t.label}
-          testID={`member-tab-${t.label.toLowerCase()}`}
+          testID={`member-tab-${t.label.toLowerCase().replaceAll(" ", "-")}`}
           onPress={() => router.replace(t.href)}
           style={s.tab}
         >
           <AuthIcon
             name={t.icon}
             size={21}
-            color={activeTab === t.label ? colors.gold : colors.muted}
+            color={selectedTab === t.label ? colors.gold : colors.muted}
           />
           <Text
             style={[
               s.tabText,
-              activeTab === t.label && {
+              width < 360 && { fontSize: 9 },
+              selectedTab === t.label && {
                 color: colors.navy,
                 fontWeight: "700",
               },
@@ -130,7 +141,7 @@ export function MemberNavigation({ activeTab }: { activeTab: string }) {
           >
             {t.label}
           </Text>
-          {activeTab === t.label ? <View style={s.activeDot} /> : null}
+          {selectedTab === t.label ? <View style={s.activeDot} /> : null}
         </Pressable>
       ))}
     </View>
@@ -279,6 +290,7 @@ export function Confirm({
   error,
   onClose,
   onConfirm,
+  children,
 }: {
   visible: boolean;
   title: string;
@@ -288,25 +300,12 @@ export function Confirm({
   error?: string | null;
   onClose: () => void;
   onConfirm: () => void;
+  children?: ReactNode;
 }) {
-  return (
-    <Modal
-      visible={visible}
-      transparent
-      animationType="fade"
-      onRequestClose={() => !busy && onClose()}
-    >
-      <View style={s.scrim}>
-        <View style={s.dialog} accessibilityViewIsModal>
-          <Text style={s.sectionTitle}>{title}</Text>
-          <Text style={s.body}>{body}</Text>
-          <Notice error={error} />
-          <Button label={label} busy={busy} onPress={onConfirm} />
-          <Button secondary label="Go back" disabled={busy} onPress={onClose} />
-        </View>
-      </View>
-    </Modal>
-  );
+  const [lastContent, setLastContent] = useState({ title, body, label });
+  if (visible && (lastContent.title !== title || lastContent.body !== body || lastContent.label !== label)) setLastContent({ title, body, label });
+  const content = visible ? { title, body, label } : lastContent;
+  return <ContextSurface title={content.title} visible={visible} busy={busy} onClose={onClose} footer={<><Button label={content.label} busy={busy} onPress={onConfirm} /><Button secondary label="Go back" disabled={busy} onPress={onClose} /></>}><Text style={s.body}>{content.body}</Text>{children}<Notice error={error} /></ContextSurface>;
 }
 export const money = (price: number) => `${price.toLocaleString("en-US")} MMK`;
 export const shortDate = (value: string) =>
@@ -424,8 +423,8 @@ export const s = StyleSheet.create({
     borderColor: colors.line,
     backgroundColor: colors.white,
   },
-  tab: { flex: 1, alignItems: "center", gap: 5, minHeight: 50 },
-  tabText: { fontSize: 10, color: colors.muted },
+  tab: { flex: 1, alignItems: "center", gap: 5, minHeight: 50, paddingHorizontal: 2 },
+  tabText: { fontSize: 10, color: colors.muted, textAlign: "center" },
   activeDot: {
     width: 4,
     height: 4,

@@ -1,0 +1,21 @@
+Screenshot badminton-hub
+Screenshot badminton-hub-320
+Screenshot rental-time
+Screenshot rental-floor
+Screenshot rental-court
+Screenshot rental-review
+Screenshot court-booking-detail
+Screenshot rental-floor
+Screenshot rental-court
+Screenshot reschedule-review
+Screenshot private-coach
+Screenshot private-review
+Screenshot booking-history
+Screenshot packages-explore
+Screenshot packages-history
+Screenshot attendance-calendar
+Screenshot attendance-calendar-320
+Screenshot multiple-courts
+Screenshot multiple-floors
+Screenshot multiple-courts-review
+{"passed":26,"pageErrors":0}

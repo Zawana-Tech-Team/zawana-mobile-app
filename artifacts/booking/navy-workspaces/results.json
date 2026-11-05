@@ -1,0 +1,114 @@
+{
+  "checks": [
+    {
+      "check": "UI password sign-in",
+      "role": "member"
+    },
+    {
+      "screenshot": "badminton-hub.png"
+    },
+    {
+      "check": "Badminton hub opens check-in with active Badminton navigation"
+    },
+    {
+      "screenshot": "badminton-hub-320.png"
+    },
+    {
+      "screenshot": "rental-time.png"
+    },
+    {
+      "screenshot": "navy-selected-time.png"
+    },
+    {
+      "screenshot": "rental-floor.png"
+    },
+    {
+      "screenshot": "rental-court.png"
+    },
+    {
+      "screenshot": "rental-review.png"
+    },
+    {
+      "check": "Time-date-floor-court booking and atomic edit submitted to real backend",
+      "id": "cmvtwf09h00053qc1iixwjxhb"
+    },
+    {
+      "screenshot": "court-booking-detail.png"
+    },
+    {
+      "screenshot": "navy-selected-time.png"
+    },
+    {
+      "screenshot": "rental-floor.png"
+    },
+    {
+      "screenshot": "rental-court.png"
+    },
+    {
+      "screenshot": "reschedule-review.png"
+    },
+    {
+      "check": "Reschedule quote and confirmed change persisted with audit history"
+    },
+    {
+      "screenshot": "private-coach.png"
+    },
+    {
+      "screenshot": "coach-profile.png"
+    },
+    {
+      "check": "Coach profile shows eligible courses and returns selected coach to date step"
+    },
+    {
+      "screenshot": "private-review.png"
+    },
+    {
+      "check": "Package-coach-date-time-floor-court private request persisted"
+    },
+    {
+      "screenshot": "booking-history.png"
+    },
+    {
+      "screenshot": "packages-explore.png"
+    },
+    {
+      "screenshot": "packages-history.png"
+    },
+    {
+      "screenshot": "attendance-calendar.png"
+    },
+    {
+      "screenshot": "attendance-calendar-320.png"
+    },
+    {
+      "screenshot": "multiple-courts.png"
+    },
+    {
+      "screenshot": "multiple-floors.png"
+    },
+    {
+      "screenshot": "multiple-courts-review.png"
+    },
+    {
+      "check": "Three courts across both floors, two hours each, atomically confirmed by backend",
+      "bookingCount": 6
+    },
+    {
+      "check": "UI password sign-in",
+      "role": "badminton_fo"
+    },
+    {
+      "screenshot": "fo-court-reservations.png"
+    },
+    {
+      "screenshot": "fo-cancellation-review.png"
+    },
+    {
+      "screenshot": "fo-cancellation-approved.png"
+    },
+    {
+      "check": "FO cancellation approval persisted with audit, unchanged payment and independent refund; member review denied"
+    }
+  ],
+  "errors": []
+}

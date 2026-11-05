@@ -1,1 +1,1 @@
-export { TimeScreen as default } from "@/components/booking/time-screen";
+export { RentalFlowScreen as default } from '@/components/booking/rental-flow-screen';

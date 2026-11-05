@@ -1,0 +1,18 @@
+✔ Yangon rescheduling policy includes exactly 24 hours and confirmed status aliases (3.048749ms)
+▶ court changes and attendance corrections persist atomically in an isolated migrated database
+  ✔ ownership, department restriction, quote and confirmed paid reschedule (147.617219ms)
+  ✔ unavailable destinations, holidays, blocks, maintenance and price adjustments preserve the original (110.658794ms)
+  ✔ active payment checkout blocks reschedule and cancellation without changing the reservation (22.323863ms)
+  ✔ concurrent changes and booking creation reserve one destination (54.845915ms)
+  ✔ inside-window manager exception is disabled by default and FO cannot impersonate approver (32.185203ms)
+  ✔ cancellation request, rejection, approval, repeat review and payment separation (69.004625ms)
+  ✔ package debit, concurrent final session, correction restoration and expiry history (119.375855ms)
+✔ court changes and attendance corrections persist atomically in an isolated migrated database (3040.854089ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3758.601945

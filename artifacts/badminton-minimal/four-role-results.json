@@ -1,0 +1,100 @@
+{
+  "testEnvironment": "Isolated SQLite; database-password authentication through test-only transport; no production records",
+  "checks": [
+    {
+      "check": "UI password sign-in",
+      "role": "coach"
+    },
+    {
+      "screenshot": "coach-dashboard-390.png"
+    },
+    {
+      "check": "Coach accepts request after backend confirmation"
+    },
+    {
+      "screenshot": "coach-accepted-request-390.png"
+    },
+    {
+      "screenshot": "coach-cash-receipt-390.png"
+    },
+    {
+      "check": "Cash collection and server receipt"
+    },
+    {
+      "screenshot": "coach-calendar-390.png"
+    },
+    {
+      "check": "Coach attendance persisted"
+    },
+    {
+      "screenshot": "coach-attendance-390.png"
+    },
+    {
+      "check": "UI password sign-in",
+      "role": "badminton_fo"
+    },
+    {
+      "screenshot": "fo-social-qr-390.png"
+    },
+    {
+      "check": "Category-specific FO QR issued"
+    },
+    {
+      "screenshot": "fo-create-booking-390.png"
+    },
+    {
+      "check": "FO member lookup, availability and persisted booking"
+    },
+    {
+      "check": "UI password sign-in",
+      "role": "member"
+    },
+    {
+      "screenshot": "member-attendance-390.png"
+    },
+    {
+      "screenshot": "member-attendance-details-390.png"
+    },
+    {
+      "screenshot": "member-social-preview-390.png"
+    },
+    {
+      "screenshot": "member-social-confirmed-390.png"
+    },
+    {
+      "check": "Social deduction confirmed; duplicate blocked; member denied staff API"
+    },
+    {
+      "screenshot": "member-attendance-320.png"
+    },
+    {
+      "screenshot": "member-attendance-network-error-320.png"
+    },
+    {
+      "check": "Attendance network error and retry recover without fabricated records"
+    },
+    {
+      "check": "UI password sign-in",
+      "role": "admin"
+    },
+    {
+      "screenshot": "admin-overview-390.png"
+    },
+    {
+      "screenshot": "admin-course-catalog-390.png"
+    },
+    {
+      "check": "Admin catalog update persisted"
+    },
+    {
+      "screenshot": "admin-attendance-correction-390.png"
+    },
+    {
+      "check": "Admin attendance correction persisted with required reason"
+    },
+    {
+      "check": "Database assertions: category balances, attendance, price, single payment and created booking"
+    }
+  ],
+  "errors": []
+}

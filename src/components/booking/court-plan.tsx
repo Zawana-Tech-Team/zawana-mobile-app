@@ -28,9 +28,9 @@ export const CourtSurface = memo(function CourtSurface({ floor, disabled = false
   );
 });
 
-const CourtCard = memo(function CourtCard({ court, floor, selected, dimmed, index, onSelect, wide }: {
+const CourtCard = memo(function CourtCard({ court, floor, selected, dimmed, index, onSelect, wide, availability }: {
   court: Court; floor: BookingFloor; selected: boolean; dimmed: boolean;
-  index: number; onSelect: (court: Court) => void; wide: boolean;
+  index: number; onSelect: (court: Court) => void; wide: boolean; availability?: { available: boolean; label: string };
 }) {
   const focus = useSharedValue(0);
   const reduced = useReducedMotion();
@@ -38,34 +38,34 @@ const CourtCard = memo(function CourtCard({ court, floor, selected, dimmed, inde
   const animated = useAnimatedStyle(() => ({
     transform: [{ translateY: focus.get() * -4 }, { scale: 1 + focus.get() * 0.025 }],
   }));
-  const disabled = court.status !== "available";
+  const disabled = court.status !== "available" || availability?.available === false;
   return (
     <Animated.View entering={reduced ? undefined : FadeInDown.duration(550).delay(index * 45)} style={wide ? styles.wide : styles.flex}>
       <Animated.View style={[{flex: 1}, animated]}>
       <Pressable
         onPress={() => onSelect(court)} disabled={disabled}
-        accessibilityRole="button" accessibilityLabel={`${court.name}, ${floor}, ${floor === "6th Floor" ? "red" : "green"} court, ${court.status}`}
-        accessibilityHint="Opens available playing times" accessibilityState={{ selected, disabled }}
+        accessibilityRole="button" accessibilityLabel={`${court.name}, ${floor}, ${floor === "6th Floor" ? "red" : "green"} court, ${availability?.label ?? court.status}`}
+        accessibilityHint={availability?.label ?? "Opens available playing times"} accessibilityState={{ selected, disabled }} aria-selected={selected}
         testID={`court-${court.id}`}
         style={[styles.card, selected && styles.selected, dimmed && styles.dimmed, disabled && styles.disabled]}
       >
         <CourtSurface floor={floor} disabled={disabled} />
         <Text style={styles.name}>{court.name}</Text>
-        <Text style={[styles.caption, selected && styles.selectedCaption]}>{disabled ? court.status : selected ? "Selected ✓" : "View times"}</Text>
+        <Text style={[styles.caption, selected && styles.selectedCaption]}>{selected ? "Selected ✓" : availability?.label ?? (disabled ? court.status : "View times")}</Text>
       </Pressable>
       </Animated.View>
     </Animated.View>
   );
 });
 
-export function CourtPlan({ courts, floor, selectedId, onSelect }: {
-  courts: Court[]; floor: BookingFloor; selectedId?: string; onSelect: (court: Court) => void;
+export function CourtPlan({ courts, floor, selectedId, selectedIds, onSelect, availability }: {
+  courts: Court[]; floor: BookingFloor; selectedId?: string; selectedIds?: string[]; onSelect: (court: Court) => void; availability?: Record<string, { available: boolean; label: string }>;
 }) {
   const { fontScale } = useWindowDimensions();
   const wide = courts.length > 4 || fontScale > 1.3;
   const cards = courts.map((court, index) => (
     <CourtCard key={court.id} court={court} floor={floor} index={index} onSelect={onSelect}
-      selected={court.id === selectedId} dimmed={!!selectedId && court.id !== selectedId} wide={wide} />
+      selected={selectedIds ? selectedIds.includes(court.id) : court.id === selectedId} dimmed={!selectedIds && !!selectedId && court.id !== selectedId} wide={wide} availability={availability?.[court.id]} />
   ));
   return (
     <View style={styles.scene} testID="booking-court-plan">
@@ -75,7 +75,7 @@ export function CourtPlan({ courts, floor, selectedId, onSelect }: {
           {wide ? <ScrollView horizontal showsHorizontalScrollIndicator contentContainerStyle={styles.row}>{cards}</ScrollView> : <View style={styles.row}>{cards}</View>}
         </View>
         <Text style={[journeyStyles.strong, styles.center]}>{courts.length === 4 ? "All four courts in one view" : `${courts.length} courts on this floor`}</Text>
-        <Text style={[journeyStyles.caption, styles.center]}>Tap a court to choose a time</Text>
+        <Text style={[journeyStyles.caption, styles.center]}>{availability ? "Availability for your selected date and time" : "Tap a court to choose a time"}</Text>
       </View>
     </View>
   );

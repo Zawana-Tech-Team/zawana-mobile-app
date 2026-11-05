@@ -1,3 +1,4 @@
+import { brand } from "@/design/tokens";
 import type { ReactNode } from "react";
 import { router } from "expo-router";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
@@ -7,9 +8,9 @@ import { dateLabel } from "@/booking/domain";
 import { AuthIcon } from "@/components/auth/ui/auth-icon";
 import { SelectionPressable } from "./selection-pressable";
 
-// Sampled visually from the user-supplied flow reference; isolated to this journey.
+// Shared mobile navy and gold, including the established building journey.
 export const journeyColors = {
-  navy: "#211D4E", muted: "#747186", gold: "#C4B142",
+  navy: brand.navy, muted: brand.muted, gold: brand.gold,
   cream: "#F7F4E5", soft: "#F4F3F8", outline: "#DDDDE3",
   paper: "#FFFFFF", disabled: "#D6D6D8", faint: "#AAA8B7",
 } as const;

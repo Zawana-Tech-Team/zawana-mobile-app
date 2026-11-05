@@ -1,0 +1,77 @@
+{
+  "environment": "Isolated backend; actual business APIs",
+  "checks": [
+    {
+      "check": "UI password sign-in",
+      "role": "coach"
+    },
+    {
+      "screenshot": "coach-upcoming-390.png"
+    },
+    {
+      "screenshot": "coach-month-390.png"
+    },
+    {
+      "screenshot": "coach-attendance-390.png"
+    },
+    {
+      "screenshot": "coach-attendance-actions.png"
+    },
+    {
+      "screenshot": "coach-private-coaching-390.png"
+    },
+    {
+      "screenshot": "coach-finance-390.png"
+    },
+    {
+      "screenshot": "coach-cash-handovers-390.png"
+    },
+    {
+      "screenshot": "coach-notifications-390.png"
+    },
+    {
+      "screenshot": "coach-notification-detail.png"
+    },
+    {
+      "screenshot": "coach-upcoming-320.png"
+    },
+    {
+      "check": "Coach default calendar, five badminton tabs, tap disclosures and no Gym API requests"
+    },
+    {
+      "check": "UI password sign-in",
+      "role": "member"
+    },
+    {
+      "screenshot": "member-attendance-390.png"
+    },
+    {
+      "screenshot": "member-attendance-detail.png"
+    },
+    {
+      "screenshot": "member-attendance-summary.png"
+    },
+    {
+      "screenshot": "member-packages-390.png"
+    },
+    {
+      "screenshot": "member-package-detail.png"
+    },
+    {
+      "screenshot": "member-package-explore.png"
+    },
+    {
+      "screenshot": "member-explore-detail.png"
+    },
+    {
+      "screenshot": "member-packages-320.png"
+    },
+    {
+      "screenshot": "member-attendance-320.png"
+    },
+    {
+      "check": "Member calendar, summaries, package balances and detail disclosures at 390 and 320px"
+    }
+  ],
+  "errors": []
+}

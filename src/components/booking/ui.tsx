@@ -37,6 +37,7 @@ export function Frame({
   navigation = false,
   testID,
   brandHeader = false,
+  activeTab = "Book",
 }: {
   title: string;
   children: ReactNode;
@@ -47,6 +48,7 @@ export function Frame({
   navigation?: boolean;
   testID: string;
   brandHeader?: boolean;
+  activeTab?: string;
 }) {
   const insets = useSafeAreaInsets();
   return (
@@ -106,7 +108,7 @@ export function Frame({
             </View>
           </View>
         ) : null}
-        {navigation ? <MemberNavigation activeTab="Book" /> : null}
+        {navigation ? <MemberNavigation activeTab={activeTab} /> : null}
       </View>
     </View>
   );

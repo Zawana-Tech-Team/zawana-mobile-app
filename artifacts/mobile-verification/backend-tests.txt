@@ -1,0 +1,135 @@
+✔ attendance calendar scopes roles and persists idempotent course check-ins (4981.181583ms)
+API error { name: 'ZodError', code: undefined }
+API error { name: 'ZodError', code: undefined }
+▶ category check-in: sqlite HTTP, ownership, balances and concurrency
+  ✔ category-required issuance, roles, secure token, display rename and one-hour expiry (221.016806ms)
+  ✔ Social ignores earlier-expiring Foundation; preview does not deduct; same-day categories allowed (261.18261ms)
+  ✔ no matching category never falls back, missing Pathway and expired/exhausted errors preserve balances (134.571118ms)
+  ✔ earliest eligible expiry, deterministic tie break and exhausted fallback (163.835364ms)
+  ✔ staff ID is a selection hint; cross-source duplicates and QR/manual race cannot double-charge (168.42208ms)
+  ✔ concurrent final-session scans commit exactly one ledger and visit (397.963972ms)
+  ✔ preview is revalidated; changed balance chooses another matching package at commit (117.899115ms)
+  ✔ expired, rotated, revoked, category-neutral and unauthorized-issuer codes fail without writes (229.674485ms)
+API error { name: 'ZodError', code: undefined }
+API error { name: 'ZodError', code: undefined }
+API error { name: 'ZodError', code: undefined }
+API error { name: 'ZodError', code: undefined }
+API error { name: 'ZodError', code: undefined }
+API error { name: 'ZodError', code: undefined }
+  ✔ token-only input rejects category/enrollment tampering and cross-member access (229.212286ms)
+  ✔ catalogue changes do not reclassify an enrollment; admin resolution preserves balances/history (286.0869ms)
+✔ category check-in: sqlite HTTP, ownership, balances and concurrency (3042.623802ms)
+﹣ category check-in: postgresql HTTP, ownership, balances and concurrency (0.178876ms) # SKIP
+✔ forward SQLite migration preserves all classified, duplicate and ambiguous history and balances (934.168582ms)
+﹣ forward PostgreSQL chain preserves legacy balances, duplicate visits and unclassified records (0.168739ms) # SKIP
+▶ real HTTP court journey, integrity, ownership and retry recovery
+  ✔ court blocks retrieve date/court/weekly filters and preserve the courtName alias (64.832963ms)
+  ✔ staff can create and update court blocks through the real routes (186.134098ms)
+  ✔ authenticated server-generated availability and date validation (64.467711ms)
+  ✔ availability distinguishes booked, reserved and released backend statuses (272.056972ms)
+  ✔ maintenance and elapsed slots cannot be booked (52.979586ms)
+  ✔ atomic persisted unpaid reservation and safe replay (99.930143ms)
+  ✔ weekly block creation respects uppercase confirmed bookings (21.063193ms)
+  ✔ calendar, ownership and authorisation (124.969069ms)
+  ✔ 24-hour weekly blocks match web availability and reject every court payload shape (95.783972ms)
+  ✔ invalid slots, facility blocks, closure and holiday pricing (165.060684ms)
+  ✔ multi-selection conflicts roll back every row and receipt (29.399079ms)
+  ✔ two concurrent HTTP clients cannot take the same slot (55.732834ms)
+  ✔ concurrent duplicate requests reuse one committed receipt (54.535439ms)
+  ✔ database protects alternate writers, aliases and status reactivation (50.886851ms)
+  ✔ cancellation releases availability and is repeatable (46.468835ms)
+  ✔ service supports legacy single/slots inputs without a retry header (20.00627ms)
+✔ real HTTP court journey, integrity, ownership and retry recovery (4553.736698ms)
+✔ email release preserves deleted identity ownership and permits a separate fresh account (441.499987ms)
+✔ phone proof requires fresh primary phone authentication and Myanmar E.164 (0.860522ms)
+✔ email, Google, Apple, and explicitly linked phone resolve one preserved User ID (613.077812ms)
+✔ phone token, password alone, and challenge capability cannot access a business API (394.119419ms)
+✔ email password failures never consume or gate an independently verified phone sign-in (350.439168ms)
+✔ successful phone authentication consumes proof and prevents replay (470.172938ms)
+✔ provider spoofing, inactive users, and unsupported mobile roles are denied (513.622385ms)
+✔ matching email does not merge Google or Apple into an existing account (675.840299ms)
+✔ an identity already linked to another User cannot be merged (345.928991ms)
+✔ social onboarding requires profile, phone and password, without an email verification step (294.69709ms)
+✔ refresh rotation revokes replayed families and keeps credentials hashed (269.981815ms)
+✔ Firebase revocation, expiry, and account disablement invalidate existing sessions (238.572438ms)
+✔ HTTP session exchange, protected API, origin checks, and logout enforce the complete boundary (333.694921ms)
+✔ new phone registration keeps OTP and password in separate Firebase identities for one User (251.593391ms)
+✔ concurrent registration completion creates one User and one authorized session (248.710072ms)
+✔ phone OTP sign-in does not require a separate canonical password identity (204.427138ms)
+✔ adding a password or social provider to a phone alias cannot bypass the canonical password (212.299791ms)
+✔ password reset revokes sessions established through a separately linked Google identity (254.885577ms)
+✔ canonical MFA cannot be bypassed using a separately linked social identity (195.051928ms)
+✔ a member mobile session cannot inherit staff API privileges after a role change (198.958758ms)
+✔ new MFA enrollment invalidates sessions missing a second-factor proof (191.366615ms)
+✔ account checks detect registered emails, linked phones and legacy formatted phones without authorizing them (251.345335ms)
+✔ phone OTP sign-in works independently of email verification or password availability (446.673774ms)
+✔ phone OTP signs in the enrolled member without a password and consumes the proof once (339.848728ms)
+▶ phone OTP sessions retain canonical revocation, MFA, and mobile role restrictions
+  ✔ canonical-revocation (283.564481ms)
+  ✔ canonical-mfa (209.431648ms)
+  ✔ phone-disabled (262.698813ms)
+  ✔ phone-mfa (306.13356ms)
+  ✔ staff (189.970314ms)
+  ✔ inactive (303.950942ms)
+✔ phone OTP sessions retain canonical revocation, MFA, and mobile role restrictions (1557.121604ms)
+▶ phone session exchange rejects expired, unlinked, mismatched, and non-signin challenges
+  ✔ expired (220.638539ms)
+  ✔ unlinked (194.20427ms)
+  ✔ mismatched (191.134741ms)
+  ✔ signup (161.062764ms)
+  ✔ link (195.5157ms)
+✔ phone session exchange rejects expired, unlinked, mismatched, and non-signin challenges (963.572963ms)
+✔ HTTP phone OTP exchange authorizes the protected API without a password; email still requires one (272.901165ms)
+✔ a unique registered contact number signs in through OTP without a prior identity-linking or password step (243.74341ms)
+▶ OTP sign-in refuses ambiguous phone records and UID conflicts without creating accounts or merging users
+  ✔ duplicate-contact (187.075911ms)
+  ✔ different-uid-owner (179.604261ms)
+  ✔ unknown-number (173.846067ms)
+✔ OTP sign-in refuses ambiguous phone records and UID conflicts without creating accounts or merging users (541.269259ms)
+✔ concurrent OTP session exchanges consume one proof and issue one session (222.237069ms)
+▶ supported staff password sessions bind their role and retain refresh and MFA checks
+  ✔ coach (223.728519ms)
+  ✔ admin (211.080478ms)
+  ✔ badminton_fo (193.367576ms)
+✔ supported staff password sessions bind their role and retain refresh and MFA checks (629.008866ms)
+▶ staff sessions cannot survive role promotion, demotion or reassignment
+  ✔ member (207.572576ms)
+  ✔ admin (188.635556ms)
+  ✔ badminton_fo (195.918603ms)
+  ✔ owner (209.400688ms)
+✔ staff sessions cannot survive role promotion, demotion or reassignment (802.545086ms)
+▶ staff private course booking, finance and cash custody
+  ✔ authentication, member search, own eligible catalog (145.756096ms)
+  ✔ FO paid booking posts once, preserves member and rejects impersonation (212.870448ms)
+  ✔ admin records own cash and server controls course price (74.120552ms)
+  ✔ mobile booking reads enforce role scope and omit account secrets (106.52833ms)
+  ✔ coach ownership and own cash payment (104.254211ms)
+  ✔ partial handover reserves cash, requires receiver, never posts revenue (85.142459ms)
+  ✔ online option stays unpaid; unverified receipt cannot confirm (98.848691ms)
+  ✔ concurrent staff requests cannot reserve the same court (87.148673ms)
+  ✔ refund is audited, authorized, idempotent and cancels booking (76.907565ms)
+  ✔ legacy records remain unknown until admin evidence review (144.156976ms)
+✔ staff private course booking, finance and cash custody (4415.630657ms)
+▶ badminton private courses: independent availability, concurrency, acceptance and payment
+  ✔ auth, duration, and response privacy (163.121925ms)
+  ✔ coach conflict and court conflict are independent (146.415391ms)
+  ✔ 24-hour court blocks and malformed time (64.025138ms)
+  ✔ a changed server price requires another explicit review (28.797624ms)
+  ✔ concurrent requests reserve at most once and notify both accounts (104.887292ms)
+  ✔ acceptance gives 24 hours; payment initiation cannot confirm; ownership is enforced (61.5761ms)
+  ✔ expiry releases both resources and prevents late payment (54.692431ms)
+  ✔ rejection and cancellation release resources (163.184842ms)
+  ✔ only signed verified payment confirms once; forged callbacks cannot change bookings (149.324996ms)
+  ✔ package activation and concurrent member check-in debit exactly once (248.569215ms)
+  ✔ verified package payment snapshots category and preserves existing active balances (53.486545ms)
+  ✔ admin catalogue review classifies only unresolved history with an actor audit and no balance changes (84.186719ms)
+  ✔ one coach cannot be reserved concurrently on different courts (65.68946ms)
+✔ badminton private courses: independent availability, concurrency, acceptance and payment (4575.305275ms)
+ℹ tests 110
+ℹ suites 0
+ℹ pass 108
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 2
+ℹ todo 0
+ℹ duration_ms 19007.360808

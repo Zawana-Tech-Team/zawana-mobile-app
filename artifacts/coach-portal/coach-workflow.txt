@@ -1,0 +1,13 @@
+Screenshot coach-home
+Screenshot coach-month-calendar
+Screenshot coach-attendance-notes
+Screenshot coach-notifications
+Screenshot coach-customers
+Screenshot coach-booking-review
+Screenshot coach-handover-review
+Screenshot coach-handover-submitted
+Screenshot fo-handover-received
+Screenshot gym-attendance
+Screenshot gym-completed
+Screenshot coach-profile-320
+{"passed":23,"pageErrors":0}

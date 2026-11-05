@@ -1,0 +1,67 @@
+{
+  "environment": "Isolated migrated SQLite and actual authenticated business API; fixture notices seeded only in temp DB",
+  "checks": [
+    {
+      "check": "UI password sign-in",
+      "role": "member"
+    },
+    {
+      "screenshot": "member-home-390.png"
+    },
+    {
+      "screenshot": "services-390.png"
+    },
+    {
+      "screenshot": "badminton-hub.png"
+    },
+    {
+      "check": "Services replaces Badminton tab; only badminton actionable; existing booking/packages/check-in/private hub preserved"
+    },
+    {
+      "screenshot": "notifications-390.png"
+    },
+    {
+      "check": "Opening booking notification marks actual server record read then navigates to owned booking"
+    },
+    {
+      "screenshot": "notification-detail-sheet.png"
+    },
+    {
+      "screenshot": "notifications-partial-failure.png"
+    },
+    {
+      "screenshot": "profile-390.png"
+    },
+    {
+      "check": "Partial mark-all keeps failed record unread and synchronized badge; retry confirms server read and unread empty state"
+    },
+    {
+      "screenshot": "services-desktop.png"
+    },
+    {
+      "screenshot": "account-dialog-desktop.png"
+    },
+    {
+      "check": "Desktop sheet becomes compact dialog; Tab remains in modal and Escape closes it"
+    },
+    {
+      "screenshot": "home-320.png"
+    },
+    {
+      "screenshot": "services-320.png"
+    },
+    {
+      "screenshot": "signout-confirmation-320.png"
+    },
+    {
+      "check": "320px home, services and confirmation fit with safe reachable actions"
+    },
+    {
+      "screenshot": "payment-records-320.png"
+    },
+    {
+      "check": "Payment records use actual dashboard records and open private courses through their matching workflow"
+    }
+  ],
+  "errors": []
+}

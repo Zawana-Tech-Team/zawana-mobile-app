@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { useBooking } from "@/booking/provider";
 import { dateLabel, money, total } from "@/booking/domain";
 import { sanitizeAuthError } from "@/auth/errors";
+import { StepProgress } from "./flow-ui";
 import {
   Body,
   Feedback,
@@ -42,11 +43,12 @@ export function ReviewScreen() {
         booking.restoring || (!booking.slots.length && !booking.pending)
       }
     >
+      <StepProgress steps={["Time", "Date", "Floor", "Court", "Review"]} current={4} />
       <View style={ui.card}>
         <View style={ui.between}>
           <Heading>Booking Details</Heading>
           {!booking.busy && !booking.pending ? (
-            <LinkButton label="Edit" onPress={() => router.back()} />
+            <LinkButton label="Add sessions" onPress={() => router.push("/(member)/book/dates")} />
           ) : null}
         </View>
         {booking.pending ? (
@@ -68,6 +70,10 @@ export function ReviewScreen() {
                 <Text style={styles.date}>{dateLabel(slot.date)}</Text>
                 <Text style={styles.detail}>{slot.courtName}</Text>
                 <Text style={styles.detail}>{slot.time}</Text>
+                {!booking.busy && !booking.pending ? <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 12 }}>
+                  <LinkButton label={`Edit session ${index + 1}`} onPress={() => router.push({ pathname: "/(member)/book/dates", params: { editId: slot.id } })} />
+                  <LinkButton label={`Remove session ${index + 1}`} onPress={() => booking.remove(slot.id)} />
+                </View> : null}
               </View>
               <Text style={styles.price}>{money(slot.price)}</Text>
             </View>
@@ -82,7 +88,7 @@ export function ReviewScreen() {
         {booking.slots.length ? (
           <View style={styles.totals}>
             <View style={ui.between}>
-              <Body>Subtotal · {booking.slots.length} hours</Body>
+              <Body>Subtotal · {booking.slots.length} {booking.slots.length === 1 ? "hour" : "hours"}</Body>
               <Text style={styles.price}>{money(total(booking.slots))}</Text>
             </View>
             <View style={[ui.between, styles.total]}>

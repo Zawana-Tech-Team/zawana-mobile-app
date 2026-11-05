@@ -1,170 +1,27 @@
-import { useCallback, useState } from "react";
-import { router } from "expo-router";
-import { Image } from "expo-image";
-import { Pressable, StyleSheet, Text, View } from "react-native";
-import { BookingTabs } from "./booking-tabs";
-import { useAuth } from "@/auth/auth-provider";
-import { useBooking } from "@/booking/provider";
-import { bookingGroup, dateLabel, money, statusLabel } from "@/booking/domain";
-import { useResource } from "@/booking/use-resource";
-import {
-  Body,
-  Feedback,
-  Frame,
-  Heading,
-  LinkButton,
-  colors,
-  courtImage,
-  ui,
-} from "./ui";
-export function BookingsScreen() {
-  const { api } = useAuth(),
-    booking = useBooking(),
-    [filter, setFilter] = useState<"upcoming" | "past" | "cancelled">(
-      "upcoming",
-    );
-  const load = useCallback(
-    (signal: AbortSignal) => api.getCourtBookings({ signal }),
-    [api],
-  );
-  const resource = useResource(load, `bookings:${booking.revision}`);
-  const rows = (resource.data || []).filter(
-    (b) => b.kind === "court" && bookingGroup(b) === filter,
-  );
-  return (
-    <Frame title="Book a Court" testID="my-bookings" navigation>
-      <BookingTabs active="bookings" />
-      <View style={{ gap: 4 }}>
-        <Heading>My Bookings</Heading>
-        <Body>View and manage all your court bookings.</Body>
-      </View>
-      <View style={styles.tabs}>
-        {(["upcoming", "past", "cancelled"] as const).map((value) => (
-          <Pressable
-            key={value}
-            accessibilityRole="button"
-            accessibilityState={{ selected: filter === value }}
-            onPress={() => setFilter(value)}
-            style={[styles.tab, filter === value && styles.activeTab]}
-          >
-            <Text
-              style={{
-                color: filter === value ? "white" : colors.navy,
-                textAlign: "center",
-                fontWeight: "600",
-              }}
-            >
-              {statusLabel(value)}
-            </Text>
-          </Pressable>
-        ))}
-      </View>
-      <Feedback
-        loading={resource.loading}
-        loadingLabel="Loading your bookings…"
-        error={resource.error}
-        onRetry={resource.retry}
-        empty={
-          resource.data && !rows.length
-            ? "No reservations here yet. Choose a court to plan your next game."
-            : undefined
-        }
-      />
-      {rows.map((b) => (
-        <Pressable
-          key={b.id}
-          accessibilityRole="button"
-          accessibilityLabel={`View ${b.title}, ${b.date}, ${b.time}`}
-          onPress={() =>
-            router.push({
-              pathname: "/(member)/bookings/[id]",
-              params: { id: b.id },
-            })
-          }
-          testID={`booking-row-${b.id}`}
-          style={styles.card}
-        >
-          <Image source={courtImage} contentFit="cover" style={styles.image} />
-          <View style={ui.between}>
-            <Text style={styles.title}>{b.title}</Text>
-            <View
-              style={[
-                ui.badge,
-                b.status.toUpperCase() === "CONFIRMED" && styles.confirmed,
-              ]}
-            >
-              <Text
-                style={[
-                  ui.badgeText,
-                  b.status.toUpperCase() === "CONFIRMED" &&
-                    styles.confirmedText,
-                ]}
-              >
-                {statusLabel(b.status)}
-              </Text>
-            </View>
-          </View>
-          <View style={ui.between}>
-            <Text style={ui.small}>{b.court?.type || "Badminton court"}</Text>
-            <Text style={ui.small}>
-              {b.paymentStatus === "pending"
-                ? bookingGroup(b) === "cancelled"
-                  ? "Unpaid"
-                  : "Payment pending"
-                : statusLabel(b.paymentStatus)}
-            </Text>
-          </View>
-          <View style={ui.between}>
-            <View style={{ flex: 1, gap: 4 }}>
-              <Text style={ui.small}>{dateLabel(b.date)}</Text>
-              <Text style={ui.small}>{b.time}</Text>
-            </View>
-            <Text style={styles.price}>{money(b.price)}</Text>
-          </View>
-          <View style={styles.details}>
-            <Text style={styles.detailsText}>View Details ›</Text>
-          </View>
-        </Pressable>
-      ))}
-      <LinkButton label="Refresh bookings" onPress={resource.retry} />
-      <Body>Reservations shown here are linked to your ZAWANA account.</Body>
-    </Frame>
-  );
+import { useCallback, useState } from 'react';
+import { router } from 'expo-router';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { useAuth } from '@/auth/auth-provider';
+import { useBooking } from '@/booking/provider';
+import { bookingGroup, dateLabel, money } from '@/booking/domain';
+import { courseStatus } from '@/booking/private-course';
+import { attendanceStart } from '@/attendance/domain';
+import { useResource } from '@/booking/use-resource';
+import { brand } from '@/design/tokens';
+import { Button, MemberPage, Notice } from '../member/ui';
+import { Segments, Metrics } from '../shared/controls';
+import { f } from './flow-ui';
+export function BookingsScreen(){
+ const{api,user}=useAuth(),booking=useBooking();const[kind,setKind]=useState('all'),[period,setPeriod]=useState('upcoming'),[query,setQuery]=useState(''),[limit,setLimit]=useState(20);
+ const resource=useResource(useCallback(async(signal:AbortSignal)=>{const[courts,courses]=await Promise.all([api.getCourtBookings({signal}),api.getPrivateCourseBookings({signal})]);return [...courts.filter(b=>b.kind==='court'),...courses];},[api]),`${user?.id}:${booking.revision}`,!!user);
+ const all=resource.data??[],rows=all.filter(b=>(kind==='all'||b.kind===kind)&&bookingGroup(b)===period&&`${b.title} ${b.code} ${b.date} ${b.time} ${b.court?.name??''}`.toLowerCase().includes(query.trim().toLowerCase())).sort((a,b)=>(period==='upcoming'?a.date.localeCompare(b.date):b.date.localeCompare(a.date))||attendanceStart(a.time)-attendanceStart(b.time));
+ const grouped=[...new Set(rows.slice(0,limit).map(b=>b.date))];
+ return <MemberPage title="Your bookings." subtitle="Every court and coaching session, in one place." tab="My Bookings">
+ <Metrics items={[{label:'Upcoming',value:resource.data?String(all.filter(b=>bookingGroup(b)==='upcoming').length):'—'},{label:'Payment due',value:resource.data?String(all.filter(b=>bookingGroup(b)==='upcoming'&&b.paymentStatus==='pending').length):'—'}]}/>
+ <Segments label="Booking period" value={period} onChange={v=>{setPeriod(v);setLimit(20)}} options={[{value:'upcoming',label:'Upcoming'},{value:'past',label:'History'},{value:'cancelled',label:'Cancelled'}]}/><Segments label="Booking type" value={kind} onChange={v=>{setKind(v);setLimit(20)}} options={[{value:'all',label:'All bookings'},{value:'court',label:'Courts'},{value:'private_course',label:'Coaching'}]}/>
+ <TextInput accessibilityLabel="Search booking history" placeholder="Court, course, date or reference" placeholderTextColor={brand.muted} value={query} onChangeText={v=>{setQuery(v);setLimit(20)}} style={s.search} autoCorrect={false}/><Notice loading={resource.loading} error={resource.error} onRetry={resource.retry}/>
+ {grouped.map(date=><View key={date} style={{gap:12}}><Text style={f.kicker}>{dateLabel(date).toUpperCase()}</Text>{rows.slice(0,limit).filter(b=>b.date===date).map(b=><View key={b.id} style={s.ticket} testID={`booking-row-${b.id}`}><View style={s.top}><View style={s.date}><Text style={s.month}>{new Date(b.date+'T12:00:00Z').toLocaleDateString('en-GB',{month:'short',timeZone:'Asia/Yangon'})}</Text><Text style={s.day}>{Number(b.date.slice(-2))}</Text></View><View style={{flex:1,gap:6}}><Text style={f.kicker}>{b.kind==='court'?'COURT RENTAL':'PRIVATE COACHING'}</Text><Text style={f.title}>{b.title}</Text><Text style={f.caption}>{b.time}</Text></View></View><View style={s.status}><Text style={s.statusText}>{courseStatus(b.status)}</Text></View>{b.court?<Text style={f.caption}>{b.court.name} · {b.court.surface}</Text>:null}<View style={s.divider}/><View style={s.top}><Text style={[f.strong,{flex:1}]}>{money(b.price)}</Text><Text style={f.caption}>{b.paymentStatus==='paid'?'Paid':b.paymentStatus==='refunded'?'Refunded':'Payment pending'}</Text></View>{'paymentExpiresAt'in b&&b.paymentExpiresAt&&b.status==='AWAITING_PAYMENT'?<Text style={[f.caption,{color:brand.accent}]}>Pay by {new Date(b.paymentExpiresAt).toLocaleString('en-GB',{timeZone:'Asia/Yangon'})}</Text>:null}<Text selectable style={f.caption}>{b.code}</Text><Button secondary label={b.kind==='court'?'Manage booking':'View coaching request'} onPress={()=>b.kind==='court'?router.push({pathname:'/(member)/bookings/[id]',params:{id:b.id}}):router.push({pathname:'/(member)/courses',params:{id:b.id}})}/></View>)}</View>)}
+ {resource.data&&!rows.length?<View style={f.card}><Text style={f.title}>{query?'No matching bookings.':'No bookings in this view.'}</Text><Text style={f.caption}>Choose another view or plan your next session.</Text></View>:null}{rows.length>limit?<Button secondary label="Load more bookings" onPress={()=>setLimit(v=>v+20)}/>:null}<View style={{flexDirection:'row',gap:8,flexWrap:'wrap'}}><Button label="Rent a court" onPress={()=>router.push('/(member)/book')}/><Button secondary label="Private coaching" onPress={()=>router.push('/(member)/private-course')}/></View><Button secondary label="Refresh bookings" onPress={resource.retry}/>
+ </MemberPage>;
 }
-
-const styles = StyleSheet.create({
-  tabs: {
-    flexDirection: "row",
-    backgroundColor: colors.soft,
-    borderRadius: 24,
-    padding: 4,
-  },
-  tab: { flex: 1, minHeight: 44, borderRadius: 22, justifyContent: "center" },
-  activeTab: { backgroundColor: colors.navy },
-  card: {
-    backgroundColor: colors.paper,
-    borderRadius: 16,
-    padding: 10,
-    gap: 6,
-    borderWidth: 1,
-    borderColor: colors.outline,
-    shadowColor: colors.navy,
-    shadowOpacity: 0.07,
-    shadowOffset: { width: 0, height: 3 },
-    shadowRadius: 9,
-    elevation: 2,
-  },
-  image: { width: "100%", height: 114, borderRadius: 10 },
-  title: { flex: 1, color: colors.navy, fontWeight: "700", fontSize: 19 },
-  confirmed: { backgroundColor: "#E5F6ED" },
-  confirmedText: { color: "#16744C" },
-  price: { color: colors.goldDark, fontWeight: "700", fontSize: 16 },
-  details: {
-    backgroundColor: colors.navy,
-    minHeight: 44,
-    borderRadius: 9,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  detailsText: { color: "white", fontWeight: "600", fontSize: 14 },
-});
+const s=StyleSheet.create({search:{minHeight:48,padding:14,borderWidth:1,borderColor:brand.border,borderRadius:14,backgroundColor:'#FFFFFF',color:brand.ink},ticket:{padding:18,gap:12,borderWidth:1,borderColor:brand.border,borderRadius:22,backgroundColor:'#FFFFFF'},top:{flexDirection:'row',gap:14,alignItems:'center'},date:{width:55,borderRadius:15,paddingVertical:9,alignItems:'center',gap:2,backgroundColor:brand.goldSoft},month:{fontSize:10,textTransform:'uppercase',color:brand.accent,fontWeight:'700'},day:{fontSize:26,fontWeight:'700',color:brand.navy},status:{alignSelf:'flex-start',paddingHorizontal:11,paddingVertical:6,borderRadius:12,backgroundColor:'#EEF0F7'},statusText:{fontSize:11,fontWeight:'600',color:brand.navy},divider:{height:1,backgroundColor:brand.border}});

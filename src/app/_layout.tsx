@@ -24,6 +24,9 @@ function SessionNavigator() {
         <Stack.Protected guard={policy.member}>
           <Stack.Screen name="(member)" />
         </Stack.Protected>
+        <Stack.Protected guard={policy.staff}>
+          <Stack.Screen name="(staff)" />
+        </Stack.Protected>
       </Stack>
       {policy.restoring ? (
         <View style={styles.restoring} accessibilityViewIsModal testID="session-restoring">

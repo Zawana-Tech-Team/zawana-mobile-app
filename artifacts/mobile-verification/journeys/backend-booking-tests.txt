@@ -1,0 +1,41 @@
+▶ real HTTP court journey, integrity, ownership and retry recovery
+  ✔ court blocks retrieve date/court/weekly filters and preserve the courtName alias (68.676624ms)
+  ✔ staff can create and update court blocks through the real routes (174.80218ms)
+  ✔ authenticated server-generated availability and date validation (53.356881ms)
+  ✔ availability distinguishes booked, reserved and released backend statuses (323.624581ms)
+  ✔ maintenance and elapsed slots cannot be booked (52.612696ms)
+  ✔ atomic persisted unpaid reservation and safe replay (68.103738ms)
+  ✔ weekly block creation respects uppercase confirmed bookings (15.841591ms)
+  ✔ calendar, ownership and authorisation (142.015118ms)
+  ✔ 24-hour weekly blocks match web availability and reject every court payload shape (122.550156ms)
+  ✔ invalid slots, facility blocks, closure and holiday pricing (155.306357ms)
+  ✔ multi-selection conflicts roll back every row and receipt (27.969403ms)
+  ✔ two concurrent HTTP clients cannot take the same slot (43.905143ms)
+  ✔ concurrent duplicate requests reuse one committed receipt (49.441272ms)
+  ✔ database protects alternate writers, aliases and status reactivation (55.03106ms)
+  ✔ cancellation releases availability and is repeatable (58.575593ms)
+  ✔ service supports legacy single/slots inputs without a retry header (18.47135ms)
+✔ real HTTP court journey, integrity, ownership and retry recovery (3977.742808ms)
+▶ badminton private courses: independent availability, concurrency, acceptance and payment
+  ✔ auth, duration, and response privacy (145.319343ms)
+  ✔ coach conflict and court conflict are independent (148.518954ms)
+  ✔ 24-hour court blocks and malformed time (97.511486ms)
+  ✔ a changed server price requires another explicit review (25.355872ms)
+  ✔ concurrent requests reserve at most once and notify both accounts (74.35935ms)
+  ✔ acceptance gives 24 hours; payment initiation cannot confirm; ownership is enforced (93.698947ms)
+  ✔ expiry releases both resources and prevents late payment (42.806984ms)
+  ✔ rejection and cancellation release resources (144.381975ms)
+  ✔ only signed verified payment confirms once; forged callbacks cannot change bookings (176.673412ms)
+  ✔ package activation and concurrent member check-in debit exactly once (212.756354ms)
+  ✔ verified package payment snapshots category and preserves existing active balances (50.416431ms)
+  ✔ admin catalogue review classifies only unresolved history with an actor audit and no balance changes (79.227299ms)
+  ✔ one coach cannot be reserved concurrently on different courts (79.964842ms)
+✔ badminton private courses: independent availability, concurrency, acceptance and payment (3943.901949ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 31
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7518.340226

@@ -39,6 +39,7 @@
         }
       ],
       "expo-secure-store",
+      ["expo-camera", { "cameraPermission": "Allow ZAWANA to scan the front desk check-in QR code.", "microphonePermission": false, "recordAudioAndroid": false, "barcodeScannerEnabled": true }],
       "@react-native-firebase/app",
       "@react-native-firebase/auth",
       "react-native-nitro-google-signin",

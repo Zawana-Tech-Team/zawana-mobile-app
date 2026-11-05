@@ -1,0 +1,53 @@
+✔ attendance calendar scopes roles and persists idempotent course check-ins (6069.285855ms)
+✔ additive gym migration preserves existing membership, attendance, package prices and sessions (876.761861ms)
+▶ real gym HTTP lifecycle, payment verification, shared deduction and authorization
+  ✔ only Admin edits packages; version conflicts and revisions are retained (141.406776ms)
+  ✔ member registration is scoped to member profiles and prevents duplicate email/phone (62.003156ms)
+  ✔ participant counts, stale prices, duplicate enrollments, and retry keys (237.950997ms)
+  ✔ future-only package edits preserve purchased price and validity snapshots (95.143351ms)
+  ✔ unpaid access denied; real checkout is deduplicated; only signed matching KPay callback activates (332.900747ms)
+  ✔ coach availability, transactional conflict checks, retry recovery and rescheduling (301.490685ms)
+  ✔ concurrent group completion deducts once regardless of participant count (162.600989ms)
+  ✔ paid membership activation, unlimited check-in, duplicate protection and renewal (335.508587ms)
+  ✔ failed KPay callbacks never activate; fresh checkout can recover (210.839523ms)
+  ✔ scheduled sessions cannot exceed the shared balance; cancellation releases capacity (344.165023ms)
+  ✔ Admin-configured walk-in is one paid visit; expiry, archive and audit guards (281.720658ms)
+✔ real gym HTTP lifecycle, payment verification, shared deduction and authorization (11433.711651ms)
+✔ gym MMK pricing supports both directions and bounded integer totals (17.607781ms)
+✔ gym participant invariants and training requirements (3.431118ms)
+✔ gym validity uses inclusive dates and calendar-month clamping (6.175881ms)
+▶ staff private course booking, finance and cash custody
+  ✔ authentication, member search, own eligible catalog (157.057602ms)
+  ✔ FO paid booking posts once, preserves member and rejects impersonation (289.984021ms)
+  ✔ admin records own cash and server controls course price (101.233407ms)
+  ✔ mobile booking reads enforce role scope and omit account secrets (155.97916ms)
+  ✔ coach ownership and own cash payment (102.013017ms)
+  ✔ partial handover reserves cash, requires receiver, never posts revenue (109.390473ms)
+  ✔ online option stays unpaid; unverified receipt cannot confirm (169.166968ms)
+  ✔ concurrent staff requests cannot reserve the same court (200.315368ms)
+  ✔ refund is audited, authorized, idempotent and cancels booking (84.329653ms)
+  ✔ legacy records remain unknown until admin evidence review (161.400303ms)
+✔ staff private course booking, finance and cash custody (5177.393193ms)
+▶ badminton private courses: independent availability, concurrency, acceptance and payment
+  ✔ auth, duration, and response privacy (218.222753ms)
+  ✔ coach conflict and court conflict are independent (130.55287ms)
+  ✔ 24-hour court blocks and malformed time (102.881903ms)
+  ✔ a changed server price requires another explicit review (29.352732ms)
+  ✔ concurrent requests reserve at most once and notify both accounts (88.513834ms)
+  ✔ acceptance gives 24 hours; payment initiation cannot confirm; ownership is enforced (79.317777ms)
+  ✔ expiry releases both resources and prevents late payment (86.328697ms)
+  ✔ rejection and cancellation release resources (222.829309ms)
+  ✔ only signed verified payment confirms once; forged callbacks cannot change bookings (264.768881ms)
+  ✔ package activation and concurrent member check-in debit exactly once (358.175026ms)
+  ✔ verified package payment snapshots category and preserves existing active balances (69.525248ms)
+  ✔ admin catalogue review classifies only unresolved history with an actor audit and no balance changes (118.048839ms)
+  ✔ one coach cannot be reserved concurrently on different courts (113.399041ms)
+✔ badminton private courses: independent availability, concurrency, acceptance and payment (5441.93069ms)
+ℹ tests 42
+ℹ suites 0
+ℹ pass 42
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15010.785572

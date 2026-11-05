@@ -1,0 +1,2 @@
+Screenshot fo-cancelled-timeline
+Human-readable cancellation and refund states verified.

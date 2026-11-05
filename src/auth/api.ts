@@ -1,6 +1,10 @@
+import { gymSessions, gymSession, notifications, notification, finance, settlement, type GymScope, type GymStatus, type SettlementInput } from "../coach/domain.ts";
 import { privateCourses, courseAvailability, courseBookings, courseBooking, bookingEnvelope, paymentEnvelope, type CourseInput, type CourseAvailabilityInput } from "../booking/private-course.ts";
 import { availability, monthAvailability, bookingResult, reservation, reservations } from "../booking/validation.ts";
 import type { BookingInput } from "../booking/types.ts";
+import { attendanceRecords, attendanceDetail, qrPreview, qrResult } from "../attendance/domain.ts";
+import { courtChangeDetail, courtChangeQuote, courtCancellation, type CourtTarget } from "../booking/changes.ts";
+import { staffBooking, staffBookings, staffCourtBookings, coachCalendar, collectedPayment, staffCatalog, memberMatches, staffCreated, issuedQr, recordedAttendance, coachProfiles, paymentAttempts, paymentAdjustment, type StaffCourseInput, type ManagedCourseInput } from "../staff/domain.ts";
 import { AuthError, authHttpError, sanitizeAuthError } from "./errors.ts";
 import type {
   AppUser,
@@ -193,7 +197,7 @@ export function createAuthApi(options: ApiOptions) {
 
   async function request<T>(
     path: string,
-    method: "GET" | "POST" | "PATCH",
+    method: "GET" | "POST" | "PATCH" | "DELETE",
     body: unknown,
     validate: (value: unknown) => T,
     requestOptions: RequestOptions = {},
@@ -302,8 +306,8 @@ export function createAuthApi(options: ApiOptions) {
               "Request a new phone code.",
               { status: response.status },
             );
-          if (path.startsWith("/court-booking/") || path.startsWith("/bookings") || path.startsWith("/private-courses") || path.startsWith("/member/private-courses") || path.startsWith("/member/check-in") || path.startsWith("/member/badminton-packages"))
-            throw new AuthError(response.status === 409 && failure?.code === "BOOKING_BUSY" ? "unavailable" : response.status === 409 ? "bookingConflict" : response.status === 404 ? "notFound" : response.status === 400 ? "invalidInput" : response.status === 401 ? "sessionExpired" : "unavailable", response.status < 500 && typeof failure?.message === "string" ? failure.message : "Reservations are unavailable right now. Please try again.", {status:response.status});
+          if (path.startsWith("/notifications") || path.startsWith("/gym/") || path.startsWith("/staff/") || path.startsWith("/coach/") || path.startsWith("/attendance") || path.startsWith("/check-in/") || path.startsWith("/court-booking/") || path.startsWith("/bookings") || path.startsWith("/private-courses") || path.startsWith("/member/private-courses") || path.startsWith("/member/check-in") || path.startsWith("/member/badminton-packages"))
+            throw new AuthError(response.status === 409 && failure?.code === "BOOKING_BUSY" ? "unavailable" : response.status === 409 ? "bookingConflict" : response.status === 404 ? "notFound" : response.status === 400 ? "invalidInput" : response.status === 401 ? "sessionExpired" : response.status === 403 ? "forbidden" : "unavailable", response.status < 500 && typeof failure?.message === "string" ? failure.message : "Reservations are unavailable right now. Please try again.", {status:response.status});
           throw authHttpError(response.status, retryAfter(response));
         }
         let value: unknown;
@@ -341,16 +345,51 @@ export function createAuthApi(options: ApiOptions) {
   const session = (requestOptions?: RequestOptions) =>
     request("/auth/session", "POST", {}, authSession, requestOptions);
   return {
+    getCoachTraining: (scope: GymScope, options?: RequestOptions) => request(`/coach/private-training?scope=${scope}`, 'GET', undefined, gymSessions, options),
+    updateCoachTraining: (id: string, status: Exclude<GymStatus,'SCHEDULED'>, presentMemberIds?: string[]) => request(`/gym/private-training/${encodeURIComponent(id)}/status`, 'PATCH', {status,...(presentMemberIds ? {presentMemberIds} : {})}, gymSession),
+    getNotifications: (history = false, options?: RequestOptions) => request(`/notifications${history ? '?history=1' : ''}`, 'GET', undefined, notifications, options),
+    readNotification: (id: string) => request(`/notifications/${encodeURIComponent(id)}/read`, 'PATCH', {}, notification),
+    getCourseFinance: (options?: RequestOptions, filters: { from?: string; to?: string; paymentSource?: string; paymentStatus?: string; paymentMethod?: string; status?: string } = {}) => {
+      const query = new URLSearchParams(Object.entries(filters).filter(([,value])=>!!value)).toString();
+      return request(`/staff/private-courses/finance${query ? `?${query}` : ''}`, 'GET', undefined, finance, options);
+    },
+    submitHandover: (input: SettlementInput) => request('/staff/private-courses/settlements', 'POST', input, settlement),
+    receiveHandover: (id: string) => request(`/staff/private-courses/settlements/${encodeURIComponent(id)}/receive`, 'POST', {}, settlement),
+    getStaffCourtBookings: (options?: RequestOptions) => request('/court-booking/bookings', 'GET', undefined, staffCourtBookings, options),
+    reviewCourtCancellation: (id: string, requestId: string, approve: boolean, reason: string) => request(`/court-booking/bookings/${encodeURIComponent(id)}/cancellation-requests/${encodeURIComponent(requestId)}/review`, 'POST', { approve, reason }, courtCancellation),
+    getCourtChangeDetail: (id: string, options?: RequestOptions) => request(`/court-booking/bookings/${encodeURIComponent(id)}/changes`, "GET", undefined, courtChangeDetail, options),
+    quoteCourtChange: (id: string, input: CourtTarget, options?: RequestOptions) => request(`/court-booking/bookings/${encodeURIComponent(id)}/reschedule/quote`, "POST", input, courtChangeQuote, options),
+    rescheduleCourt: (id: string, input: CourtTarget & { revision: string; reason: string }) => request(`/court-booking/bookings/${encodeURIComponent(id)}/reschedule`, "POST", input, reservation),
+    requestCourtCancellation: (id: string, reason: string) => request(`/court-booking/bookings/${encodeURIComponent(id)}/cancellation-requests`, "POST", { reason }, courtCancellation),
+    getCoursePaymentAttempts: (id: string, options?: RequestOptions) => request(`/staff/private-courses/bookings/${encodeURIComponent(id)}/online`, "GET", undefined, paymentAttempts, options),
+    reconcileCoursePayment: (id: string, paymentAttemptId: string) => request(`/staff/private-courses/bookings/${encodeURIComponent(id)}/reconcile-online`, "POST", { paymentAttemptId }, collectedPayment),
+    refundCoursePayment: (id: string, input: { reason: string; evidence: string; reference: string }) => request(`/staff/private-courses/bookings/${encodeURIComponent(id)}/refund`, "POST", input, paymentAdjustment),
+    cancelStaffCourse: (id: string, reason: string) => request(`/staff/private-courses/bookings/${encodeURIComponent(id)}/cancel`, "POST", { reason }, reservation),
+    getCoachProfiles: (options?: RequestOptions) => request("/coaches", "GET", undefined, coachProfiles, options),
+    saveManagedCourse: (id: string | null, input: ManagedCourseInput) => request(id ? `/private-courses/${encodeURIComponent(id)}` : "/private-courses", id ? "PATCH" : "POST", input, (v) => privateCourses([v])[0]),
+    getStaffBookings: (options?: RequestOptions) => request("/staff/private-courses/bookings", "GET", undefined, staffBookings, options),
+    getStaffBooking: (id: string, options?: RequestOptions) => request(`/staff/private-courses/bookings/${encodeURIComponent(id)}`, "GET", undefined, staffBooking, options),
+    getCoachCalendar: (start: string, end: string, options?: RequestOptions) => request(`/coach/calendar?${new URLSearchParams({ start, end })}`, "GET", undefined, coachCalendar, options),
+    decideCourse: (id: string, decision: "accept" | "decline") => request(`/coach/private-courses/${encodeURIComponent(id)}/decision`, "POST", { decision }, reservation),
+    completeCourse: (id: string) => request(`/coach/private-courses/${encodeURIComponent(id)}/complete`, "POST", {}, reservation),
+    recordCourseCash: (id: string, reference: string, notes: string) => request(`/staff/private-courses/bookings/${encodeURIComponent(id)}/cash`, "POST", { reference, notes }, collectedPayment),
+    getStaffCatalog: (options?: RequestOptions) => request("/staff/private-courses/catalog", "GET", undefined, staffCatalog, options),
+    searchStaffMembers: (q: string, options?: RequestOptions) => request(`/staff/private-courses/members?${new URLSearchParams({ q })}`, "GET", undefined, memberMatches, options),
+    createStaffCourse: (input: StaffCourseInput) => request("/staff/private-courses/bookings", "POST", input, staffCreated),
+    issueEntryQr: (categoryCode: "FOUNDATION" | "SOCIAL" | "PATHWAY") => request("/check-in/qr", "POST", { categoryCode }, issuedQr),
+    revokeEntryQr: (id: string) => request(`/check-in/qr/${encodeURIComponent(id)}`, "DELETE", undefined, (v) => { if (!isRecord(v) || v.revoked !== true) throw invalidResponse(); return v; }),
+    markCourseAttendance: (id: string, status: "present" | "late" | "absent" | "excused", notes: string, reason?: string) => request(`/attendance/courses/${encodeURIComponent(id)}/mark`, "POST", { status, notes, ...(reason ? { reason } : {}) }, recordedAttendance),
+    correctPackageAttendance: (id: string, status: "present" | "late" | "absent" | "excused", reason: string) => request(`/attendance/packages/${encodeURIComponent(id)}/mark`, "POST", { status, reason }, recordedAttendance),
+    getAttendanceDetail: (kind: "course" | "package", id: string, options?: RequestOptions) => request(`/attendance/${kind}/${encodeURIComponent(id)}/detail`, "GET", undefined, attendanceDetail, options),
+    getAttendance: (month: string, options?: RequestOptions) => request(`/attendance?month=${encodeURIComponent(month)}`, "GET", undefined, attendanceRecords, options),
+    previewCheckIn: (token: string, options?: RequestOptions) => request("/check-in/preview", "POST", { token }, qrPreview, options),
+    confirmCheckIn: (token: string) => request("/check-in/scan", "POST", { token }, qrResult),
     getPrivateCourses: (options?: RequestOptions) => request("/private-courses", "GET", undefined, privateCourses, options),
     getPrivateCourseBookings: (options?: RequestOptions) => request("/member/private-courses", "GET", undefined, courseBookings, options),
     getPrivateCourseAvailability: (input: CourseAvailabilityInput, options?: RequestOptions) => request(`/private-courses/availability?${new URLSearchParams(Object.entries(input).map(([key, value]) => [key, String(value)]))}`, "GET", undefined, courseAvailability, options),
     requestPrivateCourse: (input: CourseInput) => request("/member/private-courses", "POST", input, bookingEnvelope),
     cancelPrivateCourse: (id: string) => request(`/member/private-courses/${encodeURIComponent(id)}/cancel`, "POST", {}, courseBooking),
     payPrivateCourse: (id: string) => request(`/member/private-courses/${encodeURIComponent(id)}/pay`, "POST", {}, paymentEnvelope),
-    checkInBadminton: (enrollmentId: string) => request("/member/check-in", "POST", {enrollmentId}, (value) => {
-      if (!isRecord(value) || !isRecord(value.enrollment) || !isRecord(value.checkIn) || value.enrollment.id !== enrollmentId || value.checkIn.enrollmentId !== enrollmentId || !Number.isInteger(value.enrollment.sessionsRemaining)) throw invalidResponse();
-      return value;
-    }),
     purchaseBadmintonPackage: (id: string) => request(`/member/badminton-packages/${encodeURIComponent(id)}/purchase`, "POST", {}, (value) => {
       if (!isRecord(value) || !isRecord(value.purchase) || !isRecord(value.enrollment) || value.purchase.packageId !== id || value.enrollment.packageId !== id) throw invalidResponse();
       return value;

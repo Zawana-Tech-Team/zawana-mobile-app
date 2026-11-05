@@ -1,0 +1,37 @@
+▶ real HTTP court journey, integrity, ownership and retry recovery
+  ✔ court blocks retrieve date/court/weekly filters and preserve the courtName alias (67.602518ms)
+  ✔ staff can create and update court blocks through the real routes (93.976714ms)
+  ✔ authenticated server-generated availability and date validation (73.765053ms)
+  ✔ availability distinguishes booked, reserved and released backend statuses (247.050877ms)
+  ✔ maintenance and elapsed slots cannot be booked (49.861514ms)
+  ✔ atomic persisted unpaid reservation and safe replay (71.345216ms)
+  ✔ weekly block creation respects uppercase confirmed bookings (18.996605ms)
+  ✔ calendar, ownership and authorisation (115.612568ms)
+  ✔ 24-hour weekly blocks match web availability and reject every court payload shape (83.31174ms)
+  ✔ invalid slots, facility blocks, closure and holiday pricing (150.134433ms)
+  ✔ multi-selection conflicts roll back every row and receipt (20.050222ms)
+  ✔ two concurrent HTTP clients cannot take the same slot (44.133697ms)
+  ✔ concurrent duplicate requests reuse one committed receipt (49.519233ms)
+  ✔ database protects alternate writers, aliases and status reactivation (45.950342ms)
+  ✔ cancellation releases availability and is repeatable (42.932729ms)
+  ✔ service supports legacy single/slots inputs without a retry header (18.022369ms)
+✔ real HTTP court journey, integrity, ownership and retry recovery (3764.694145ms)
+✔ Yangon rescheduling policy includes exactly 24 hours and confirmed status aliases (22.400877ms)
+▶ court changes and attendance corrections persist atomically in an isolated migrated database
+  ✔ staff court feed is role-restricted, court-only and omits user secrets (103.11441ms)
+  ✔ ownership, department restriction, quote and confirmed paid reschedule (217.161908ms)
+  ✔ unavailable destinations, holidays, blocks, maintenance and price adjustments preserve the original (193.340246ms)
+  ✔ active payment checkout blocks reschedule and cancellation without changing the reservation (96.716618ms)
+  ✔ concurrent changes and booking creation reserve one destination (128.953077ms)
+  ✔ inside-window manager exception is disabled by default and FO cannot impersonate approver (40.782056ms)
+  ✔ cancellation request, rejection, approval, repeat review and payment separation (84.935553ms)
+  ✔ package debit, concurrent final session, correction restoration and expiry history (146.346013ms)
+✔ court changes and attendance corrections persist atomically in an isolated migrated database (4525.845019ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7865.610626

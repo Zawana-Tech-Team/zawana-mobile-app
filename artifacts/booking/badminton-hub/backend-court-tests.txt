@@ -1,0 +1,26 @@
+▶ real HTTP court journey, integrity, ownership and retry recovery
+  ✔ court blocks retrieve date/court/weekly filters and preserve the courtName alias (56.983473ms)
+  ✔ staff can create and update court blocks through the real routes (185.171045ms)
+  ✔ authenticated server-generated availability and date validation (69.310739ms)
+  ✔ availability distinguishes booked, reserved and released backend statuses (336.249431ms)
+  ✔ maintenance and elapsed slots cannot be booked (48.217533ms)
+  ✔ atomic persisted unpaid reservation and safe replay (69.253049ms)
+  ✔ weekly block creation respects uppercase confirmed bookings (17.913427ms)
+  ✔ calendar, ownership and authorisation (142.933207ms)
+  ✔ 24-hour weekly blocks match web availability and reject every court payload shape (77.845335ms)
+  ✔ invalid slots, facility blocks, closure and holiday pricing (142.989434ms)
+  ✔ multi-selection conflicts roll back every row and receipt (22.28067ms)
+  ✔ two concurrent HTTP clients cannot take the same slot (44.979153ms)
+  ✔ concurrent duplicate requests reuse one committed receipt (48.719881ms)
+  ✔ database protects alternate writers, aliases and status reactivation (65.983078ms)
+  ✔ cancellation releases availability and is repeatable (46.359995ms)
+  ✔ service supports legacy single/slots inputs without a retry header (19.673087ms)
+✔ real HTTP court journey, integrity, ownership and retry recovery (3475.656758ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9491.377773

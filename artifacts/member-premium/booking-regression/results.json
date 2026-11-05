@@ -1,0 +1,65 @@
+{
+  "checks": [
+    {
+      "check": "UI password sign-in",
+      "role": "member"
+    },
+    {
+      "screenshot": "badminton-hub.png"
+    },
+    {
+      "check": "Badminton hub opens check-in with active Badminton navigation"
+    },
+    {
+      "screenshot": "badminton-hub-320.png"
+    },
+    {
+      "screenshot": "rental-time.png"
+    },
+    {
+      "screenshot": "rental-floor.png"
+    },
+    {
+      "screenshot": "rental-court.png"
+    },
+    {
+      "screenshot": "rental-review.png"
+    },
+    {
+      "check": "Time-date-floor-court booking and atomic edit submitted to real backend",
+      "id": "cmvuizo9e00323q8n9j1yi6m6"
+    },
+    {
+      "screenshot": "court-booking-detail.png"
+    },
+    {
+      "check": "Server correctly disabled changes within 24 hours",
+      "message": "Changes require at least 24 hours before the session."
+    },
+    {
+      "screenshot": "private-coach.png"
+    },
+    {
+      "screenshot": "private-review.png"
+    },
+    {
+      "check": "Package-coach-date-time-floor-court private request persisted"
+    },
+    {
+      "screenshot": "booking-history.png"
+    },
+    {
+      "screenshot": "packages-explore.png"
+    },
+    {
+      "screenshot": "packages-history.png"
+    },
+    {
+      "screenshot": "attendance-calendar.png"
+    },
+    {
+      "screenshot": "attendance-calendar-320.png"
+    }
+  ],
+  "errors": []
+}

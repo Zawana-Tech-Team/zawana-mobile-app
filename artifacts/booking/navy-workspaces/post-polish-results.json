@@ -1,0 +1,12 @@
+{
+  "checks": [
+    {
+      "check": "UI password sign-in",
+      "role": "badminton_fo"
+    },
+    {
+      "screenshot": "fo-cancelled-timeline.png"
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,1 @@
+Coach-only route wrappers and the legitimate empty Gym state verified.

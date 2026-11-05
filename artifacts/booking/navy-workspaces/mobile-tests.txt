@@ -1,0 +1,201 @@
+
+> zawana-mobile-app@1.0.0 test
+> node --experimental-strip-types --test tests/*.mjs tests/*.test.ts
+
+(node:36793) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/fred/Documents/zawana-mobile-app/tests/attendance.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/fred/Documents/zawana-mobile-app/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ QR parser accepts only the exact trusted venue check-in URL and fragment (2.623714ms)
+✔ check-in preview uses the backend-selected Social package and server balance (292.958268ms)
+✔ duplicate or expired QR failures preserve backend explanation without success (25.026997ms)
+✔ ambiguous scan network failure is never automatically replayed (0.656707ms)
+✔ malformed deductions and negative balances cannot render as successful check-in (0.773661ms)
+✔ attendance history uses protected shared endpoint and cancellation signal (2.533446ms)
+✔ malformed attendance records cannot masquerade as empty history (0.326857ms)
+✔ attendance month navigation handles year boundaries (9.422739ms)
+✔ attendance sorts morning, noon and evening session ranges chronologically (1.01617ms)
+✔ attendance details accept server summaries and reject invalid percentages (0.686978ms)
+(node:36794) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/fred/Documents/zawana-mobile-app/tests/auth-api.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/fred/Documents/zawana-mobile-app/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ session uses the actual Firebase session endpoint and preserves canonical user identity (153.751863ms)
+✔ an API origin and an explicit API base both resolve the same endpoint without duplicating /api (1.868219ms)
+✔ 401 forces token refresh once and retries with the refreshed token (1.265784ms)
+✔ a repeated 401 ends the request instead of looping or admitting the user (145.015139ms)
+✔ 403 is not retried or treated as a token expiration (8.7247ms)
+✔ 428 is typed profileRequired even when the backend drops its code and draft metadata (5.009598ms)
+✔ profile completion posts only the real contract fields and trims user input (1.873523ms)
+✔ concurrent profile 409 resolves the existing canonical session without repeating account creation (0.983347ms)
+✔ profile conflict never fabricates success when subsequent session resolution fails (7.178612ms)
+✔ canonical user restoration rejects malformed success responses (0.773735ms)
+✔ non-JSON success is reported safely instead of granting a session (0.603721ms)
+✔ rate limiting retains Retry-After and hides backend diagnostics (0.59001ms)
+✔ failed network requests are sanitized and not automatically replayed (2.410746ms)
+✔ timeout aborts the underlying request and reports a retryable failure (11.062383ms)
+✔ caller cancellation aborts requests for abandoned screens (0.642514ms)
+✔ a request cancelled before starting does not obtain credentials or contact the API (0.268664ms)
+✔ missing API configuration fails explicitly before contacting a fabricated endpoint (0.219568ms)
+✔ URLs containing credentials are rejected (0.388304ms)
+✔ production API requests require HTTPS before sending identity tokens (0.289122ms)
+✔ an absent Firebase token cannot establish an anonymous application session (0.224728ms)
+✔ member dashboard uses the actual member endpoint and shape (1.394025ms)
+✔ member dashboard refuses a staff dashboard or malformed payload (0.479338ms)
+✔ dashboard query cannot inject parameters into the request (0.2501ms)
+✔ profile and avatar updates call their existing protected endpoints (0.70123ms)
+✔ provider credential errors do not distinguish unknown accounts from incorrect passwords (0.330779ms)
+✔ invalid and expired verifications remain distinct recovery states without leaking provider messages (0.15219ms)
+✔ Android wrapped billing failures show a safe configuration message (0.398852ms)
+(node:36795) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/fred/Documents/zawana-mobile-app/tests/booking-journeys.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/fred/Documents/zawana-mobile-app/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ time-first choices come from server schedule and preserve future-day hours (1.685585ms)
+✔ court availability must satisfy every selected time on every selected date (0.488546ms)
+✔ availability flag cannot override a server occupied status (0.235417ms)
+✔ reschedule detail and quote validate authoritative eligibility and signed price differences (0.964154ms)
+✔ ambiguous reschedule recovers only a server-confirmed exact destination (0.931436ms)
+✔ reschedule HTTP contract sends revision and reason to the shared court service (281.772337ms)
+✔ calendar handles leap years, leading blanks and complete week rows (1.586685ms)
+✔ attendance markers use actual records without creating visits for empty days (0.440812ms)
+✔ editing a session replaces it atomically without duplicating the original court (0.479765ms)
+✔ multiple courts require every court, day and hour and never drop a conflicting court (1.322721ms)
+(node:36796) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/fred/Documents/zawana-mobile-app/tests/booking-presentation.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/fred/Documents/zawana-mobile-app/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ booking dates are limited to today through this facility month (221.233099ms)
+✔ the permitted month advances at Yangon midnight, including year rollover (1.118685ms)
+✔ February uses its actual month end, including leap years (2.142689ms)
+✔ floor grouping retains backend court IDs and names on both floors (0.594595ms)
+✔ floor mapping uses facility metadata and never guesses from court order or identifiers (0.294977ms)
+(node:36797) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/fred/Documents/zawana-mobile-app/tests/booking.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/fred/Documents/zawana-mobile-app/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ date keys use Yangon rather than device timezone (49.766146ms)
+✔ booking tabs classify actual statuses and dates (0.378644ms)
+✔ slot selection uses stable IDs and supports deselection (1.439402ms)
+✔ every unavailable status is labelled without requiring a reason and cannot be selected (1.003827ms)
+✔ facility sessions display Class or Reserved without exposing private block titles (0.282448ms)
+✔ status prevents selection and removes stale selections even if an available flag is incorrect (0.705151ms)
+✔ custom unavailable reasons do not replace the status label (0.442759ms)
+✔ multi-court and multi-date totals retain individual sessions (0.296303ms)
+✔ selection limit permits deselection while preventing additions (0.274253ms)
+✔ refresh removes invalid slots on its own date and updates prices (0.417058ms)
+✔ valid server availability retains exact slot identifiers and prices (0.23131ms)
+✔ malformed and duplicate server slots are refused (130.053354ms)
+✔ confirmation must contain real IDs and an internally consistent total (0.578831ms)
+✔ court availability request is authenticated and passes cancellation (197.97169ms)
+✔ 20 October availability uses the authenticated endpoint and server slot statuses (3.529758ms)
+✔ atomic submission sends a retry key with exact court/date/time contract (0.94444ms)
+✔ conflict gives actionable feedback without a success result (0.852828ms)
+✔ receipt query distinguishes missing receipt from unavailable backend (0.943863ms)
+✔ server errors and transport outages cannot manufacture confirmation (1.008736ms)
+✔ member bookings and details use real protected endpoints (1.038093ms)
+✔ cancellation requests only the allowed status and preserves payment (0.859375ms)
+✔ double taps share a single in-flight reservation (0.346402ms)
+✔ lost acknowledgement is recovered without another creation (0.28618ms)
+✔ an uncommitted request retries its original immutable key (0.271365ms)
+✔ receipt lookup timeout leaves submission uncertain and never posts (0.230811ms)
+✔ a lost POST response can be recovered on the next attempt (0.349028ms)
+✔ busy database conflict remains an uncertain request rather than a rejected selection (0.89105ms)
+(node:36798) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/fred/Documents/zawana-mobile-app/tests/hybrid-api.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/fred/Documents/zawana-mobile-app/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ email login sends credentials once to the mobile endpoint without a Firebase bearer (252.479823ms)
+✔ Google and Apple proofs are explicit and cannot replace the business access token (62.475142ms)
+✔ phone OTP exchanges its challenge for an application session without a password (2.285451ms)
+✔ phone session exchange rejects expired proofs and malformed sessions without falling back to a password (2.96393ms)
+✔ phone sign-in never accepts a backend instruction to request a password or link an account (2.070241ms)
+✔ phone account conflicts show support guidance instead of password or linking instructions (0.964866ms)
+✔ invalid password is not retried or converted into session restoration (0.695767ms)
+✔ provider onboarding and account linking cannot enter Home (0.579287ms)
+✔ malformed credentials and missing registration fields are rejected before authorization (2.023942ms)
+✔ business 401 rotates application credentials, while refresh itself never retries (4.442631ms)
+✔ MFA and staff restrictions direct mobile users to web authentication (0.862241ms)
+✔ account checks use the public backend endpoint without requesting a session (0.564288ms)
+✔ account checks reject incomplete server responses instead of assuming availability (0.402224ms)
+(node:36799) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/fred/Documents/zawana-mobile-app/src/auth/navigation-policy.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/fred/Documents/zawana-mobile-app/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ startup blocks Home until both Firebase restoration and backend validation finish (1.910535ms)
+✔ unverified email restoration uses backend validation without an email verification screen (7.311734ms)
+✔ backend profile requirement resumes account creation without granting Home access (20.972276ms)
+✔ failed restoration revokes member routes and leaves recovery available (5.357616ms)
+✔ sign out immediately removes member access and late restoration cannot reopen it (0.462874ms)
+✔ member routes require canonical user and identity, regardless of email verification (0.232991ms)
+✔ MFA-required backend sessions cannot reach member Home (3.166693ms)
+(node:36800) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/fred/Documents/zawana-mobile-app/src/auth/phone-challenge.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/fred/Documents/zawana-mobile-app/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ SMS requests persist only metadata; Firebase confirmation and OTP never enter storage (4.700495ms)
+✔ empty and malformed OTPs never reach Firebase (34.700142ms)
+✔ Firebase invalid and expired code failures never manufacture verification success (3.077959ms)
+✔ resend cooldown prevents duplicate SMS and permits a later real provider request (0.54489ms)
+✔ SMS quota and network failures do not create a verification challenge (0.432966ms)
+✔ restart restores resend timing but requires a new Firebase proof (0.620754ms)
+✔ cancelling an outstanding SMS request prevents its late response from reviving the challenge (0.470693ms)
+✔ cancelling in-flight verification rejects late Firebase success (0.423787ms)
+✔ a provider result for another number is rejected (0.467363ms)
+✔ verified phone-only identity still needs canonical backend validation before Home (2.868844ms)
+✔ backend rejection and onboarding requirement never grant phone users protected access (0.716313ms)
+✔ Google/Apple cancellation, provider configuration and unavailable services are sanitized (0.2706ms)
+(node:36801) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/fred/Documents/zawana-mobile-app/tests/private-course.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/fred/Documents/zawana-mobile-app/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ Yangon day boundary stays independent of device timezone (107.95172ms)
+✔ availability rejects contradictory coach/court status and malformed amounts (3.302487ms)
+✔ combined availability sends the verified backend contract and application bearer (91.518364ms)
+✔ conflict and unavailable payment errors stay actionable without recording success (3.024484ms)
+(node:36802) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/fred/Documents/zawana-mobile-app/src/auth/session-controller.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/fred/Documents/zawana-mobile-app/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ anonymous identities are blocked; email verification does not replace backend session validation (5.152262ms)
+✔ a verified identity receives route access only after backend session validation (0.415465ms)
+✔ a missing application profile routes to profile completion (1.965803ms)
+✔ restoration network failure revokes any previous application access (0.594269ms)
+✔ a stale response for an older identity cannot replace the newer session (0.427128ms)
+✔ sign-out during restoration immediately clears access and ignores later success (0.367452ms)
+✔ required MFA does not become an authenticated mobile session (0.425606ms)
+✔ secure storage chunks large Unicode JSON and removes all committed parts on sign-out (11.431644ms)
+✔ a failed secure-storage write preserves the prior committed session (4.87711ms)
+✔ a missing encrypted chunk never restores truncated authentication data (2.114154ms)
+✔ queued writes and a following removal cannot resurrect a signed-out session (1.427787ms)
+✔ interrupted registration preserves only allowlisted nonsecret fields (3.542482ms)
+(node:36803) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/fred/Documents/zawana-mobile-app/tests/staff.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/fred/Documents/zawana-mobile-app/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ validated staff sessions route only into the staff workspace (3.214645ms)
+✔ member and unsupported roles cannot enter staff routes (1.200286ms)
+✔ cash collection submits only backend-supported fields and preserves receipt identity (92.745253ms)
+✔ malformed financial data fails instead of displaying a successful collection (25.019058ms)
+✔ staff creation retains requestKey and unpaid source without inventing amount or method (1.415658ms)
+✔ staff permission failures preserve the server rejection and are never replayed (1.705768ms)
+✔ QR issuance and revocation use category and server ID contracts (2.251336ms)
+✔ online reconciliation and refunds retain backend evidence contracts (1.463854ms)
+✔ staff court reads retain member identity and filter non-court rows from the shared endpoint (1.745829ms)
+✔ court cancellation review preserves decision, audit reason and independent refund state (1.625138ms)
+✔ court cancellation permission failure is returned without a second submission (1.362126ms)
+(node:36804) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/fred/Documents/zawana-mobile-app/src/auth/validation.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/fred/Documents/zawana-mobile-app/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ phone formatting retains Myanmar international identity and removes local trunk prefix (24.11504ms)
+✔ email and calendar dates reject malformed user input (5.732783ms)
+✔ password checklist enforces all three design requirements (2.081293ms)
+ℹ tests 141
+ℹ suites 0
+ℹ pass 141
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1961.402298
